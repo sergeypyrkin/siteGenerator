@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace live
 {
-    class Program
+    public class Program
     {
+
         public static void Main(string[] args)
         {
             Console.WriteLine("");
@@ -21,7 +22,6 @@ namespace live
             Console.WriteLine("");
             Console.WriteLine("");
             Console.WriteLine("");
-
             Stopwatch stopwatch = new Stopwatch();
 
             // Begin timing.
