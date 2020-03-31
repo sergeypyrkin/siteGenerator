@@ -27,12 +27,10 @@ namespace live
             stopwatch.Start();
             PATH.init();
             PATH.checking();
+            Worker work = new Worker();
+            // 1ю обработка фотографий
+            work.stage1();
 
-            // Do something.
-            for (int i = 0; i < 1000; i++)
-            {
-                Thread.Sleep(1);
-            }
 
             // Stop timing.
             stopwatch.Stop();
