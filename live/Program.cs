@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace live
 {
     public class Program
     {
-
+        /*
+         Точка входа.
+         */
+       
         public static void Main(string[] args)
         {
             Console.WriteLine("");
@@ -26,6 +25,8 @@ namespace live
 
             // Begin timing.
             stopwatch.Start();
+            PATH.init();
+            PATH.checking();
 
             // Do something.
             for (int i = 0; i < 1000; i++)
