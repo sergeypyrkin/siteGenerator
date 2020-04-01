@@ -1,27 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
-namespace live
+namespace live.Stages
 {
-    public class Worker
+    public class Stage1: Stage
     {
-        public void stage1()
+
+        public override void WORK()
         {
+            Thread.Sleep(1000);
             int i = 0;
-            Console.WriteLine("");
-            Console.WriteLine("Обработка новых фото");
+
             List<string> files = new List<string>();
-            files = FILEWORK.GetAllFiles(PATH.data, files);
+            files = FILEWORK.GetAllFiles(PATH.data, files, ".jpg");
             foreach (string s in files)
             {
                 FileInfo f = new FileInfo(s);
                 Console.WriteLine(f.Name);
             }
+        }
+
+        public Stage1(string name) : base(name)
+        {
+
         }
     }
 }

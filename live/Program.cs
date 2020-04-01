@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading;
+using live.Stages;
 
 namespace live
 {
@@ -12,12 +13,13 @@ namespace live
        
         public static void Main(string[] args)
         {
+            var stage1 = new Stage1("ОБРАБОКА ФОТОГРАФИЙ");
+
+
+
+
             Console.WriteLine("");
             Console.WriteLine(DateTime.Now.ToString());
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
             Console.WriteLine("");
             Console.WriteLine("");
             Console.WriteLine("");
@@ -27,11 +29,9 @@ namespace live
             stopwatch.Start();
             PATH.init();
             PATH.checking();
-            Worker work = new Worker();
-            // 1ю обработка фотографий
-            work.stage1();
+            FILEWORK.SIZE();
 
-
+            stage1.EXECUTE();
             // Stop timing.
             stopwatch.Stop();
 

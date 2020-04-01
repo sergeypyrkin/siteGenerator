@@ -47,7 +47,8 @@
     <Compile Include="PATH.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Worker.cs" />
+    <Compile Include="Stages\Stage.cs" />
+    <Compile Include="Stages\Stage1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
