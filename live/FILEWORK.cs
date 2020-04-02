@@ -26,14 +26,14 @@ namespace live
                 }
                 foreach (string d in Directory.GetDirectories(sDir))
                 {
-                    foreach (string f in Directory.GetFiles(d))
-                    {
-                        if (!isParsed(f, ext))
-                        {
-                            continue;
-                        }
-                        files.Add(f);
-                    }
+                    //foreach (string f in Directory.GetFiles(d))
+                    //{
+                    //    if (!isParsed(f, ext))
+                    //    {
+                    //        continue;
+                    //    }
+                    //    files.Add(f);
+                    //}
                     GetAllFiles(d,files, ext);
                 }
                 return files;

@@ -14,17 +14,16 @@ namespace live.Stages
 
         public override void WORK()
         {
-            Thread.Sleep(1000);
             int i = 0;
 
             List<string> files = new List<string>();
             files = FILEWORK.GetAllFiles(PATH.data, files, ".jpg");
-            //foreach (string s in files)
-            //{
-            //    FileInfo f = new FileInfo(s);
-            //    //IMAGEWORKER.getSize(s);
-            //    Console.WriteLine(f.Name);
-            //}
+            foreach (String f in files)
+            {
+                string fullName = f;
+                String[] ll = f.Split(new string[] { "\\" }, StringSplitOptions.None);
+                DATA.imageDict.Add(ll.Last(), fullName);
+            }
             string last = files.Last();
             IMAGEWORKER.getSize(last);
         }
