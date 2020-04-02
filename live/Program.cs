@@ -33,8 +33,8 @@ namespace live
         {
             // Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
             // ShowWindow(ThisConsole, MAXIMIZE);
-            ShowWindow(ThisConsole, MAXIMIZE);
-            Thread.Sleep(1000);
+            //ShowWindow(ThisConsole, MAXIMIZE);
+            //Thread.Sleep(1000);
             //Console.SetWindowSize(Console.WindowWidth, Console.LargestWindowHeight-1);
             var stage1 = new Stage1("ОБРАБОКА ФОТОГРАФИЙ");
 
