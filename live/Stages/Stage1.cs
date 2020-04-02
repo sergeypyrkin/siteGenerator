@@ -19,11 +19,14 @@ namespace live.Stages
 
             List<string> files = new List<string>();
             files = FILEWORK.GetAllFiles(PATH.data, files, ".jpg");
-            foreach (string s in files)
-            {
-                FileInfo f = new FileInfo(s);
-                Console.WriteLine(f.Name);
-            }
+            //foreach (string s in files)
+            //{
+            //    FileInfo f = new FileInfo(s);
+            //    //IMAGEWORKER.getSize(s);
+            //    Console.WriteLine(f.Name);
+            //}
+            string last = files.Last();
+            IMAGEWORKER.getSize(last);
         }
 
         public Stage1(string name) : base(name)

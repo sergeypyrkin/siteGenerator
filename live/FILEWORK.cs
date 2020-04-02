@@ -73,6 +73,13 @@ namespace live
             }
         }
 
+        public static double sizeOfFile(String path)
+        {
+            FileInfo f = new FileInfo(path);
+            double r = f.Length;
+            return Math.Round((double)(r / 1024 / 1024), 1);
+        }
+
 
 
         public static double sizeOfFolder(string folder, ref double catalogSize)

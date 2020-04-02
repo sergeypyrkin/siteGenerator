@@ -13,6 +13,7 @@ namespace live
         //исходная папка
         public static string root = "C:\\Users\\Programmist\\Desktop\\MYLIVE";
         public static string data = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA";
+        public static string test = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\TEST";
 
         public static void init()
         {
@@ -21,6 +22,8 @@ namespace live
             path = path.Substring(0, i) + "MYLIVE\\";
             root = path;
             data = root + "DATA";
+            test = root + "TEST";
+
             //root = Directory.GetCurrentDirectory;
         }
 
@@ -32,6 +35,7 @@ namespace live
             Console.WriteLine("");
             check(root);
             check(data);
+            check(test);
 
         }
 
