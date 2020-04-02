@@ -43,11 +43,11 @@ namespace live
         {
             if (Directory.Exists(root))
             {
-                Console.WriteLine(path + "    OK");
+                Console.WriteLine(CONST.ins + path + "    OK");
             }
             else
             {
-                Console.WriteLine(path + "    BAD");
+                Console.WriteLine(CONST.ins + path + "    BAD");
 
             }
         }

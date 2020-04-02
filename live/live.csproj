@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CONST.cs" />
     <Compile Include="DATA.cs" />
     <Compile Include="FILEWORK.cs" />
     <Compile Include="IMAGEWORKER.cs" />

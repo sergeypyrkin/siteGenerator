@@ -65,7 +65,7 @@ namespace live
             catalogSize = sizeOfFolder(pathToDirectory, ref catalogSize); //Вызываем наш рекурсивный метод
             if (catalogSize != 0)
             {
-                Console.WriteLine("Размер каталога {0} составляет {1} ГБ", pathToDirectory, catalogSize);
+                Console.WriteLine(CONST.ins+ "{1} ГБ", pathToDirectory, catalogSize);
             }
             else
             {

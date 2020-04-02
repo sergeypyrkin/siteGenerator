@@ -23,6 +23,7 @@ namespace live.Stages
 
         public virtual void EXECUTE()
         {
+            
             stopwatch = new Stopwatch();
             stopwatch.Start();
             Console.WriteLine("");
@@ -34,7 +35,7 @@ namespace live.Stages
 
         public virtual void report()
         {
-            Console.WriteLine(NAME + " | " + stopwatch.Elapsed);
+           // Console.WriteLine(NAME + " | " + stopwatch.Elapsed);
             Console.WriteLine("");
             Console.WriteLine("");
             Console.WriteLine("");
