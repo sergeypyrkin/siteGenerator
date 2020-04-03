@@ -43,7 +43,7 @@ namespace live
 
         public static void check(string path)
         {
-            if (Directory.Exists(root))
+            if (Directory.Exists(path))
             {
                 Console.WriteLine(CONST.ins + path + "    OK");
             }

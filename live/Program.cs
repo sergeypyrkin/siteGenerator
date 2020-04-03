@@ -36,7 +36,7 @@ namespace live
             //ShowWindow(ThisConsole, MAXIMIZE);
             //Thread.Sleep(1000);
             //Console.SetWindowSize(Console.WindowWidth, Console.LargestWindowHeight-1);
-            var stage1 = new Stage1( "ОБРАБОКА ФОТОГРАФИЙ");
+            var stage1 = new Stage1("ОБРАБОКА ФОТОГРАФИЙ");
 
             Console.WriteLine("");
             Console.WriteLine(DateTime.Now.ToString());

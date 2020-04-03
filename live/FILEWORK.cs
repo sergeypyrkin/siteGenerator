@@ -27,6 +27,13 @@ namespace live
         }
 
 
+        public static void clearDir(string path)
+        {
+            Console.WriteLine("CLEAR DIR: "+path);
+            Directory.Delete(path, true);
+        }
+
+
         public static List<string> GetAllFiles(string sDir, List<string> files, string ext="")
         {
             
