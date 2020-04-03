@@ -15,6 +15,9 @@ namespace live
         public static string data = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA";
         public static string test = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\TEST";
 
+        public static string imgProcessedFile = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\parsed.txt";
+
+
         public static void init()
         {
             string path = new System.IO.FileInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).DirectoryName;
@@ -23,8 +26,8 @@ namespace live
             root = path;
             data = root + "DATA";
             test = root + "TEST";
+            imgProcessedFile = data + "\\parsed.txt";
 
-            //root = Directory.GetCurrentDirectory;
         }
 
 
@@ -36,7 +39,6 @@ namespace live
             check(root);
             check(data);
             check(test);
-
         }
 
         public static void check(string path)
@@ -48,7 +50,6 @@ namespace live
             else
             {
                 Console.WriteLine(CONST.ins + path + "    BAD");
-
             }
         }
 

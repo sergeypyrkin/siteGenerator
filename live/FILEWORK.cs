@@ -10,6 +10,22 @@ namespace live
 {
     public class FILEWORK
     {
+        //FILEWORK.ReadFileContent(PATH.imgProcessedFile);
+        //FILEWORK.WriteFileContent(PATH.imgProcessedFile, "2222\n234234");
+        public static string ReadFileContent(string path)
+        {
+            string res = "";
+            string[] lines = File.ReadAllLines(path);
+            res = string.Join("\n", lines);
+            return res;
+        }
+
+        public static void WriteFileContent(string path, string content)
+        {
+            File.WriteAllText(path, content);
+            return;
+        }
+
 
         public static List<string> GetAllFiles(string sDir, List<string> files, string ext="")
         {

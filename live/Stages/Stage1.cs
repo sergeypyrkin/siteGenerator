@@ -15,7 +15,6 @@ namespace live.Stages
         public override void WORK()
         {
             int i = 0;
-
             List<string> files = new List<string>();
             files = FILEWORK.GetAllFiles(PATH.data, files, ".jpg");
             foreach (String f in files)

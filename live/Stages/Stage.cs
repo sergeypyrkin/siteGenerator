@@ -12,9 +12,9 @@ namespace live.Stages
 
     public  class Stage
     {
-        
         public string NAME = "";
         public Stopwatch stopwatch;
+
 
         public Stage(string name)
         {

@@ -30,9 +30,7 @@ namespace live
 
                 double size1 = FILEWORK.sizeOfFile(path);
                 var imgStream = File.OpenRead(path);
-              
-                Image yourImage = Image.FromStream(imgStream); //загрузили изображение
-              
+                Image yourImage = Image.FromStream(imgStream); //загрузили изображение         
                 imgStream.Close(); //закрыли поток
                 Size sz = nwSizeMain(yourImage);
                 yourImage = resizeImage(yourImage, sz); //изменили размер
@@ -40,7 +38,6 @@ namespace live
                 yourImage.Save(finPath, ImageFormat.Jpeg); //сохранили
                 double size2 = FILEWORK.sizeOfFile(finPath);
                 reportTransformImage(path, size1, size2);
-
             }
             catch (Exception e)
             {

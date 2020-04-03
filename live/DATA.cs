@@ -8,6 +8,7 @@ namespace live
 {
     public static class DATA
     {
+
         public static Dictionary<string, string> imageDict = new Dictionary<string, string>();
     }
 }
