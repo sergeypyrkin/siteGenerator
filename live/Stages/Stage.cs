@@ -14,7 +14,7 @@ namespace live.Stages
     {
         public string NAME = "";
         public Stopwatch stopwatch;
-
+        public int exitCode = 0;
 
         public Stage(string name)
         {
@@ -28,7 +28,16 @@ namespace live.Stages
             stopwatch.Start();
             Console.WriteLine("");
             Console.WriteLine(NAME);
-            WORK();
+            try
+            {
+                WORK();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(String.Format("{0} ERROR: {1}",CONST.insErr,NAME));
+                throw new Exception(ex.Message);
+
+            }
             stopwatch.Stop();
             report();
         }

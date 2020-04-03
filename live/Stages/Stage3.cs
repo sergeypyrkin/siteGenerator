@@ -9,14 +9,21 @@ using System.Threading.Tasks;
 
 namespace live.Stages
 {
-    public class Stage1: Stage
+
+    //ОБРАБОКА ФОТОГРАФИЙ
+    public class Stage3: Stage
     {
+
+        
+
 
         public override void WORK()
         {
             int i = 0;
             List<string> files = new List<string>();
             files = FILEWORK.GetAllFiles(PATH.data, files, ".jpg");
+            throw new Exception("мы все проебали");
+
             foreach (String f in files)
             {
                 string fullName = f;
@@ -27,7 +34,7 @@ namespace live.Stages
             IMAGEWORKER.getSize(last);
         }
 
-        public Stage1(string name) : base(name)
+        public Stage3(string name) : base(name)
         {
 
         }

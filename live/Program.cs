@@ -36,7 +36,7 @@ namespace live
             //ShowWindow(ThisConsole, MAXIMIZE);
             //Thread.Sleep(1000);
             //Console.SetWindowSize(Console.WindowWidth, Console.LargestWindowHeight-1);
-            var stage1 = new Stage1("ОБРАБОКА ФОТОГРАФИЙ");
+            var stage3 = new Stage3("ОБРАБОКА ФОТОГРАФИЙ");
 
             Console.WriteLine("");
             Console.WriteLine(DateTime.Now.ToString());
@@ -50,8 +50,17 @@ namespace live
             PATH.init();
             PATH.checking();
             FILEWORK.SIZE();
-
-            stage1.EXECUTE();
+            try
+            {
+                stage3.EXECUTE();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(String.Format("{0} {1}", CONST.insErr,ex.Message));
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                return;
+            }
             // Stop timing.
             stopwatch.Stop();
 
