@@ -36,6 +36,8 @@ namespace live
             //ShowWindow(ThisConsole, MAXIMIZE);
             //Thread.Sleep(1000);
             //Console.SetWindowSize(Console.WindowWidth, Console.LargestWindowHeight-1);
+            var stage1 = new Stage1("ПРОВЕРКА");
+
             var stage3 = new Stage3("ОБРАБОКА ФОТОГРАФИЙ");
 
             Console.WriteLine("");
@@ -52,6 +54,8 @@ namespace live
             FILEWORK.SIZE();
             try
             {
+                stage1.EXECUTE();
+
                 stage3.EXECUTE();
             }
             catch (Exception ex)

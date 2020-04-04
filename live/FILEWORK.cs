@@ -90,10 +90,10 @@ namespace live
             {
                 Console.WriteLine(CONST.ins+ "{1} ГБ", pathToDirectory, catalogSize);
             }
-            else
-            {
-                Console.WriteLine("Каталог {0} пуст.", pathToDirectory);
-            }
+            //else
+            //{
+            //    Console.WriteLine("Каталог {0} пуст.", pathToDirectory);
+            //}
         }
 
         public static double sizeOfFile(String path)
