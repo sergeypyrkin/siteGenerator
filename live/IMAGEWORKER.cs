@@ -22,27 +22,33 @@ namespace live
         public static int MW = 1250;
         public static int MH = 1250;
 
-        public static void getSize(string path)
+        //возвращает размеры до и после
+        public static List<double> lessImageSet(string path)
         {
 
             try
             {
-
+                path = DATA.imageDict[path];
+                List<double> sizes = new List<double>();
                 double size1 = FILEWORK.sizeOfFile(path);
                 var imgStream = File.OpenRead(path);
                 Image yourImage = Image.FromStream(imgStream); //загрузили изображение         
                 imgStream.Close(); //закрыли поток
                 Size sz = nwSizeMain(yourImage);
                 yourImage = resizeImage(yourImage, sz); //изменили размер
-                string finPath = PATH.test + "\\1.jpg";
+                string finPath = path;
                 yourImage.Save(finPath, ImageFormat.Jpeg); //сохранили
                 double size2 = FILEWORK.sizeOfFile(finPath);
                 reportTransformImage(path, size1, size2);
+                sizes.Add(size1);
+                sizes.Add(size2);
+                return sizes;
             }
             catch (Exception e)
             {
                 Console.WriteLine("ERROR: обработки изображения " + path);
                 Console.WriteLine(e.Message);
+                return new List<double>();
             }
 
         }

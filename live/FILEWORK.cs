@@ -100,7 +100,7 @@ namespace live
         {
             FileInfo f = new FileInfo(path);
             double r = f.Length;
-            return Math.Round((double)(r / 1024 / 1024), 1);
+            return Math.Round((double)(r / 1024 / 1024), 2);
         }
 
 

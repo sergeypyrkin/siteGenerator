@@ -13,25 +13,76 @@ namespace live.Stages
     //ОБРАБОКА ФОТОГРАФИЙ
     public class Stage3: Stage
     {
+        public List<string> proceed = new List<string>();
+        public List<string> newproceed = new List<string>();
+        public double size1 = 0;
+        public double size2 = 0;
+        public bool added = false; 
 
-        
+
+        public void getProcced()
+        {
+            string contentProceed = FILEWORK.ReadFileContent(PATH.imgProcessedFile);
+            String[] row = contentProceed.Split(new string[] { "\n" }, StringSplitOptions.None);
+            foreach (string st in row)
+            {
+                if (String.IsNullOrEmpty(st))
+                {
+                    return;
+                }
+                proceed.Add(st);
+            }
+        }
+
+
+        public void setProcced()
+        {
+            List<string> res = new List<string>();
+            res.AddRange(proceed);
+            res.AddRange(newproceed);
+            string result = string.Join("\n", res);
+            FILEWORK.WriteFileContent(PATH.imgProcessedFile, result);
+        }
+
+
 
 
         public override void WORK()
         {
-            int i = 0;
+            getProcced();
+
             List<string> files = new List<string>();
             files = FILEWORK.GetAllFiles(PATH.data, files, ".jpg");
-            throw new Exception("мы все проебали");
-
             foreach (String f in files)
             {
                 string fullName = f;
                 String[] ll = f.Split(new string[] { "\\" }, StringSplitOptions.None);
-                DATA.imageDict.Add(ll.Last(), fullName);
+                string fname = ll.Last();
+                DATA.imageDict.Add(fname, fullName);
+                DATA.RevimageDict.Add(fullName, fname);
+                if (!proceed.Contains(fname))
+                {
+                    newproceed.Add(fname);
+                }
+                
+
             }
-            string last = files.Last();
-            IMAGEWORKER.getSize(last);
+
+
+            foreach (string s in newproceed)
+            {
+                List<double> res = IMAGEWORKER.lessImageSet(s);
+                size1 = size1 + res[0];
+                size2 = size2 + res[1];
+                added = true;
+            }
+            setProcced();
+
+            if (added)
+            {
+                Console.WriteLine("{0} {1}->{2}", CONST.ins, size1,size2);
+            }
+
         }
 
         public Stage3(string name) : base(name)
