@@ -62,7 +62,7 @@ namespace live.Stages
                 String[] ll = f.Split(new string[] { "\\" }, StringSplitOptions.None);
                 string fname = ll.Last();
                 DATA.imageDict.Add(fname, fullName);
-                DATA.RevimageDict.Add(fullName, fname);
+                DATA.RevImageDict.Add(fullName, fname);
                 if (!proceed.Contains(fname))
                 {
                     newproceed.Add(fname);
@@ -83,7 +83,7 @@ namespace live.Stages
 
             if (added)
             {
-                Console.WriteLine("{0} {1}->{2}", CONST.ins, size1,size2);
+                Console.WriteLine("{0} {1}->{2}", CONST._INS, size1,size2);
             }
 
         }

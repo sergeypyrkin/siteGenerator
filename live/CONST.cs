@@ -8,7 +8,7 @@ namespace live
 {
     public static class CONST
     {
-        public static string ins = "              ";
-        public static string insErr = "!!!!!!!!!!!!";
+        public static string _INS = "              ";
+        public static string _INSERR = "!!!!!!!!!!!!";
     }
 }

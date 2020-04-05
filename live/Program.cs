@@ -62,7 +62,7 @@ namespace live
             }
             catch (Exception ex)
             {
-                Console.WriteLine(String.Format("{0} {1}", CONST.insErr,ex.Message));
+                Console.WriteLine(String.Format("{0} {1}", CONST._INSERR, ex.Message));
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();
                 return;

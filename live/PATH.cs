@@ -45,11 +45,11 @@ namespace live
         {
             if (Directory.Exists(path))
             {
-                Console.WriteLine(CONST.ins + path + "    OK");
+                Console.WriteLine(CONST._INS + path + "    OK");
             }
             else
             {
-                Console.WriteLine(CONST.ins + path + "    BAD");
+                Console.WriteLine(CONST._INS + path + "    BAD");
             }
         }
 

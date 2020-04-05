@@ -10,7 +10,7 @@ namespace live
     {
         public static bool _newExist;
         public static Dictionary<string, string> imageDict = new Dictionary<string, string>();
-        public static Dictionary<string, string> RevimageDict = new Dictionary<string, string>();
+        public static Dictionary<string, string> RevImageDict = new Dictionary<string, string>();
 
         
     }
