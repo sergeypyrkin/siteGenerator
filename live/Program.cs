@@ -52,6 +52,8 @@ namespace live
             PATH.init();
             PATH.checking();
             FILEWORK.SIZE();
+
+            return;
             try
             {
                 stage1.EXECUTE();

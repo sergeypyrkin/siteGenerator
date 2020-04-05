@@ -10,6 +10,8 @@ namespace live
 {
     public class FILEWORK
     {
+
+        #region работа с файлами
         //FILEWORK.ReadFileContent(PATH.imgProcessedFile);
         //FILEWORK.WriteFileContent(PATH.imgProcessedFile, "2222\n234234");
         public static string ReadFileContent(string path)
@@ -27,16 +29,68 @@ namespace live
         }
 
 
-        public static void clearDir(string path)
+        public static double sizeOfFile(String path)
+        {
+            FileInfo f = new FileInfo(path);
+            double r = f.Length;
+            return Math.Round((double)(r / 1024 / 1024), 2);
+        }
+
+        #endregion
+
+
+
+
+        #region работа с директориями
+        //удаляем директорию
+        public static void removeDir(string path)
         {
             Console.WriteLine("CLEAR DIR: "+path);
             Directory.Delete(path, true);
         }
 
-
-        public static List<string> GetAllFiles(string sDir, List<string> files, string ext="")
+        //очищаем директорию
+        public static void clearDir(string path)
         {
-            
+            //удаляем файлы
+            foreach (string file in Directory.GetFiles(path))
+               File.Delete(file);
+            //удаляем директории
+            foreach (string d in Directory.GetDirectories(path))
+            {
+                removeDir(d);
+            }
+        }
+
+        //переименовывание папки
+        public static void renameDir(string oldPath, string newName)
+        {
+            FileInfo f = new FileInfo(oldPath);
+            var d = f.DirectoryName;
+            string newFullName = d + "\\" + newName;
+            Directory.Move(oldPath, newFullName);
+        }
+
+        //перебрасывание директории
+        public static void moveDir(string path, string destination)
+        {
+            Directory.Move(path, destination);
+        }
+
+        //проверяем пуста ли директория
+        public static bool isEmptyDir(string path)
+        {
+            if (System.IO.Directory.GetDirectories(path).Length + System.IO.Directory.GetFiles(path).Length > 0)
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+        public static List<string> GetAllFiles(string sDir, List<string> files, string ext = "")
+        {
+
             try
             {
                 foreach (string f in Directory.GetFiles(sDir))
@@ -57,7 +111,7 @@ namespace live
                     //    }
                     //    files.Add(f);
                     //}
-                    GetAllFiles(d,files, ext);
+                    GetAllFiles(d, files, ext);
                 }
                 return files;
             }
@@ -68,41 +122,6 @@ namespace live
             }
 
         }
-
-        public static bool isParsed(string f, string ext)
-        {
-            if (String.IsNullOrEmpty(ext))
-            {
-                return true;
-            }
-            FileInfo file = new FileInfo(f);
-            return file.Extension == ext;
-
-        }
-
-
-        public static void SIZE()
-        {
-            string pathToDirectory = PATH.root;
-            double catalogSize = 0;
-            catalogSize = sizeOfFolder(pathToDirectory, ref catalogSize); //Вызываем наш рекурсивный метод
-            if (catalogSize != 0)
-            {
-                Console.WriteLine(CONST.ins+ "{1} ГБ", pathToDirectory, catalogSize);
-            }
-            //else
-            //{
-            //    Console.WriteLine("Каталог {0} пуст.", pathToDirectory);
-            //}
-        }
-
-        public static double sizeOfFile(String path)
-        {
-            FileInfo f = new FileInfo(path);
-            double r = f.Length;
-            return Math.Round((double)(r / 1024 / 1024), 2);
-        }
-
 
 
         public static double sizeOfFolder(string folder, ref double catalogSize)
@@ -127,7 +146,7 @@ namespace live
                     sizeOfFolder(df.FullName, ref catalogSize);
                 }
                 //1ГБ = 1024 Байта * 1024 КБайта * 1024 МБайта
-                return Math.Round((double)(catalogSize / 1024 / 1024 / 1024), 1);
+                return Math.Round((double)(catalogSize / 1024 / 1024 / 1024), 2);
             }
             //Начинаем перехватывать ошибки
             //DirectoryNotFoundException - директория не найдена
@@ -149,5 +168,46 @@ namespace live
                 return 0;
             }
         }
+
+        public static void SIZE()
+        {
+            string pathToDirectory = PATH.root;
+            double catalogSize = 0;
+            catalogSize = sizeOfFolder(pathToDirectory, ref catalogSize); //Вызываем наш рекурсивный метод
+            if (catalogSize != 0)
+            {
+                Console.WriteLine(CONST.ins + "{1} ГБ", pathToDirectory, catalogSize);
+            }
+            //else
+            //{
+            //    Console.WriteLine("Каталог {0} пуст.", pathToDirectory);
+            //}
+        }
+
+        #endregion
+
+
+        public static bool isParsed(string f, string ext)
+        {
+            if (String.IsNullOrEmpty(ext))
+            {
+                return true;
+            }
+            FileInfo file = new FileInfo(f);
+            return file.Extension == ext;
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
