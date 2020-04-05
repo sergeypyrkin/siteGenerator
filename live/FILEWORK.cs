@@ -11,7 +11,7 @@ namespace live
     public class FILEWORK
     {
 
-        #region работа с файлами
+        #region РАБОТА С ФАЙЛАМИ
         //FILEWORK.ReadFileContent(PATH.imgProcessedFile);
         //FILEWORK.WriteFileContent(PATH.imgProcessedFile, "2222\n234234");
         public static string ReadFileContent(string path)
@@ -36,12 +36,23 @@ namespace live
             return Math.Round((double)(r / 1024 / 1024), 2);
         }
 
+
+        public static bool isAllowExt(string f, string ext)
+        {
+            if (String.IsNullOrEmpty(ext))
+            {
+                return true;
+            }
+            FileInfo file = new FileInfo(f);
+            return file.Extension == ext;
+
+        }
+
+
         #endregion
 
 
-
-
-        #region работа с директориями
+        #region РАБОТА С ДИРЕКТОРИЯМИ
         //удаляем директорию
         public static void removeDir(string path)
         {
@@ -95,7 +106,7 @@ namespace live
             {
                 foreach (string f in Directory.GetFiles(sDir))
                 {
-                    if (!isParsed(f, ext))
+                    if (!isAllowExt(f, ext))
                     {
                         continue;
                     }
@@ -185,29 +196,6 @@ namespace live
         }
 
         #endregion
-
-
-        public static bool isParsed(string f, string ext)
-        {
-            if (String.IsNullOrEmpty(ext))
-            {
-                return true;
-            }
-            FileInfo file = new FileInfo(f);
-            return file.Extension == ext;
-
-        }
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }
