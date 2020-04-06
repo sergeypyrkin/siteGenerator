@@ -12,6 +12,16 @@ namespace live
         public static Dictionary<string, string> imageDict = new Dictionary<string, string>();
         public static Dictionary<string, string> RevImageDict = new Dictionary<string, string>();
 
-        
+
+        //баловство
+        public static string getImgFullPath(string path)
+        {
+            if (path.Contains("\\"))
+            {
+                return path;
+            }
+            return imageDict[path];
+        }
+       
     }
 }

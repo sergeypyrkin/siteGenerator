@@ -14,6 +14,14 @@ namespace live
         public static string root = "C:\\Users\\Programmist\\Desktop\\MYLIVE";
         public static string data = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA";
         public static string test = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\TEST";
+        public static string _new = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW";
+
+        public static string _newf = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\FRIENDS";
+        public static string _neww = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\WORKOUT";
+        public static string _newd = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\DOGANDCAT";
+
+
+
 
         public static string imgProcessedFile = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\parsed.txt";
 
@@ -26,6 +34,11 @@ namespace live
             root = path;
             data = root + "DATA";
             test = root + "TEST";
+            _new = root + "_NEW";
+            _newd = _new + "\\DOGANDCAT";
+            _newf = _new + "\\FRIENDS";
+            _neww = _new + "\\WORKOUT";
+
             imgProcessedFile = data + "\\parsed.txt";
 
         }
@@ -39,6 +52,13 @@ namespace live
             check(root);
             check(data);
             check(test);
+            check(_new);
+            check(_newd);
+            check(_newf);
+            check(_neww);
+
+
+
         }
 
         public static void check(string path)
