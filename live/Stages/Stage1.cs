@@ -14,7 +14,7 @@ namespace live.Stages
         public override void WORK()
         {
             DATA._newExist = FILEWORK.isEmptyDir(PATH._newd) && FILEWORK.isEmptyDir(PATH._neww) &&
-                             FILEWORK.isEmptyDir(PATH._neww);
+                             FILEWORK.isEmptyDir(PATH._newf);
             if (DATA._newExist)
             {
                 Console.WriteLine(CONST._INS + "НЕЧЕГО ДОБАВИТЬ");
@@ -22,7 +22,7 @@ namespace live.Stages
             }
             else
             {
-                Console.WriteLine(CONST._INS + "ЕСТЬ НОВЫЙ КОНТЕКСТ");
+                Console.WriteLine(CONST._INS + "ЕСТЬ НОВЫЙ КОНТЕНТ");
 
             }
         }
