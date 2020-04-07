@@ -90,7 +90,6 @@ namespace live.Stages
 
         public Stage3(string name) : base(name)
         {
-
         }
     }
 }

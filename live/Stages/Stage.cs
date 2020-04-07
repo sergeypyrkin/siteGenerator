@@ -34,7 +34,7 @@ namespace live.Stages
             }
             catch (Exception ex)
             {
-                Console.WriteLine(String.Format("{0} ERROR: {1}",CONST._INSERR, NAME));
+                //Console.WriteLine(String.Format("{0} ERROR: {1}",CONST._INSERR, NAME));
                 throw new Exception(ex.Message);
 
             }

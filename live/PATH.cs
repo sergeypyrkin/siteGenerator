@@ -20,6 +20,7 @@ namespace live
         public static string _neww = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\WORKOUT";
         public static string _newd = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\DOGANDCAT";
 
+        public static string _newb = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\BADSTAGE";
 
 
 
@@ -38,7 +39,7 @@ namespace live
             _newd = _new + "\\DOGANDCAT";
             _newf = _new + "\\FRIENDS";
             _neww = _new + "\\WORKOUT";
-
+            _newb = _new + "\\BADSTAGE";
             imgProcessedFile = data + "\\parsed.txt";
 
         }
@@ -56,6 +57,7 @@ namespace live
             check(_newd);
             check(_newf);
             check(_neww);
+            check(_newb);
 
 
 

@@ -9,6 +9,6 @@ namespace live
     public static class CONST
     {
         public static string _INS = "              ";
-        public static string _INSERR = "!!!!!!!!!!!!";
+        public static string _INSERR = "!!!!!!!!!!!!!";
     }
 }

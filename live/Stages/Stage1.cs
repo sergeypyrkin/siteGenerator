@@ -23,8 +23,32 @@ namespace live.Stages
             else
             {
                 Console.WriteLine(CONST._INS + "ЕСТЬ НОВЫЙ КОНТЕНТ");
+            }
+            checkDir(PATH._neww);
+            checkDir(PATH._newb);
+
+        }
+
+
+        public void checkDir(String folder)
+        {
+
+            //если пустая то проходим
+            if (FILEWORK.isEmptyDir(folder))
+            {
+                return;
+            }
+
+            //если содержит файл то пропускаем
+            DirectoryInfo di = new DirectoryInfo(folder);
+            
+            FileInfo[] fi = di.GetFiles();
+            if (fi.Length > 0)
+            {
+                throw new Exception(String.Format("{0} содержит недопустимые файлы", di.Name));
 
             }
+
         }
 
         public Stage1(string name) : base(name)
