@@ -17,12 +17,12 @@ namespace live.Stages
                              FILEWORK.isEmptyDir(PATH._newf);
             if (DATA._newExist)
             {
-                Console.WriteLine(CONST._INS + "НЕЧЕГО ДОБАВИТЬ");
+               // Console.WriteLine(CONST._INS + "НЕЧЕГО ДОБАВИТЬ");
                 return;
             }
             else
             {
-                Console.WriteLine(CONST._INS + "ЕСТЬ НОВЫЙ КОНТЕНТ");
+               // Console.WriteLine(CONST._INS + "ЕСТЬ НОВЫЙ КОНТЕНТ");
             }
             checkDir(PATH._neww);
             checkDir(PATH._newb);
@@ -63,6 +63,7 @@ namespace live.Stages
 
         private void checkContent(DirectoryInfo news, DirectoryInfo di)
         {
+            Console.WriteLine(String.Format("{0}{1} | {2}", CONST._INS, di.Name, news.Name));
             FileInfo[] fileNews = news.GetFiles();
 
             //не пустой
