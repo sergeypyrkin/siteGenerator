@@ -42,13 +42,34 @@ namespace live.Stages
             //если содержит файл то пропускаем
             DirectoryInfo di = new DirectoryInfo(folder);
             
+
+            //проверка на недопустимые файлы
             FileInfo[] fi = di.GetFiles();
             if (fi.Length > 0)
             {
                 throw new Exception(String.Format("{0} содержит недопустимые файлы", di.Name));
-
             }
 
+            //проверка на пустые папки внутри
+            DirectoryInfo[] diA = di.GetDirectories();
+            foreach (var news in diA)
+            {
+                //проверка конкретный контент
+                checkContent(news, di);
+            }
+
+
+        }
+
+        private void checkContent(DirectoryInfo news, DirectoryInfo di)
+        {
+            FileInfo[] fileNews = news.GetFiles();
+
+            //не пустой
+            if (fileNews.Length == 0)
+            {
+                throw new Exception(String.Format("{0} из раздела {1} пуста", news.Name, di.Name));
+            }
         }
 
         public Stage1(string name) : base(name)
