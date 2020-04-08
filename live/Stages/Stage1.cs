@@ -63,7 +63,9 @@ namespace live.Stages
 
         private void checkContent(DirectoryInfo news, DirectoryInfo di)
         {
-            Console.WriteLine(String.Format("{0}{1} | {2}", CONST._INS, di.Name, news.Name));
+
+            string ins = new String(' ', 20 - di.Name.Length);
+            Console.WriteLine(String.Format("{0}{1}{3}| {2}", CONST._INS, di.Name, news.Name, ins));
             FileInfo[] fileNews = news.GetFiles();
 
             //не пустой
