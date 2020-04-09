@@ -48,8 +48,7 @@ namespace live
 
         public static void checking()
         {
-            Console.WriteLine("CHECKING");
-            Console.WriteLine("");
+            Console.WriteLine("INIT");
             check(root);
             check(data);
             check(test);
