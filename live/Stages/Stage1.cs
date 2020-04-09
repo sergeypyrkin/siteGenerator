@@ -25,7 +25,8 @@ namespace live.Stages
                // Console.WriteLine(CONST._INS + "ЕСТЬ НОВЫЙ КОНТЕНТ");
             }
             checkDir(PATH._neww);
-            checkDir(PATH._newb);
+            checkDir(PATH._newf);
+            checkDir(PATH._newd);
 
         }
 
@@ -52,26 +53,62 @@ namespace live.Stages
 
             //проверка на пустые папки внутри
             DirectoryInfo[] diA = di.GetDirectories();
-            foreach (var news in diA)
+            foreach (var content in diA)
             {
                 //проверка конкретный контент
-                checkContent(news, di);
+                checkContent(content, di);
             }
 
 
         }
 
-        private void checkContent(DirectoryInfo news, DirectoryInfo di)
+        private void checkContent(DirectoryInfo content, DirectoryInfo di)
         {
 
             string ins = new String(' ', 20 - di.Name.Length);
-            Console.WriteLine(String.Format("{0}{1}{3}| {2}", CONST._INS, di.Name, news.Name, ins));
-            FileInfo[] fileNews = news.GetFiles();
+            Console.WriteLine(String.Format("{0}{1}{3}| {2}", CONST._INS, di.Name, content.Name, ins));
+            FileInfo[] fileNews = content.GetFiles();
 
             //не пустой
             if (fileNews.Length == 0)
             {
-                throw new Exception(String.Format("{0} из раздела {1} пуста", news.Name, di.Name));
+                throw new Exception(String.Format(" {1} пуста", CONST._INSERR, content.Name));
+            }
+            //не должно быть вложенных папок
+            DirectoryInfo[] diVlog = content.GetDirectories();
+            if (diVlog.Length > 0)
+            {
+                throw new Exception(String.Format(" {1}  содержит вложенные папки", CONST._INSERR , content.Name));
+            }
+            //должно содержать хотябы одно изображение и описание
+            List<string> imgs = new List<string>();
+            imgs = FILEWORK.GetAllFiles(content.FullName, imgs, ".jpg");
+
+
+            if (imgs.Count == 0)
+            {
+                throw new Exception(String.Format("{1} не содержит изображение", CONST._INSERR,  content.Name));
+            }
+            List<string> txts = new List<string>();
+            txts = FILEWORK.GetAllFiles(content.FullName, txts, ".txt");
+
+
+            if (txts.Count == 0)
+            {
+                throw new Exception(String.Format(" {1}  не содержит описание (txt)", CONST._INSERR , content.Name));
+            }
+
+            if (txts.Count > 1)
+            {
+                throw new Exception(String.Format(" {1} содержит больше одного описания (txt)", CONST._INSERR, content.Name));
+            }
+
+            string opispath = txts[0];
+            string fcontent = FILEWORK.ReadFileContent(opispath);
+            if (String.IsNullOrEmpty(fcontent))
+            {
+                throw new Exception(String.Format(" {1}  ПУСТОЕ ОПИСАНИЕ (txt)", CONST._INSERR, content.Name));
+
             }
         }
 
