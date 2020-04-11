@@ -14,7 +14,7 @@ namespace live.Stages
     {
         public string NAME = "";
         public Stopwatch stopwatch;
-        public int exitCode = 0;
+        public int exitCode;
 
         public Stage(string name)
         {

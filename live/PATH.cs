@@ -19,8 +19,12 @@ namespace live
         public static string _newf = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\FRIENDS";
         public static string _neww = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\WORKOUT";
         public static string _newd = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\DOGANDCAT";
-
         public static string _newb = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\BADSTAGE";
+
+
+        public static string dataf = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\PICTURES\\FRIENDS";
+        public static string dataw = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\PICTURES\\WORKOUT";
+        public static string datad = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\PICTURES\\DOGANDCAT";
 
 
 
@@ -40,6 +44,11 @@ namespace live
             _newf = _new + "\\FRIENDS";
             _neww = _new + "\\WORKOUT";
             _newb = _new + "\\BADSTAGE";
+
+
+            datad = data + "\\PICTURES\\DOGANDCAT";
+            dataf = data + "\\PICTURES\\FRIENDS";
+            dataw = data + "\\PICTURES\\WORKOUT";
             imgProcessedFile = data + "\\parsed.txt";
 
         }
@@ -57,6 +66,9 @@ namespace live
             check(_newf);
             check(_neww);
             check(_newb);
+            check(datad);
+            check(dataw);
+            check(dataf);
 
 
 

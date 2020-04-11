@@ -31,6 +31,15 @@ namespace live
 
         public static void Main(string[] args)
         {
+
+            string procName = Process.GetCurrentProcess().ProcessName;
+            if (Process.GetProcessesByName(procName).Length != 1)
+            {
+                Console.WriteLine("УЖЕ ЕСТЬ ЕЩЕ ОДИН ЭКЗЕМПЛЯР ПРОГРАММЫ");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                return;
+            }
             // Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
             // ShowWindow(ThisConsole, MAXIMIZE);
             //ShowWindow(ThisConsole, MAXIMIZE);
@@ -38,6 +47,8 @@ namespace live
             //Console.SetWindowSize(Console.WindowWidth, Console.LargestWindowHeight-1);
             var stage1 = new Stage1("ПРОВЕРКА");
 
+            var stage2 = new Stage2("ДОБАВЛЯЕМ");
+            
             var stage3 = new Stage3("ОБРАБОКА ФОТОГРАФИЙ");
 
             Console.WriteLine("");
@@ -56,6 +67,8 @@ namespace live
             try
             {
                 stage1.EXECUTE();
+
+                stage2.EXECUTE();
 
                 stage3.EXECUTE();
             }
