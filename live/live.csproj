@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="CONST.cs" />
     <Compile Include="DATA.cs" />
+    <Compile Include="Entity\refItem.cs" />
     <Compile Include="FILEWORK.cs" />
     <Compile Include="IMAGEWORKER.cs" />
     <Compile Include="PATH.cs" />
@@ -62,8 +63,6 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entity\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
