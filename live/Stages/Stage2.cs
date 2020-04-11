@@ -10,26 +10,26 @@ namespace live.Stages
     public class Stage2 : Stage
     {
 
-        public List<refCopyItem> refs = new List<refCopyItem>();
+        public List<refItem> refs = new List<refItem>();
 
         public override void WORK()
         {
+            init();
 
             if (DATA._newExist)
             {
                 // Console.WriteLine(CONST._INS + "НЕЧЕГО ДОБАВИТЬ");
                 return;
             }
-            init();
 
         }
 
         public void init()
         {
-            refs.Add(new refCopyItem(){_type= "DOGANDCAT", newPass = PATH._newd, destinationpass = PATH.datad});
-            refs.Add(new refCopyItem() { _type = "FRIENDS", newPass = PATH._newf, destinationpass = PATH.dataf });
-            refs.Add(new refCopyItem() { _type = "WORKOUT", newPass = PATH._neww, destinationpass = PATH.dataw });
-
+            refs.Add(new refItem() { _type= "DOGANDCAT", newPass = PATH._newd, destinationPass = PATH.datad});
+            refs.Add(new refItem() { _type = "FRIENDS", newPass = PATH._newf, destinationPass = PATH.dataf });
+            refs.Add(new refItem() { _type = "WORKOUT", newPass = PATH._neww, destinationPass = PATH.dataw });
+            PATH.refs = refs;
         }
 
 
@@ -41,10 +41,11 @@ namespace live.Stages
     }
 
 
-    public class refCopyItem
+    public class refItem
     {
         public string _type;
         public string newPass;
-        public string destinationpass;
+        public string destinationPass;
+        public string htmlPath;
     }
 }

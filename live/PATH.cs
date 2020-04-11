@@ -4,11 +4,15 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using live.Stages;
 
 namespace live
 {
     public static class PATH
     {
+
+
+        public static List<refItem> refs = new List<refItem>();
 
         //исходная папка
         public static string root = "C:\\Users\\Programmist\\Desktop\\MYLIVE";
