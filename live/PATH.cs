@@ -51,11 +51,19 @@ namespace live
             _newb = _new + "\\BADSTAGE";
 
 
+
             datad = data + "\\PICTURES\\DOGANDCAT";
             dataf = data + "\\PICTURES\\FRIENDS";
             dataw = data + "\\PICTURES\\WORKOUT";
             imgProcessedFile = data + "\\parsed.txt";
+            
 
+
+
+
+            refs.Add(new refItem() { _type = "DOGANDCAT", newPass = PATH._newd, destinationPass = PATH.datad, htmlPath = "" });
+            refs.Add(new refItem() { _type = "FRIENDS", newPass = PATH._newf, destinationPass = PATH.dataf, htmlPath = "" });
+            refs.Add(new refItem() { _type = "WORKOUT", newPass = PATH._neww, destinationPass = PATH.dataw, htmlPath = "" });
         }
 
 
@@ -74,6 +82,8 @@ namespace live
             check(datad);
             check(dataw);
             check(dataf);
+
+
 
 
 

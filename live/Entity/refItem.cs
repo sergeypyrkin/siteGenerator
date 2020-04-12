@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace live.Entity
 {
+
+
+    //пути
     public class refItem
     {
         public string _type;
