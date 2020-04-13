@@ -25,11 +25,13 @@ namespace live
         public static string _neww = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\WORKOUT";
         public static string _newd = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\DOGANDCAT";
         public static string _newb = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\BADSTAGE";
+        public static string _news = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\SPORT";
 
 
         public static string dataf = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\PICTURES\\FRIENDS";
         public static string dataw = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\PICTURES\\WORKOUT";
         public static string datad = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\PICTURES\\DOGANDCAT";
+        public static string datas = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\PICTURES\\SPORT";
 
 
 
@@ -49,12 +51,14 @@ namespace live
             _newf = _new + "\\FRIENDS";
             _neww = _new + "\\WORKOUT";
             _newb = _new + "\\BADSTAGE";
+            _news = _new + "\\SPORT";
 
 
 
             datad = data + "\\PICTURES\\DOGANDCAT";
             dataf = data + "\\PICTURES\\FRIENDS";
             dataw = data + "\\PICTURES\\WORKOUT";
+            datas = data + "\\PICTURES\\SPORT";
             imgProcessedFile = data + "\\parsed.txt";
             
 
@@ -64,6 +68,8 @@ namespace live
             refs.Add(new refItem() { _type = "DOGANDCAT", newPass = PATH._newd, destinationPass = PATH.datad, htmlPath = "" });
             refs.Add(new refItem() { _type = "FRIENDS", newPass = PATH._newf, destinationPass = PATH.dataf, htmlPath = "" });
             refs.Add(new refItem() { _type = "WORKOUT", newPass = PATH._neww, destinationPass = PATH.dataw, htmlPath = "" });
+            refs.Add(new refItem() { _type = "SPORT", newPass = PATH._news, destinationPass = PATH.datas, htmlPath = "" });
+
         }
 
 

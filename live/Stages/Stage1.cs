@@ -27,6 +27,7 @@ namespace live.Stages
             checkDir(PATH._neww);
             checkDir(PATH._newf);
             checkDir(PATH._newd);
+            checkDir(PATH._news);
 
         }
 
