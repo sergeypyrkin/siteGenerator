@@ -74,12 +74,13 @@ namespace live
         }
 
         //переименовывание папки
-        public static void renameDir(string oldPath, string newName)
+        public static string renameDir(string oldPath, string newName)
         {
             FileInfo f = new FileInfo(oldPath);
             var d = f.DirectoryName;
             string newFullName = d + "\\" + newName;
             Directory.Move(oldPath, newFullName);
+            return newFullName;
         }
 
         //перебрасывание директории

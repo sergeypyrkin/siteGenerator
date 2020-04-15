@@ -57,6 +57,21 @@ namespace live.Stages
             foreach (var content in diA)
             {
                 //проверка конкретный контент
+
+                int number;
+
+                bool success = Int32.TryParse(content.Name, out number);
+                if (success)
+                {
+                    string newpath = FILEWORK.renameDir(content.FullName, String.Format("a{0}",content.Name));
+                    Console.WriteLine("{0}wrong name: {1} ->renaming", CONST._INS, content.Name);
+                }
+            }
+            DirectoryInfo[] diB = di.GetDirectories();
+
+            foreach (var content in diB)
+            {
+                //проверка конкретный контент
                 checkContent(content, di);
             }
 
@@ -66,9 +81,14 @@ namespace live.Stages
         private void checkContent(DirectoryInfo content, DirectoryInfo di)
         {
 
+
+
             string ins = new String(' ', 20 - di.Name.Length);
             Console.WriteLine(String.Format("{0}{1}{3}| {2}", CONST._INS, di.Name, content.Name, ins));
             FileInfo[] fileNews = content.GetFiles();
+
+
+
 
             //не пустой
             if (fileNews.Length == 0)
