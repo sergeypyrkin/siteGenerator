@@ -14,7 +14,6 @@ namespace live.Stages
 
         //на этом этапе, копируем новый контент в папки data + приводим в порядок ихний info.txt
 
-        public int _stIndex = 1;
 
         public override void WORK()
         {
@@ -25,17 +24,83 @@ namespace live.Stages
                 return;
             }
 
+
+
             foreach (var _ref in PATH.refs)
             {
-                int stIndex = getStartIndex(_ref.destinationPass);
 
+                DirectoryInfo di = new DirectoryInfo(_ref.newPass);
+
+                DirectoryInfo[] diA = di.GetDirectories();
+                int stIndex = getStartIndex(_ref.destinationPass);
+                foreach (var content in diA)
+                {
+
+                    string ins = new String(' ', 20 - "CHANGE".Length);
+
+                    //переписываем данные файла info.txt
+                    Console.WriteLine(String.Format("{0}{1}{3}| {2}", CONST._INS, "CHANGE", content.Name, ins));
+                    changeInfoContent(content);
+                }
+
+
+                DirectoryInfo[] diAAfter1 = di.GetDirectories();
+                foreach (var content in diAAfter1)
+                {
+                    FILEWORK.renameDir(content.FullName, stIndex.ToString());
+                    stIndex = stIndex + 1;
+                }
+
+                DirectoryInfo[] diAAfter2 = di.GetDirectories();
+
+                foreach (var content in diAAfter2)
+                {
+                    string ins = new String(' ', 20 - "COPY".Length);
+
+                    //переписываем данные файла info.txt
+                    Console.WriteLine(String.Format("{0}{1}{3}| {2}", CONST._INS, "COPY", content.Name, ins));
+                    string oldName = content.FullName;
+                    string newName = _ref.destinationPass + "\\" + content.Name;
+                    FILEWORK.moveDir(oldName, newName);
+                    // changeInfoContent(content);
+                }
             }
+
+        }
+
+
+        public void changeInfoContent(DirectoryInfo content)
+        {
+            List<string> txts = new List<string>();
+            txts = FILEWORK.GetAllFiles(content.FullName, txts, ".txt");
+            string txtFi = txts[0];
+            string fc = FILEWORK.ReadFileContent(txtFi);
+
+
+            List<string> imgs = new List<string>();
+            imgs = FILEWORK.GetAllFiles(content.FullName, imgs, ".jpg");
+            string imgFi = imgs[0];
+
+            FileInfo f = new FileInfo(imgFi);
+            var d = File.GetLastWriteTime(imgFi);
+            string tdade = d.ToString("yyyy-MM-dd");
+
+            string newContent = tdade + "\n\n"+fc;
+            FILEWORK.WriteFileContent(txtFi, newContent);
+
+            //меняем название на info.txt
+            FileInfo f2 = new FileInfo(txtFi);
+
+            string newName = content.FullName + "\\info.txt"; 
+            System.IO.File.Move(f2.FullName, newName);
+
+
 
         }
 
         public int getStartIndex(string path)
         {
-            int max = _stIndex;
+            int max = 0;
             string[] diA = Directory.GetDirectories(path);
             List<int> names = new List<int>();
             foreach (string s in diA)
@@ -48,8 +113,8 @@ namespace live.Stages
             if (names.Count > 0)
             {
                 max = names.Max(t => t);
-                max = max + 1;
             }
+            max = max + 1;
             return max;
         }
 
