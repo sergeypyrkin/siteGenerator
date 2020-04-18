@@ -47,7 +47,12 @@
   <ItemGroup>
     <Compile Include="CONST.cs" />
     <Compile Include="DATA.cs" />
+    <Compile Include="Entity\CONTENT.cs" />
+    <Compile Include="Entity\Base\DOGANDCAT.cs" />
+    <Compile Include="Entity\Base\FRIENDS.cs" />
     <Compile Include="Entity\refItem.cs" />
+    <Compile Include="Entity\Base\SPORT.cs" />
+    <Compile Include="Entity\Base\WORKOUT.cs" />
     <Compile Include="FILEWORK.cs" />
     <Compile Include="IMAGEWORKER.cs" />
     <Compile Include="PATH.cs" />
@@ -57,6 +62,7 @@
     <Compile Include="Stages\Stage1.cs" />
     <Compile Include="Stages\Stage2.cs" />
     <Compile Include="Stages\Stage3.cs" />
+    <Compile Include="Utils\COUNTER.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

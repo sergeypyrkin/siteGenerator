@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
+using live.Entity;
 using live.Stages;
 
 namespace live
@@ -81,6 +82,8 @@ namespace live
             }
             // Stop timing.
             stopwatch.Stop();
+            //var wo = new WORKOUT();
+            //Console.WriteLine(wo._type);
 
             // Write result.
             Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);

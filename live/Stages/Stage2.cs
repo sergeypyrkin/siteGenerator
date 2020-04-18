@@ -83,7 +83,7 @@ namespace live.Stages
 
             FileInfo f = new FileInfo(imgFi);
             var d = File.GetLastWriteTime(imgFi);
-            string tdade = d.ToString("yyyy-MM-dd");
+            string tdade = d.ToString("yyyy-MM-dd HH:mm:ss");
 
             string newContent = tdade + "\n\n"+fc;
             FILEWORK.WriteFileContent(txtFi, newContent);
