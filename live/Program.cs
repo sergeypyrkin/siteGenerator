@@ -52,6 +52,9 @@ namespace live
             
             var stage3 = new Stage3("ОБРАБОКА ФОТОГРАФИЙ");
 
+            var stage4 = new Stage4("СОЗДАНИЕ МОДЕЛЕЙ");
+
+
             Console.WriteLine("");
             Console.WriteLine(DateTime.Now.ToString());
             Console.WriteLine("");
@@ -72,6 +75,8 @@ namespace live
                 stage2.EXECUTE();
 
                 stage3.EXECUTE();
+
+                stage4.EXECUTE();
             }
             catch (Exception ex)
             {
