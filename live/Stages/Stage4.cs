@@ -13,6 +13,8 @@ namespace live.Stages
     {
         public override void WORK()
         {
+            Console.WriteLine("");
+
             foreach (var rf in PATH.refs)
             {
                 createModels(rf.destinationPass);
@@ -34,7 +36,7 @@ namespace live.Stages
 
             string ins = new String(' ', 20 - name.Length);
 
-            Console.WriteLine(String.Format("     {0}{1} {2} {4} {3}", CONST._INS, "MODELS: ", name, j,ins));
+            Console.WriteLine(String.Format("{0}{1} {2} {4} {3}", CONST._INS, "MODELS: ", name, j,ins));
 
 
 

@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using live.Entity;
 using live.Stages;
+using live.Utils;
 
 namespace live
 {
@@ -77,6 +78,8 @@ namespace live
                 stage3.EXECUTE();
 
                 stage4.EXECUTE();
+
+
             }
             catch (Exception ex)
             {
@@ -85,6 +88,7 @@ namespace live
                 Console.ReadKey();
                 return;
             }
+            COUNTER.count();
             // Stop timing.
             stopwatch.Stop();
             //var wo = new WORKOUT();

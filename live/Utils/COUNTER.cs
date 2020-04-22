@@ -10,5 +10,10 @@ namespace live.Utils
     {
         //количество контента (ВСЕГО)
         public static int contentCount;
+
+        public static void count()
+        {
+            
+        }
     }
 }
