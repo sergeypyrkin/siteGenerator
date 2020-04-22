@@ -27,36 +27,48 @@ namespace live.Stages
             DirectoryInfo[] diA = di.GetDirectories();
             foreach (var f in diA)
             {
-                CONTENT content = getContent(f, name);
+                string path = f.FullName;
+                CONTENT content = getContent(path, name);
+                j++;
             }
+
+            string ins = new String(' ', 20 - name.Length);
+
+            Console.WriteLine(String.Format("     {0}{1} {2} {4} {3}", CONST._INS, "MODELS: ", name, j,ins));
 
 
 
         }
 
-        private CONTENT getContent(DirectoryInfo directoryInfo, String name)
+        private CONTENT getContent(String name, string _type)
         {
-            CONTENT cont = new CONTENT();
-            return cont;
-            switch (name)
+            CONTENT content = new CONTENT();
+            switch (_type)
             {
                 case "DOGANDCAT":
-                   // DOGANDCAT content = new DOGANDCAT();
+                    content = new DOGANDCAT();
                     break;
                 case "FRIENDS":
-                    Console.WriteLine("Two");
+                    content = new FRIENDS();
                     break;
                 case "SPORT":
-                    Console.WriteLine("Two");
+                    content = new SPORT();
                     break;
                 case "WORKOUT":
-                    Console.WriteLine("Two");
+                    content = new WORKOUT();
                     break;
 
                 default:
                     Console.WriteLine("WRONG TYPE!!!");
                     break;
             }
+            fillContent(content, name, _type);
+            return content;
+        }
+
+        //заполняемые данные
+        private void fillContent(CONTENT content, string name, string type)
+        {
         }
 
         //Создание моделей
