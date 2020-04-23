@@ -25,30 +25,33 @@ namespace live.Stages
         {
             int j = 0;
             DirectoryInfo di = new DirectoryInfo(dirPathFull);
-            string name = di.Name;
+            string _type = di.Name;
             DirectoryInfo[] diA = di.GetDirectories();
             foreach (var f in diA)
             {
                 string path = f.FullName;
-                CONTENT content = getContent(path, name);
+                CONTENT content = getContent(path, _type);
                 j++;
             }
 
-            string ins = new String(' ', 20 - name.Length);
+            string ins = new String(' ', 20 - _type.Length);
 
-            Console.WriteLine(String.Format("{0}{1} {2} {4} {3}", CONST._INS, "MODELS: ", name, j,ins));
+            Console.WriteLine(String.Format("{0}{1} {2} {4} {3}", CONST._INS, "MODELS: ", _type, j,ins));
 
 
 
         }
 
-        private CONTENT getContent(String name, string _type)
+        private CONTENT getContent(String path, string _type)
         {
             CONTENT content = new CONTENT();
+
+
             switch (_type)
             {
                 case "DOGANDCAT":
                     content = new DOGANDCAT();
+                 
                     break;
                 case "FRIENDS":
                     content = new FRIENDS();
@@ -64,14 +67,13 @@ namespace live.Stages
                     Console.WriteLine("WRONG TYPE!!!");
                     break;
             }
-            fillContent(content, name, _type);
+            content.dataFolderPath = path;
+            content.parse();
             return content;
         }
 
         //заполняемые данные
-        private void fillContent(CONTENT content, string name, string type)
-        {
-        }
+
 
         //Создание моделей
         public Stage4(string name) : base(name)

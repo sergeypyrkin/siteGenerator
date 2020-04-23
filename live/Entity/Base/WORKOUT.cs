@@ -10,10 +10,5 @@ namespace live.Entity.Base
     {
         public string _type = "WORKOUT";
 
-        public void toString()
-        {
-            Console.WriteLine("!!! "+_type);
-        }
-
     }
 }

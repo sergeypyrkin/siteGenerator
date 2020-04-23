@@ -8,7 +8,7 @@ namespace live.Entity
 {
 
     //базовый класс для Контентов
-    public class CONTENT
+    public class CONTENT: ICreateHtml
     {
         public int Id;
         public string _type;
@@ -20,11 +20,47 @@ namespace live.Entity
         public bool hasYoutube;
         public bool hasImgs;
         public string link;
+        public string dataFolderPath;
+        public string infoPath;
+    
+
+        public void parse()
+        {
+            List<string> imgs = new List<string>();
+            this.imgs = FILEWORK.GetAllFiles(dataFolderPath, imgs, ".jpg");
+            this.hasImgs = this.imgs.Count > 0;
+
+            List<string> txts = new List<string>();
+            txts = FILEWORK.GetAllFiles(dataFolderPath, txts, ".txt");
+            this.infoPath = txts[0];
+
+            string content = FILEWORK.ReadFileContent(infoPath);
+            String[] lines = content.Split(new string[] { "\n" }, StringSplitOptions.None);
+            foreach (string line in lines)
+            {
+                
+            }
+        }
 
 
         public string toString()
         {
             return _type;
+        }
+
+        public void getTemplate(string path)
+        {
+
+        }
+
+        public void createHtmlString()
+        {
+
+        }
+
+        public void createHtml()
+        {
+
         }
     }
 }

@@ -50,6 +50,7 @@
     <Compile Include="Entity\CONTENT.cs" />
     <Compile Include="Entity\Base\DOGANDCAT.cs" />
     <Compile Include="Entity\Base\FRIENDS.cs" />
+    <Compile Include="Entity\ICreateHtml.cs" />
     <Compile Include="Entity\refItem.cs" />
     <Compile Include="Entity\Base\SPORT.cs" />
     <Compile Include="Entity\Base\WORKOUT.cs" />
