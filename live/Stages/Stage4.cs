@@ -19,7 +19,10 @@ namespace live.Stages
             {
                 createModels(rf.destinationPass);
             }
+
         }
+
+
 
         private void createModels(string dirPathFull)
         {
@@ -32,7 +35,34 @@ namespace live.Stages
                 string path = f.FullName;
                 CONTENT content = getContent(path, _type);
                 j++;
+
+                switch (_type)
+                {
+                    case "DOGANDCAT":
+                        DATA._DOGANDCAT.Add(content as DOGANDCAT);
+
+                        break;
+                    case "FRIENDS":
+                        DATA._FRIENDS.Add(content as FRIENDS);
+                        break;
+                    case "SPORT":
+                        DATA._SPORT.Add(content as SPORT);
+                        break;
+                    case "WORKOUT":
+                        DATA._WORKOUT.Add(content as WORKOUT);
+                        break;
+
+                    default:
+                        Console.WriteLine("WRONG TYPE!!!");
+                        break;
+                }
+
             }
+            DATA._DOGANDCAT = DATA._DOGANDCAT.OrderBy(o => o.Id).ToList();
+            DATA._FRIENDS = DATA._FRIENDS.OrderBy(o => o.Id).ToList();
+            DATA._SPORT = DATA._SPORT.OrderBy(o => o.Id).ToList();
+            DATA._WORKOUT = DATA._WORKOUT.OrderBy(o => o.Id).ToList();
+
 
             string ins = new String(' ', 20 - _type.Length);
 
@@ -67,6 +97,10 @@ namespace live.Stages
                     Console.WriteLine("WRONG TYPE!!!");
                     break;
             }
+
+            String[] ll = path.Split(new string[] {"\\"}, StringSplitOptions.None);
+            string si = ll.Last();
+            content.Id = Convert.ToInt32(si);
             content.dataFolderPath = path;
             content.parse();
             return content;

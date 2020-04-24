@@ -81,6 +81,7 @@ namespace live
             Image result = new Bitmap(size.Width, size.Height);
             using (Graphics g = Graphics.FromImage((Image) result))
             {
+              
                 g.InterpolationMode = InterpolationMode.High;
                 g.DrawImage(imgToResize, 0, 0, size.Width, size.Height);
                 g.Dispose();

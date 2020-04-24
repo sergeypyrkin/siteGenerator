@@ -10,18 +10,33 @@ namespace live.Entity
     //базовый класс для Контентов
     public class CONTENT: ICreateHtml
     {
+        //основные данные
         public int Id;
         public string _type;
         public DateTime date;
         public string title;
         public string mainText;
-        public List<string> imgs;
-        public List<string> youtubs;
+        public List<string> imgs = new List<string>();
+        public List<string> youtubs = new List<string>();
+        
+
+
+        //вспомогательные
         public bool hasYoutube;
         public bool hasImgs;
         public string link;
         public string dataFolderPath;
         public string infoPath;
+        public List<string> txtContents = new List<string>();
+   
+
+        //для парсинга
+
+
+
+
+
+
     
 
         public void parse()
@@ -38,8 +53,47 @@ namespace live.Entity
             String[] lines = content.Split(new string[] { "\n" }, StringSplitOptions.None);
             foreach (string line in lines)
             {
-                
+                if (String.IsNullOrEmpty(line))
+                {
+                    continue;
+                }
+
+                DateTime dateTime;
+                if (DateTime.TryParse(line, out dateTime))
+                {
+                    this.date = dateTime;
+                    continue;
+                }
+
+                if (line.Contains("youtu"))
+                {
+                    youtubs.Add(line);
+                    hasYoutube = true;
+                    continue;
+                }
+
+                txtContents.Add(line);
+
+
+
             }
+
+            //теперь разрешаем title/соntent
+            if (txtContents.Count == 1)
+            {
+                this.title = this.date.ToString("yyyy-MM-dd");
+                this.mainText = txtContents[0];
+            }
+
+            if (txtContents.Count == 2)
+            {
+
+                txtContents = txtContents.OrderBy(o => o.Length).ToList();
+                this.title = txtContents[0];
+                this.mainText = txtContents[1];
+            }
+
+
         }
 
 

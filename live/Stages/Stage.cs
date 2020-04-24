@@ -28,16 +28,16 @@ namespace live.Stages
             stopwatch.Start();
             Console.WriteLine("");
             Console.WriteLine(NAME);
-            try
-            {
+            //try
+            //{
                 WORK();
-            }
-            catch (Exception ex)
-            {
-                //Console.WriteLine(String.Format("{0} ERROR: {1}",CONST._INSERR, NAME));
-                throw new Exception(ex.Message);
+            //}
+            //catch (Exception ex)
+            //{
+            //    //Console.WriteLine(String.Format("{0} ERROR: {1}",CONST._INSERR, NAME));
+            //    throw new Exception(ex.Message);
 
-            }
+            //}
             stopwatch.Stop();
             report();
         }
