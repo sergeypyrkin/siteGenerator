@@ -11,9 +11,24 @@ namespace live.Utils
         //количество контента (ВСЕГО)
         public static int contentCount;
 
+        public static int imgCount;
+        public static int youCount;
+
         public static void count()
         {
-            
+            foreach (var content in DATA._CONTENT)
+            {
+                imgCount = imgCount + content.imgs.Count;
+                youCount = youCount + content.youtubs.Count;
+                contentCount = contentCount + 1;
+
+            }
+            Console.WriteLine("=====                                                        =====");
+            Console.WriteLine(CONST._INS + "CONTENT: {0} IMAGES: {1} YOUTUBS: {2}", contentCount, imgCount, youCount);
+            Console.WriteLine("=====                                                        =====");
+            Console.WriteLine("");
+            Console.WriteLine("");
+
         }
     }
 }

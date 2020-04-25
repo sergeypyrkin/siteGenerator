@@ -40,19 +40,28 @@ namespace live.Stages
                 {
                     case "DOGANDCAT":
                         DATA._DOGANDCAT.Add(content as DOGANDCAT);
+                        DATA._CONTENT.Add(content);
 
                         break;
                     case "FRIENDS":
                         DATA._FRIENDS.Add(content as FRIENDS);
+                        DATA._CONTENT.Add(content);
+
                         break;
                     case "SPORT":
                         DATA._SPORT.Add(content as SPORT);
+                        DATA._CONTENT.Add(content);
+
                         break;
                     case "WORKOUT":
                         DATA._WORKOUT.Add(content as WORKOUT);
+                        DATA._CONTENT.Add(content);
+
                         break;
                     case "FOOD":
                         DATA._FOOD.Add(content as FOOD);
+                        DATA._CONTENT.Add(content);
+
                         break;
 
                     default:
@@ -85,7 +94,6 @@ namespace live.Stages
             {
                 case "DOGANDCAT":
                     content = new DOGANDCAT();
-                 
                     break;
                 case "FRIENDS":
                     content = new FRIENDS();
@@ -96,11 +104,9 @@ namespace live.Stages
                 case "WORKOUT":
                     content = new WORKOUT();
                     break;
-
                 case "FOOD":
                     content = new FOOD();
                     break;
-
                 default:
                     Console.WriteLine("WRONG TYPE!!!");
                     break;
