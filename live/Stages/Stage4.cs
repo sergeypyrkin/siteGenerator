@@ -51,6 +51,9 @@ namespace live.Stages
                     case "WORKOUT":
                         DATA._WORKOUT.Add(content as WORKOUT);
                         break;
+                    case "FOOD":
+                        DATA._FOOD.Add(content as FOOD);
+                        break;
 
                     default:
                         Console.WriteLine("WRONG TYPE!!!");
@@ -62,6 +65,7 @@ namespace live.Stages
             DATA._FRIENDS = DATA._FRIENDS.OrderBy(o => o.Id).ToList();
             DATA._SPORT = DATA._SPORT.OrderBy(o => o.Id).ToList();
             DATA._WORKOUT = DATA._WORKOUT.OrderBy(o => o.Id).ToList();
+            DATA._FOOD = DATA._FOOD.OrderBy(o => o.Id).ToList();
 
 
             string ins = new String(' ', 20 - _type.Length);
@@ -91,6 +95,10 @@ namespace live.Stages
                     break;
                 case "WORKOUT":
                     content = new WORKOUT();
+                    break;
+
+                case "FOOD":
+                    content = new FOOD();
                     break;
 
                 default:

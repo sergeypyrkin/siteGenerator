@@ -14,7 +14,8 @@ namespace live.Stages
         public override void WORK()
         {
             DATA._newExist = FILEWORK.isEmptyDir(PATH._newd) && FILEWORK.isEmptyDir(PATH._neww) &&
-                             FILEWORK.isEmptyDir(PATH._newf);
+                             FILEWORK.isEmptyDir(PATH._newf) &&
+                             FILEWORK.isEmptyDir(PATH._newfood);
             if (DATA._newExist)
             {
                // Console.WriteLine(CONST._INS + "НЕЧЕГО ДОБАВИТЬ");
@@ -28,6 +29,8 @@ namespace live.Stages
             checkDir(PATH._newf);
             checkDir(PATH._newd);
             checkDir(PATH._news);
+            checkDir(PATH._newfood);
+
 
         }
 

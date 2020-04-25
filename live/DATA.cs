@@ -19,6 +19,7 @@ namespace live
         public static List<FRIENDS> _FRIENDS = new List<FRIENDS>();
         public static List<SPORT> _SPORT = new List<SPORT>();
         public static List<WORKOUT> _WORKOUT = new List<WORKOUT>();
+        public static List<FOOD> _FOOD = new List<FOOD>();
 
 
 

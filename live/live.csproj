@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="CONST.cs" />
     <Compile Include="DATA.cs" />
+    <Compile Include="Entity\Base\FOOD.cs" />
     <Compile Include="Entity\CONTENT.cs" />
     <Compile Include="Entity\Base\DOGANDCAT.cs" />
     <Compile Include="Entity\Base\FRIENDS.cs" />

@@ -26,12 +26,14 @@ namespace live
         public static string _newd = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\DOGANDCAT";
         public static string _newb = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\BADSTAGE";
         public static string _news = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\SPORT";
+        public static string _newfood = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\FOOD";
 
 
         public static string dataf = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\PICTURES\\FRIENDS";
         public static string dataw = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\PICTURES\\WORKOUT";
         public static string datad = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\PICTURES\\DOGANDCAT";
         public static string datas = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\PICTURES\\SPORT";
+        public static string datafood = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\PICTURES\\FOOD";
 
 
 
@@ -52,6 +54,7 @@ namespace live
             _neww = _new + "\\WORKOUT";
             _newb = _new + "\\BADSTAGE";
             _news = _new + "\\SPORT";
+            _newfood = _new + "\\FOOD";
 
 
 
@@ -59,6 +62,8 @@ namespace live
             dataf = data + "\\PICTURES\\FRIENDS";
             dataw = data + "\\PICTURES\\WORKOUT";
             datas = data + "\\PICTURES\\SPORT";
+            datafood = data + "\\PICTURES\\FOOD";
+
             imgProcessedFile = data + "\\parsed.txt";
             
 
@@ -69,6 +74,8 @@ namespace live
             refs.Add(new refItem() { _type = "FRIENDS", newPass = PATH._newf, destinationPass = PATH.dataf, htmlPath = "" });
             refs.Add(new refItem() { _type = "WORKOUT", newPass = PATH._neww, destinationPass = PATH.dataw, htmlPath = "" });
             refs.Add(new refItem() { _type = "SPORT", newPass = PATH._news, destinationPass = PATH.datas, htmlPath = "" });
+            refs.Add(new refItem() { _type = "FOOD", newPass = PATH._newfood, destinationPass = PATH.datafood, htmlPath = "" });
+
 
         }
 
@@ -85,9 +92,17 @@ namespace live
             check(_newf);
             check(_neww);
             check(_newb);
+            check(_news);
+
+            check(_newfood);
+
             check(datad);
             check(dataw);
             check(dataf);
+            check(datas);
+
+            check(datafood);
+
 
 
 
