@@ -87,20 +87,19 @@ namespace live
             check(root);
             check(data);
             check(test);
+
             check(_new);
             check(_newd);
             check(_newf);
             check(_neww);
             check(_newb);
             check(_news);
-
             check(_newfood);
 
             check(datad);
             check(dataw);
             check(dataf);
             check(datas);
-
             check(datafood);
 
 
@@ -112,13 +111,15 @@ namespace live
 
         public static void check(string path)
         {
+            string ins = new String(' ', 60 - path.Length);
+
             if (Directory.Exists(path))
             {
-                Console.WriteLine(CONST._INS + path + "    OK");
+                Console.WriteLine(CONST._INS + path +ins+ "    OK");
             }
             else
             {
-                Console.WriteLine(CONST._INS + path + "    BAD");
+                Console.WriteLine(CONST._INS + path + ins+"    BAD");
             }
         }
 
