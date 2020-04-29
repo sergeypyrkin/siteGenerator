@@ -33,7 +33,7 @@ namespace live
 
         public static void Main(string[] args)
         {
-
+            
             string procName = Process.GetCurrentProcess().ProcessName;
             if (Process.GetProcessesByName(procName).Length != 1)
             {
@@ -70,7 +70,8 @@ namespace live
             PATH.init();
             PATH.checking();
             FILEWORK.SIZE();
-
+            //FILEWORK.CopyDir(PATH.data, PATH.test);
+            //return;
             //try
             //{
                 stage1.EXECUTE();
