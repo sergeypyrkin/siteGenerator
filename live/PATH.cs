@@ -103,10 +103,6 @@ namespace live
             check(datafood);
 
 
-
-
-
-
         }
 
         public static void check(string path)
@@ -115,11 +111,11 @@ namespace live
 
             if (Directory.Exists(path))
             {
-                Console.WriteLine(CONST._INS + path +ins+ "    OK");
+                Console.WriteLine(CONST._INS + path +ins+ "OK");
             }
             else
             {
-                Console.WriteLine(CONST._INS + path + ins+"    BAD");
+                Console.WriteLine(CONST._INS + path + ins+"BAD");
             }
         }
 

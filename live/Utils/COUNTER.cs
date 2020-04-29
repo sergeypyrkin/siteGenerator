@@ -24,7 +24,7 @@ namespace live.Utils
 
             }
             Console.WriteLine("=====                                                        =====");
-            Console.WriteLine(CONST._INS + "CONTENT: {0} IMAGES: {1} YOUTUBS: {2}", contentCount, imgCount, youCount);
+            Console.WriteLine("{3}CONTENT: {0} IMAGES: {1} YOUTUBS: {2}", contentCount, imgCount, youCount, CONST._INS);
             Console.WriteLine("=====                                                        =====");
             Console.WriteLine("");
             Console.WriteLine("");
