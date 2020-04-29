@@ -15,6 +15,9 @@ namespace live
 
         public static List<refItem> refs = new List<refItem>();
 
+        public static string site = "Z:\\home\\ss.ru\\www";
+
+
         //исходная папка
         public static string root = "C:\\Users\\Programmist\\Desktop\\MYLIVE";
         public static string data = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA";
@@ -101,6 +104,9 @@ namespace live
             check(dataf);
             check(datas);
             check(datafood);
+
+            check(site);
+
 
 
         }

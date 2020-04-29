@@ -65,6 +65,7 @@
     <Compile Include="Stages\Stage2.cs" />
     <Compile Include="Stages\Stage3.cs" />
     <Compile Include="Stages\Stage4.cs" />
+    <Compile Include="Stages\Stage5.cs" />
     <Compile Include="Utils\COUNTER.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -55,6 +55,8 @@ namespace live
 
             var stage4 = new Stage4("СОЗДАНИЕ МОДЕЛЕЙ");
 
+            var stage5 = new Stage5("WORKOUT CREATING...");
+
 
             Console.WriteLine("");
             Console.WriteLine(DateTime.Now.ToString());
@@ -79,14 +81,16 @@ namespace live
 
                 stage4.EXECUTE();
 
+                stage5.EXECUTE();
+
           //  }
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine(String.Format("{0} {1}", CONST._INSERR, ex.Message));
-            //    Console.WriteLine("Press any key to continue...");
-            //    Console.ReadKey();
-            //    return;
-            //}
+          //catch (Exception ex)
+          //{
+          //    Console.WriteLine(String.Format("{0} {1}", CONST._INSERR, ex.Message));
+          //    Console.WriteLine("Press any key to continue...");
+          //    Console.ReadKey();
+          //    return;
+          //}
             COUNTER.count();
             // Stop timing.
             stopwatch.Stop();
