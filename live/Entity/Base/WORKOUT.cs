@@ -8,7 +8,7 @@ namespace live.Entity.Base
 {
     public class WORKOUT: CONTENT
     {
-        public string _type = "WORKOUT";
+        public static string _type = "WORKOUT";
 
     }
 }

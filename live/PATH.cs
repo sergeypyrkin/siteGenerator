@@ -23,6 +23,8 @@ namespace live
         public static string data = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA";
         public static string test = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\TEST";
         public static string _new = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW";
+        public static string outf = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\OUT";
+
 
         public static string _newf = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\FRIENDS";
         public static string _neww = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\WORKOUT";
@@ -40,6 +42,7 @@ namespace live
 
 
 
+
         public static string imgProcessedFile = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\parsed.txt";
 
 
@@ -51,6 +54,7 @@ namespace live
             root = path;
             data = root + "DATA";
             test = root + "TEST";
+            outf = root + "OUT";
             _new = root + "_NEW";
             _newd = _new + "\\DOGANDCAT";
             _newf = _new + "\\FRIENDS";
@@ -106,6 +110,7 @@ namespace live
             check(datafood);
 
             check(site);
+            check(outf);
 
 
 
