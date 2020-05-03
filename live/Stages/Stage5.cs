@@ -86,7 +86,9 @@ namespace live.Stages
 
                 List<string> used = new List<string>();
                 string i1 = item.mainImg;
-                used.Add(item.mainImg);
+                string sname = DATA.imageDict[i1];
+
+                used.Add(sname);
                 itemres = itemres.Replace("$image1", imglistprefix + "\\"+item.Id+"\\"+i1);
 
                 string i2 = imgName(used, item);
