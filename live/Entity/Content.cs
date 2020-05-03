@@ -16,6 +16,7 @@ namespace live.Entity
         public DateTime date;
         public string title;
         public string mainText;
+        public string mainImg;
         public List<string> imgs = new List<string>();
         public List<string> youtubs = new List<string>();
         
@@ -69,6 +70,12 @@ namespace live.Entity
                 {
                     youtubs.Add(line);
                     hasYoutube = true;
+                    continue;
+                }
+
+                if (line.Contains(".jpg"))
+                {
+                    mainImg = line;
                     continue;
                 }
 

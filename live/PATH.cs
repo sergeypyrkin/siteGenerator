@@ -24,6 +24,7 @@ namespace live
         public static string test = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\TEST";
         public static string _new = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW";
         public static string outf = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\OUT";
+        public static string templ = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\TEMPLATES";
 
 
         public static string _newf = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\FRIENDS";
@@ -55,6 +56,7 @@ namespace live
             data = root + "DATA";
             test = root + "TEST";
             outf = root + "OUT";
+            templ = root + "TEMPLATES";
             _new = root + "_NEW";
             _newd = _new + "\\DOGANDCAT";
             _newf = _new + "\\FRIENDS";
@@ -111,6 +113,7 @@ namespace live
 
             check(site);
             check(outf);
+            check(templ);
 
 
 

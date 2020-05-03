@@ -14,6 +14,7 @@ namespace live
         public static bool _newExist;
         public static Dictionary<string, string> imageDict = new Dictionary<string, string>();
         public static Dictionary<string, string> RevImageDict = new Dictionary<string, string>();
+        public static Dictionary<string, bool> longImgDict = new Dictionary<string, bool>(); //определяем широкоформатность
 
         public static List<CONTENT> _CONTENT = new List<CONTENT>();
         public static List<DOGANDCAT> _DOGANDCAT = new List<DOGANDCAT>();

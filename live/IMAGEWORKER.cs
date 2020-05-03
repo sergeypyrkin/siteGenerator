@@ -53,6 +53,16 @@ namespace live
 
         }
 
+        //определяем длиноформатная ли картинка
+        public static bool isLongImage(string path)
+        {
+            path = DATA.imageDict[path];
+            var imgStream = File.OpenRead(path);
+            Image yourImage = Image.FromStream(imgStream); //загрузили изображение
+            return yourImage.Width > yourImage.Height;
+            return false;
+        }
+
 
 
 

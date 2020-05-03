@@ -62,12 +62,14 @@ namespace live.Stages
                 String[] ll = f.Split(new string[] { "\\" }, StringSplitOptions.None);
                 string fname = ll.Last();
                 DATA.imageDict.Add(fname, fullName);
+                //bool isLong = IMAGEWORKER.isLongImage(fname);
+                //DATA.longImgDict.Add(fname, isLong);
                 DATA.RevImageDict.Add(fullName, fname);
                 if (!proceed.Contains(fname))
                 {
                     newproceed.Add(fname);
                 }
-                
+        
 
             }
 
