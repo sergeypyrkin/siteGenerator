@@ -47,6 +47,8 @@ namespace live.Stages
             foreach (var item in DATA._WORKOUT)
             {
                 string result = template;
+                result = result.Replace("$Id", item.Id.ToString());
+
                 string path = PATH.site + "\\data\\workout\\"+item.Id + ".html"; 
                 FILEWORK.WriteFileContent(path, result);
                 Console.WriteLine("+ " + path);
