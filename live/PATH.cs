@@ -47,7 +47,7 @@ namespace live
         public static string imgProcessedFile = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\parsed.txt";
 
 
-        public static void init()
+        public static void INIT()
         {
             string path = new System.IO.FileInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).DirectoryName;
             int i = path.IndexOf("MYLIVE");

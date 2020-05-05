@@ -13,12 +13,15 @@ namespace live.Stages
 
         public static string outfolder; 
         public static string htmlfolder;
-        public static string listname;       //workout.html;
-        public static string opath;          //out//workout.html;
-        public static string fpath;          //ss.ru//workout.html;
+        public static string listname;                  //workout.html;
+        public static string opath;                     //out//workout.html;
+        public static string fpath;                     //ss.ru//workout.html;
         public static string picturesf;
         public static string templateList;
         public static string templateListItem;
+        public static string itemtemplate;              //для отдельной страницы
+
+
         public string imglistprefix = "data\\workout\\";
 
 
@@ -30,12 +33,28 @@ namespace live.Stages
         {
             prefixWork();
             createList();
+            createItems();
             saffixWork();
 
 
         }
 
-        
+        private void createItems()
+        {
+            string template = FILEWORK.ReadFileContent(itemtemplate);
+            template = template.Replace("$header2", CONST.header2);
+            template = template.Replace("$footer2", CONST.footer2);
+            foreach (var item in DATA._WORKOUT)
+            {
+                string result = template;
+                string path = PATH.site + "\\data\\workout\\"+item.Id + ".html"; 
+                FILEWORK.WriteFileContent(path, result);
+                Console.WriteLine("+ " + path);
+
+
+            }
+
+        }
 
 
         public void prefixWork()
@@ -50,6 +69,7 @@ namespace live.Stages
             templateList = PATH.templ + "\\"+WORKOUT._type.ToLower() + "list.html";
             templateListItem = PATH.templ + "\\" + WORKOUT._type.ToLower() + "listitem.txt";
             imglistprefix = "data\\" + WORKOUT._type.ToLower();
+            itemtemplate = PATH.templ + "\\itemworkout.html";
             //1. Очищение out
             File.Delete(fpath);
 
@@ -72,12 +92,18 @@ namespace live.Stages
         {
             string template = FILEWORK.ReadFileContent(templateList);
             string itemtemplate = FILEWORK.ReadFileContent(templateListItem);
+            template = template.Replace("$header1", CONST.header1);
+            template = template.Replace("$footer1", CONST.footer1);
             string itemFull = "";
             List<WORKOUT> works = DATA._WORKOUT.OrderByDescending(o => o.Id).ToList();
             foreach (WORKOUT item in works)
             {
                 string itemres = itemtemplate;
                 string bi = "build" + item.Id;
+
+
+                itemres = itemres.Replace("$fancygroupfull", bi);
+
                 itemres = itemres.Replace("$fancygroupfull", bi);
                 itemres = itemres.Replace("$title", item.date.ToString("yyyy-MM-dd"));
 
@@ -112,10 +138,15 @@ namespace live.Stages
                 itemres = itemres.Replace("$image7", imglistprefix + "\\" + item.Id + "\\" + i7);
 
 
+                itemres = itemres.Replace("$link", imglistprefix  +"\\" +item.Id+ ".html");
+
+
+
                 itemFull = itemFull + itemres;
             }
             string result = template.Replace("$items", itemFull);
             FILEWORK.WriteFileContent(opath, result);
+            Console.WriteLine("+ "+ fpath);
 
         }
 

@@ -12,8 +12,24 @@ namespace live
         
         public static string _INSERR = "!!!!!!!!!!!!!";
 
-
         public static string _INS2 =  new String(' ', 20);
+
+
+        public static string header1;
+        public static string footer1;
+
+        public static string header2;
+        public static string footer2;
+
+        public static void INIT()
+        {
+            header1 = FILEWORK.ReadFileContent(PATH.templ + "\\header1.txt");
+            footer1 = FILEWORK.ReadFileContent(PATH.templ + "\\footer1.txt");
+
+            header2 = FILEWORK.ReadFileContent(PATH.templ + "\\header2.txt");
+            footer2 = FILEWORK.ReadFileContent(PATH.templ + "\\footer2.txt");
+
+        }
 
     }
 }

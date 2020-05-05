@@ -71,7 +71,6 @@ namespace live
         //удаляем директорию
         public static void removeDir(string path)
         {
-            Console.WriteLine("CLEAR DIR: "+path);
             Directory.Delete(path, true);
         }
 

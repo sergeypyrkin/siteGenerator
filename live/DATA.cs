@@ -27,6 +27,8 @@ namespace live
 
 
 
+
+
         //баловство
         public static string getImgFullPath(string path)
         {

@@ -67,7 +67,8 @@ namespace live
 
             // Begin timing.
             stopwatch.Start();
-            PATH.init();
+            PATH.INIT();
+            CONST.INIT();
             PATH.checking();
             FILEWORK.SIZE();
             //FILEWORK.CopyDir(PATH.data, PATH.test);
