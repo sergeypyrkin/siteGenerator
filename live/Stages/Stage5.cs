@@ -44,12 +44,36 @@ namespace live.Stages
             string template = FILEWORK.ReadFileContent(itemtemplate);
             template = template.Replace("$header2", CONST.header2);
             template = template.Replace("$footer2", CONST.footer2);
+            string itemtemplateitem = FILEWORK.ReadFileContent(PATH.templ + "\\itemworkoutitem.txt");
+
             foreach (var item in DATA._WORKOUT)
             {
                 string result = template;
                 result = result.Replace("$Id", item.Id.ToString());
+                result = result.Replace("$date", item.date.ToString("yyyy-MM-dd"));
+                result = result.Replace("$mainImg",item.Id+"/"+item.mainImg);
 
-                string path = PATH.site + "\\data\\workout\\"+item.Id + ".html"; 
+                string texts = string.Join("<br> <br>", item.txtContents.ToArray());
+                result = result.Replace("$text", "<p>"+texts+"</p>");
+
+                string imgres = "";
+                List<string> imgs = item.imgs.Where(o => o != DATA.imageDict[item.mainImg]).ToList();
+                foreach (string img in imgs)
+                {
+                    string itimgs = itemtemplateitem;
+                    string ig = DATA.RevImageDict[img];
+                    itimgs = itimgs.Replace("$image", item.Id + "/" + ig);
+                    string bi = "build" + item.Id;
+                    itimgs = itimgs.Replace("$fancygroupfull", bi);
+
+                    imgres = imgres + itimgs;
+
+                }
+                result = result.Replace("$images", imgres);
+
+
+                string path = PATH.site + "\\data\\workout\\"+item.Id + ".html";
+
                 FILEWORK.WriteFileContent(path, result);
                 Console.WriteLine("+ " + path);
 
@@ -141,8 +165,6 @@ namespace live.Stages
 
 
                 itemres = itemres.Replace("$link", imglistprefix  +"\\" +item.Id+ ".html");
-
-
 
                 itemFull = itemFull + itemres;
             }
