@@ -68,7 +68,8 @@ namespace live.Entity
 
                 if (line.Contains("youtu"))
                 {
-                    youtubs.Add(line);
+                    string youtube = parseYoutubs(line);
+                    youtubs.Add(youtube);
                     hasYoutube = true;
                     continue;
                 }
@@ -101,6 +102,15 @@ namespace live.Entity
             }
 
 
+        }
+
+        private string parseYoutubs(string line)
+        {
+            string result = "";
+            String[] ll = line.Split(new string[] { "/" }, StringSplitOptions.None);
+            string last = ll.Last();
+            result = "https://www.youtube.com/embed/" + last;
+            return result;
         }
 
 

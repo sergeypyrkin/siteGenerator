@@ -69,6 +69,16 @@ namespace live.Stages
                     imgres = imgres + itimgs;
 
                 }
+                string youcont = "";
+                foreach (string you in item.youtubs)
+                {
+                    string itimgs = CONST.youtube1;
+                    itimgs = itimgs.Replace("$srcitem", you);
+                    youcont = youcont + itimgs;
+
+                }
+                result = result.Replace("$youtubs", youcont);
+
                 result = result.Replace("$images", imgres);
 
 
