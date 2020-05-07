@@ -22,6 +22,7 @@ namespace live
         public static string footer2;
 
         public static string youtube1;
+        public static string youtube2;
 
         public static void INIT()
         {
@@ -32,6 +33,7 @@ namespace live
             footer2 = FILEWORK.ReadFileContent(PATH.templ + "\\footer2.txt");
 
             youtube1 = FILEWORK.ReadFileContent(PATH.templ + "\\youtube1.txt");
+            youtube2 = FILEWORK.ReadFileContent(PATH.templ + "\\youtube2.txt");
 
 
         }

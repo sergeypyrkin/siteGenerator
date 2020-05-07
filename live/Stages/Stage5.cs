@@ -72,7 +72,7 @@ namespace live.Stages
                 string youcont = "";
                 foreach (string you in item.youtubs)
                 {
-                    string itimgs = CONST.youtube1;
+                    string itimgs = item.youtubs.Count> 1? CONST.youtube1: CONST.youtube2;
                     itimgs = itimgs.Replace("$srcitem", you);
                     youcont = youcont + itimgs;
 
