@@ -44,7 +44,7 @@ namespace live.Stages
             string template = FILEWORK.ReadFileContent(itemtemplate);
             template = template.Replace("$header2", CONST.header2);
             template = template.Replace("$footer2", CONST.footer2);
-            string itemtemplateitem = FILEWORK.ReadFileContent(PATH.templ + "\\itemworkoutitem.txt");
+            string itemtemplateitem = FILEWORK.ReadFileContent(PATH.templ +"\\"+WORKOUT._type.ToUpper()+ "\\itemworkoutitem.txt");
 
             foreach (var item in DATA._WORKOUT)
             {
@@ -102,10 +102,10 @@ namespace live.Stages
             fpath = PATH.site + "\\" + listname;
             htmlfolder = PATH.site + "\\data\\" + WORKOUT._type.ToLower();
             opath = outfolder + "\\" + listname;
-            templateList = PATH.templ + "\\"+WORKOUT._type.ToLower() + "list.html";
-            templateListItem = PATH.templ + "\\" + WORKOUT._type.ToLower() + "listitem.txt";
+            templateList = PATH.templ + "\\"+ WORKOUT._type.ToLower() +"\\"+WORKOUT._type.ToLower() + "list.html";
+            templateListItem = PATH.templ + "\\" + WORKOUT._type.ToLower()+ "\\" + WORKOUT._type.ToLower() + "listitem.txt";
             imglistprefix = "data\\" + WORKOUT._type.ToLower();
-            itemtemplate = PATH.templ + "\\itemworkout.html";
+            itemtemplate = PATH.templ + "\\" + WORKOUT._type.ToLower()+ "\\itemworkout.html";
             //1. Очищение out
             File.Delete(fpath);
 
