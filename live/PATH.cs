@@ -34,6 +34,7 @@ namespace live
         public static string _news = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\SPORT";
         public static string _newfood = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\FOOD";
 
+        public static string datat = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\PICTURES\\TRAVEL";
 
         public static string dataf = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\PICTURES\\FRIENDS";
         public static string dataw = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\PICTURES\\WORKOUT";
@@ -72,9 +73,11 @@ namespace live
             dataw = data + "\\PICTURES\\WORKOUT";
             datas = data + "\\PICTURES\\SPORT";
             datafood = data + "\\PICTURES\\FOOD";
+            datat = data + "\\PICTURES\\TRAVEL";
+
 
             imgProcessedFile = data + "\\parsed.txt";
-            
+          
 
 
 
@@ -110,6 +113,7 @@ namespace live
             check(dataf);
             check(datas);
             check(datafood);
+            check(datat);
 
             check(site);
             check(outf);

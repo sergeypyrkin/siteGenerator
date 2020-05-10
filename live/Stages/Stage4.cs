@@ -15,11 +15,99 @@ namespace live.Stages
         {
             Console.WriteLine("");
 
+
+            //создание TRAVEL
+            createTravels();
+
+
+            //создание обычных моделей
             foreach (var rf in PATH.refs)
             {
                 createModels(rf.destinationPass);
             }
 
+
+        }
+
+        public void createTravels()
+        {
+            DirectoryInfo di = new DirectoryInfo(PATH.datat);
+            string _type = di.Name;
+            DirectoryInfo[] diA = di.GetDirectories();
+
+            foreach (DirectoryInfo f in diA)
+            {
+                createTravel(f);
+            }
+            int j = DATA._TRAVELS.Count();
+            string ins = new String(' ', 20 - "TRAVEL".Length);
+            Console.WriteLine(String.Format("{0}{1} {2} {4} {3}", CONST._INS, "MODELS: ", "TRAVEL", j, ins));
+
+        }
+
+        public void createTravel(DirectoryInfo f)
+        {
+            TRAVEL travel = new TRAVEL();
+            string name = f.Name;
+            travel.dataFolderPath = f.FullName;
+
+            travel.Id = Convert.ToInt32(name);
+            string content = FILEWORK.ReadFileContent(f.FullName + "//info.txt");
+            String[] lines = content.Split(new string[] { "\n" }, StringSplitOptions.None);
+            foreach (string line in lines)
+            {
+                if (String.IsNullOrEmpty(line))
+                {
+                    continue;
+                }
+                if (travel.name == null)
+                {
+                    travel.name = line;
+                    continue;
+                }
+
+                if (travel.ldate == null)
+                {
+                    travel.ldate = line;
+                    continue;
+                }
+
+                if (travel.lcount == null)
+                {
+                    travel.lcount = line;
+                    continue;
+                }
+
+                if (line.Contains(".jpg"))
+                {
+                    travel.mainIng.Add(line);
+                }
+
+
+            }
+
+            List<string> imgs = new List<string>();
+            travel.imgs = FILEWORK.GetAllFiles(travel.dataFolderPath, imgs, ".jpg");
+
+            List<string> txts = new List<string>();
+            txts = FILEWORK.GetAllFiles(travel.dataFolderPath, txts, ".txt");
+            foreach (string s in txts)
+            {
+                FileInfo ff = new FileInfo(s);
+                string fname = ff.Name;
+                String[] ll = fname.Split(new string[] { ".txt" }, StringSplitOptions.None);
+                string shortName = ll[0];
+                int number;
+                bool success = Int32.TryParse(shortName, out number);
+                if (success)
+                {
+                    string cont = FILEWORK.ReadFileContent(ff.FullName);
+                    travel.destrictions.Add(number, cont);
+
+                }
+            }
+
+            DATA._TRAVELS.Add(travel);
         }
 
 

@@ -23,6 +23,8 @@ namespace live
 
         public static string youtube1;
         public static string youtube2;
+        public static string VeE;
+        
 
         public static void INIT()
         {

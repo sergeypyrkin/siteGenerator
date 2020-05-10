@@ -22,6 +22,8 @@ namespace live
         public static List<SPORT> _SPORT = new List<SPORT>();
         public static List<WORKOUT> _WORKOUT = new List<WORKOUT>();
         public static List<FOOD> _FOOD = new List<FOOD>();
+        public static List<TRAVEL> _TRAVELS = new List<TRAVEL>();
+
 
 
 
