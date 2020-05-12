@@ -57,6 +57,8 @@ namespace live
 
             var stage5 = new Stage5("WORKOUT CREATING...");
 
+            var stage10 = new Stage10("TRAVEL CREATING...");
+
 
             Console.WriteLine("");
             Console.WriteLine(DateTime.Now.ToString());
@@ -83,16 +85,19 @@ namespace live
 
                 stage4.EXECUTE();
 
-               // stage5.EXECUTE();
+                //stage5.EXECUTE();
 
-          //  }
-          //catch (Exception ex)
-          //{
-          //    Console.WriteLine(String.Format("{0} {1}", CONST._INSERR, ex.Message));
-          //    Console.WriteLine("Press any key to continue...");
-          //    Console.ReadKey();
-          //    return;
-          //}
+                stage10.EXECUTE();
+
+
+            //  }
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(String.Format("{0} {1}", CONST._INSERR, ex.Message));
+            //    Console.WriteLine("Press any key to continue...");
+            //    Console.ReadKey();
+            //    return;
+            //}
             COUNTER.count();
             // Stop timing.
             stopwatch.Stop();

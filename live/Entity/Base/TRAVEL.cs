@@ -8,7 +8,9 @@ namespace live.Entity.Base
 {
     public class TRAVEL
     {
-        public string _type = "TRAVEL";
+        public static string _type = "TRAVEL";
+
+
         public int Id;
         public string name;  //НИЖНИЙ НОВГОРОД
         public string ldate; //1-2мая
