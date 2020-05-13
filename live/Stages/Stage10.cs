@@ -37,13 +37,29 @@ namespace live.Stages
             string itemtemplate = FILEWORK.ReadFileContent(templateListItem);
             template = template.Replace("$header1", CONST.header1);
             template = template.Replace("$footer1", "");
-            template = template.Replace("param_models", itemtemplate);
+
+
+
 
             string itemFull = "";
-            List<WORKOUT> works = DATA._WORKOUT.OrderByDescending(o => o.Id).ToList();
-            foreach (WORKOUT item in works)
+            List<TRAVEL> travels = DATA._TRAVELS.OrderByDescending(o => o.Id).ToList();
+            foreach (TRAVEL item in travels)
             {
-                //string itemres = itemtemplate;
+                string itemres = itemtemplate;
+
+                int index = 1;
+                foreach (string img in item.mainIng)
+                {
+                    string sname = DATA.imageDict[img];
+                    string rr = "$image" + index;
+                    itemres = itemres.Replace(rr, imglistprefix + "\\" + item.Id + "\\" + img);
+                    index++;
+                }
+
+                itemres = itemres.Replace("$city", item.name);
+                itemres = itemres.Replace("$date", item.ldate);
+                itemres = itemres.Replace("$price", item.lcount);
+                itemres = itemres.Replace("$link", imglistprefix + "\\" + item.Id + ".html");
                 //string bi = "build" + item.Id;
 
 
@@ -85,9 +101,9 @@ namespace live.Stages
 
                 //itemres = itemres.Replace("$link", imglistprefix + "\\" + item.Id + ".html");
 
-                //itemFull = itemFull + itemres;
+                itemFull = itemFull + itemres;
             }
-            string result = template.Replace("$items", itemFull);
+            string result = template.Replace("param_models", itemFull);
             FILEWORK.WriteFileContent(opath, result);
             Console.WriteLine("+ " + fpath);
         }
