@@ -27,8 +27,64 @@ namespace live.Stages
         {
             prefixWork();
             createList();
-            //createItems();
+            createItems();
             saffixWork();
+        }
+
+        public void createItems()
+        {
+            string template = FILEWORK.ReadFileContent(itemtemplate);
+            template = template.Replace("$header2", CONST.header2);
+            template = template.Replace("$footer2", CONST.footer2);
+            // string itemtemplateitem = FILEWORK.ReadFileContent(PATH.templ + "\\" + WORKOUT._type.ToUpper() + "\\itemworkoutitem.txt");
+
+            foreach (var item in DATA._TRAVELS)
+            {
+                string result = template;
+                result = result.Replace("$title", item.name);
+
+                //result = result.Replace("$Id", item.Id.ToString());
+                //result = result.Replace("$date", item.date.ToString("yyyy-MM-dd"));
+                //result = result.Replace("$mainImg", item.Id + "/" + item.mainImg);
+
+                //string texts = string.Join("<br> <br>", item.txtContents.ToArray());
+                //result = result.Replace("$text", "<p>" + texts + "</p>");
+
+                //string imgres = "";
+                //List<string> imgs = item.imgs.Where(o => o != DATA.imageDict[item.mainImg]).ToList();
+                //foreach (string img in imgs)
+                //{
+                //    string itimgs = itemtemplateitem;
+                //    string ig = DATA.RevImageDict[img];
+                //    itimgs = itimgs.Replace("$image", item.Id + "/" + ig);
+                //    string bi = "build" + item.Id;
+                //    itimgs = itimgs.Replace("$fancygroupfull", bi);
+
+                //    imgres = imgres + itimgs;
+
+                //}
+                //string youcont = "";
+                //foreach (string you in item.youtubs)
+                //{
+                //    bool isOne = item.youtubs.Count == 1 || (item.youtubs.Last() == you && item.youtubs.Count % 2 != 0);
+                //    string itimgs = !isOne ? CONST.youtube1 : CONST.youtube2;
+                //    itimgs = itimgs.Replace("$srcitem", you);
+                //    youcont = youcont + itimgs;
+
+                //}
+                //result = result.Replace("$youtubs", youcont);
+
+                //result = result.Replace("$images", imgres);
+
+
+                string path = PATH.site + "\\data\\travel\\" + item.Id + ".html";
+
+                FILEWORK.WriteFileContent(path, result);
+                Console.WriteLine("+ " + path);
+
+
+            }
+
         }
 
         public void createList()
@@ -60,47 +116,6 @@ namespace live.Stages
                 itemres = itemres.Replace("$date", item.ldate);
                 itemres = itemres.Replace("$price", item.lcount);
                 itemres = itemres.Replace("$link", imglistprefix + "\\" + item.Id + ".html");
-                //string bi = "build" + item.Id;
-
-
-                //itemres = itemres.Replace("$fancygroupfull", bi);
-
-                //itemres = itemres.Replace("$fancygroupfull", bi);
-                //itemres = itemres.Replace("$title", item.date.ToString("yyyy-MM-dd"));
-
-                //string texts = string.Join("<br> <br>", item.txtContents.ToArray());
-                //itemres = itemres.Replace("$text", texts);
-
-                //List<string> used = new List<string>();
-                //string i1 = item.mainImg;
-                //string sname = DATA.imageDict[i1];
-
-                //used.Add(sname);
-                //itemres = itemres.Replace("$image1", imglistprefix + "\\" + item.Id + "\\" + i1);
-
-                //string i2 = imgName(used, item);
-                //itemres = itemres.Replace("$image2", imglistprefix + "\\" + item.Id + "\\" + i2);
-
-                //string i3 = imgName(used, item);
-                //itemres = itemres.Replace("$image3", imglistprefix + "\\" + item.Id + "\\" + i3);
-
-
-                //string i4 = imgName(used, item);
-                //itemres = itemres.Replace("$image4", imglistprefix + "\\" + item.Id + "\\" + i4);
-
-                //string i5 = imgName(used, item);
-                //itemres = itemres.Replace("$image5", imglistprefix + "\\" + item.Id + "\\" + i5);
-
-                //string i6 = imgName(used, item);
-                //itemres = itemres.Replace("$image6", imglistprefix + "\\" + item.Id + "\\" + i6);
-
-
-                //string i7 = imgName(used, item);
-                //itemres = itemres.Replace("$image7", imglistprefix + "\\" + item.Id + "\\" + i7);
-
-
-                //itemres = itemres.Replace("$link", imglistprefix + "\\" + item.Id + ".html");
-
                 itemFull = itemFull + itemres;
             }
             string result = template.Replace("param_models", itemFull);
@@ -129,7 +144,7 @@ namespace live.Stages
             templateList = PATH.templ + "\\" + TRAVEL._type.ToLower() + "\\" + "catalog.html";
             templateListItem = PATH.templ + "\\" + TRAVEL._type.ToLower() + "\\" + "listitem.txt";
             imglistprefix = "data\\" + TRAVEL._type.ToLower();
-            itemtemplate = PATH.templ + "\\" + TRAVEL._type.ToLower() + "\\itemTRAVEL.html";
+            itemtemplate = PATH.templ + "\\" + TRAVEL._type.ToLower() + "\\item.html";
             //1. Очищение out
             File.Delete(fpath);
 
