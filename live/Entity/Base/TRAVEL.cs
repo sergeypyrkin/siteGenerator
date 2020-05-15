@@ -18,6 +18,7 @@ namespace live.Entity.Base
         public List<string> mainIng = new List<string>();
         public List<string> imgs = new List<string>();
         public Dictionary<int, string> destrictions = new Dictionary<int, string>();
+        public string description;
 
 
 

@@ -54,6 +54,11 @@ namespace live.Stages
             travel.Id = Convert.ToInt32(name);
             string content = FILEWORK.ReadFileContent(f.FullName + "//info.txt");
             String[] lines = content.Split(new string[] { "\n" }, StringSplitOptions.None);
+
+
+
+            travel.description = FILEWORK.ReadFileContent(f.FullName + "//description.txt");
+
             foreach (string line in lines)
             {
                 if (String.IsNullOrEmpty(line))
@@ -85,6 +90,8 @@ namespace live.Stages
 
 
             }
+
+
 
             List<string> imgs = new List<string>();
             travel.imgs = FILEWORK.GetAllFiles(travel.dataFolderPath, imgs, ".jpg");

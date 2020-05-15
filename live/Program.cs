@@ -57,7 +57,7 @@ namespace live
 
             var stage5 = new Stage5("WORKOUT CREATING...");
 
-            var stage10 = new Stage10("TRAVEL CREATING...");
+            var stage10 = new Stagef10("TRAVEL CREATING...");
 
 
             Console.WriteLine("");

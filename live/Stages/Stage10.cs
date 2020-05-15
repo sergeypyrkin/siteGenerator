@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using live.Entity.Base;
 
 namespace live.Stages
 {
-    public class Stage10: Stage
+    public class Stagef10: Stage
     {
 
         public static string outfolder;
@@ -23,6 +24,9 @@ namespace live.Stages
         public string imglistprefix = "data\\TRAVEL\\";
 
 
+        public string imgtemplate1 = "";
+
+
         public override void WORK()
         {
             prefixWork();
@@ -33,6 +37,9 @@ namespace live.Stages
 
         public void createItems()
         {
+            imgtemplate1 = FILEWORK.ReadFileContent(PATH.templ + "\\" + TRAVEL._type.ToLower() + "\\img1item.txt");
+
+
             string template = FILEWORK.ReadFileContent(itemtemplate);
             template = template.Replace("$header2", CONST.header2);
             template = template.Replace("$footer2", CONST.footer2);
@@ -42,7 +49,8 @@ namespace live.Stages
             {
                 string result = template;
                 result = result.Replace("$title", item.name);
-
+                // 
+                result = reseatMainInfo(item,  result);
                 //result = result.Replace("$Id", item.Id.ToString());
                 //result = result.Replace("$date", item.date.ToString("yyyy-MM-dd"));
                 //result = result.Replace("$mainImg", item.Id + "/" + item.mainImg);
@@ -85,6 +93,38 @@ namespace live.Stages
 
             }
 
+        }
+
+        private string reseatMainInfo(TRAVEL travel, string result)
+        {
+
+            List<string> images = new List<string>();
+            images.AddRange(travel.mainIng);
+            foreach (string img in travel.imgs)
+            {
+                string ig = DATA.RevImageDict[img];
+                if (!images.Contains(ig))
+                {
+                    images.Add(ig);
+                }
+            }
+            string res = "";
+            foreach (string img in images)
+            {
+                string itimgs = imgtemplate1;
+            //    string ig = DATA.RevImageDict[img];
+                itimgs = itimgs.Replace("$image1", travel.Id + "/" + img);
+                res = res + itimgs;
+            }
+
+            result = result.Replace("$items1", res);
+            string fullname = travel.name + ":   " + travel.ldate;
+            result = result.Replace("$title", travel.name);
+            result = result.Replace("$ldate", travel.ldate);
+            result = result.Replace("$desc", travel.description);
+
+
+            return result;
         }
 
         public void createList()
@@ -155,7 +195,7 @@ namespace live.Stages
         }
 
 
-        public Stage10(string name) : base(name)
+        public Stagef10(string name) : base(name)
         {
         }
     }
