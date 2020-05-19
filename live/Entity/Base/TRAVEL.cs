@@ -20,6 +20,9 @@ namespace live.Entity.Base
         public Dictionary<int, string> destrictions = new Dictionary<int, string>();
         public string description;
 
+        public string praceS;
+        public string praceL;
+
 
 
         public string dataFolderPath;

@@ -14,13 +14,13 @@ namespace live.Stages
 
         public static string outfolder;
         public static string htmlfolder;
-        public static string listname;                  //TRAVEL.html;
-        public static string opath;                     //out//TRAVEL.html;
-        public static string fpath;                     //ss.ru//TRAVEL.html;
+        public static string listname;                      //TRAVEL.html;
+        public static string opath;                         //out//TRAVEL.html;
+        public static string fpath;                         //ss.ru//TRAVEL.html;
         public static string picturesf;
         public static string templateList;
         public static string templateListItem;
-        public static string itemtemplate;              //для отдельной страницы
+        public static string itemtemplate;                  //для отдельной страницы
         public string imglistprefix = "data\\TRAVEL\\";
 
 
@@ -118,10 +118,12 @@ namespace live.Stages
             }
 
             result = result.Replace("$items1", res);
-            string fullname = travel.name + ":   " + travel.ldate;
             result = result.Replace("$title", travel.name);
             result = result.Replace("$ldate", travel.ldate);
             result = result.Replace("$desc", travel.description);
+            result = result.Replace("$price", travel.lcount);
+            result = result.Replace("$praceS", travel.praceS);
+            result = result.Replace("$praceL", travel.praceL);
 
 
             return result;

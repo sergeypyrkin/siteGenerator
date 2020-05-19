@@ -86,7 +86,25 @@ namespace live.Stages
                 if (line.Contains(".jpg"))
                 {
                     travel.mainIng.Add(line);
+                    continue;
+
                 }
+
+                if (travel.praceS == null)
+                {
+                    travel.praceS = line;
+                    continue;
+                }
+
+
+
+                if (travel.praceL == null)
+                {
+                    travel.praceL = line;
+                    continue;
+                }
+
+
 
 
             }
