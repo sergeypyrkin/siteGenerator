@@ -23,6 +23,8 @@ namespace live.Stages
         public static string itemtemplate;                  //для отдельной страницы
         public string imglistprefix = "data\\TRAVEL\\";
 
+        public string liItem;
+        public string diItem;
 
         public string imgtemplate1 = "";
 
@@ -38,7 +40,8 @@ namespace live.Stages
         public void createItems()
         {
             imgtemplate1 = FILEWORK.ReadFileContent(PATH.templ + "\\" + TRAVEL._type.ToLower() + "\\img1item.txt");
-
+            liItem = FILEWORK.ReadFileContent(PATH.templ + "\\" + TRAVEL._type.ToLower() + "\\ulitem.txt");
+            diItem = FILEWORK.ReadFileContent(PATH.templ + "\\" + TRAVEL._type.ToLower() + "\\diitem.txt");
 
             string template = FILEWORK.ReadFileContent(itemtemplate);
             template = template.Replace("$header2", CONST.header2);
@@ -51,38 +54,8 @@ namespace live.Stages
                 result = result.Replace("$title", item.name);
                 // 
                 result = reseatMainInfo(item,  result);
-                //result = result.Replace("$Id", item.Id.ToString());
-                //result = result.Replace("$date", item.date.ToString("yyyy-MM-dd"));
-                //result = result.Replace("$mainImg", item.Id + "/" + item.mainImg);
 
-                //string texts = string.Join("<br> <br>", item.txtContents.ToArray());
-                //result = result.Replace("$text", "<p>" + texts + "</p>");
-
-                //string imgres = "";
-                //List<string> imgs = item.imgs.Where(o => o != DATA.imageDict[item.mainImg]).ToList();
-                //foreach (string img in imgs)
-                //{
-                //    string itimgs = itemtemplateitem;
-                //    string ig = DATA.RevImageDict[img];
-                //    itimgs = itimgs.Replace("$image", item.Id + "/" + ig);
-                //    string bi = "build" + item.Id;
-                //    itimgs = itimgs.Replace("$fancygroupfull", bi);
-
-                //    imgres = imgres + itimgs;
-
-                //}
-                //string youcont = "";
-                //foreach (string you in item.youtubs)
-                //{
-                //    bool isOne = item.youtubs.Count == 1 || (item.youtubs.Last() == you && item.youtubs.Count % 2 != 0);
-                //    string itimgs = !isOne ? CONST.youtube1 : CONST.youtube2;
-                //    itimgs = itimgs.Replace("$srcitem", you);
-                //    youcont = youcont + itimgs;
-
-                //}
-                //result = result.Replace("$youtubs", youcont);
-
-                //result = result.Replace("$images", imgres);
+                result = reseatTextInfo(item, result);
 
 
                 string path = PATH.site + "\\data\\travel\\" + item.Id + ".html";
@@ -93,6 +66,46 @@ namespace live.Stages
 
             }
 
+        }
+
+        private string reseatTextInfo(TRAVEL travel, string result)
+        {
+
+            string licontext = "";
+            foreach (KeyValuePair<int, string> keyValue in travel.destrictions)
+            {
+                string templ = liItem;
+                int iday = keyValue.Key;
+                templ = templ.Replace("$Id", iday.ToString());
+                string rr = iday == 1 ? "active" : "";
+                templ = templ.Replace("$active", rr);
+
+                licontext = licontext + templ;
+            }
+
+            result = result.Replace("$liitems", licontext);
+
+
+
+            string dicontext = "";
+            foreach (KeyValuePair<int, string> keyValue in travel.destrictions)
+            {
+                string text = keyValue.Value;
+                text = text.Replace("\n", "<br>");
+                string templ = diItem;
+                int iday = keyValue.Key;
+                templ = templ.Replace("$Id", iday.ToString());
+                string rr = iday == 1 ? "active" : "";
+                templ = templ.Replace("$active", rr);
+                templ = templ.Replace("$text", text);
+
+                dicontext = dicontext + templ;
+            }
+
+            result = result.Replace("$diitems", dicontext);
+
+
+            return result;
         }
 
         private string reseatMainInfo(TRAVEL travel, string result)
