@@ -99,12 +99,12 @@ namespace live.Stages
                 templ = templ.Replace("$Id", iday.ToString());
                 string rr = iday == 1 ? "active" : "";
                 templ = templ.Replace("$active", rr);
-                string s1 = "<div class='first_div_capital'><p class='first_p_capital'>" + lena + "</p></div>";
+                string s1 = "<div class='first_div_capital_blue'><p >" + lena + "</p></div>";
 
                 string sergey = val.s;
                 sergey = sergey.Replace("\n", "<br>");
 
-                string s2 = "<div class='first_div_capital'><p class='first_p_capital'>" + sergey + "</p></div>"; ;
+                string s2 = "<div class='first_div_capital_green'><p >" + sergey + "</p></div>"; ;
                 templ = templ.Replace("$text", s1 + s2);
 
                 dicontext = dicontext + templ;
