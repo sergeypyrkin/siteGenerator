@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -126,8 +127,9 @@ namespace live.Stages
                 bool success = Int32.TryParse(shortName, out number);
                 if (success)
                 {
-                    string cont = FILEWORK.ReadFileContent(ff.FullName);
-                    travel.destrictions.Add(number, cont);
+
+                    addLSText(number, travel, ff.FullName);
+
 
                 }
             }
@@ -135,6 +137,53 @@ namespace live.Stages
             DATA._TRAVELS.Add(travel);
         }
 
+        private void addLSText(int number, TRAVEL travel, string ffFullName)
+        {
+            string l;
+            string s;
+            List<string> ll = new List<string>();
+            List<string> ls = new List<string>();
+            string stage = "";
+            string content = FILEWORK.ReadFileContent(ffFullName);
+            String[] lines = content.Split(new string[] { "\n" }, StringSplitOptions.None);
+            foreach (string line in lines)
+            {
+                if (String.IsNullOrEmpty(line))
+                {
+                    continue;
+                }
+                if (line.ToUpper() == "LENA")
+                {
+                    stage = "lena";
+                    continue;
+                }
+
+                if (line.ToUpper() == "SERGEY")
+                {
+                    stage = "sergey";
+                    continue;
+                }
+
+                if (stage == "lena")
+                {
+                    ll.Add(line);
+                }
+
+                if (stage == "sergey")
+                {
+                    ls.Add(line);
+                }
+            }
+
+            l = string.Join("\n", ll.ToArray());
+            s = string.Join("\n", ls.ToArray());
+            TRAVEL.LSTEXT tt = new TRAVEL.LSTEXT();
+            tt.l = l;
+            tt.s = s;
+
+
+            travel.destrictions.Add(number, tt);
+        }
 
 
         private void createModels(string dirPathFull)

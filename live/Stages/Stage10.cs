@@ -72,7 +72,7 @@ namespace live.Stages
         {
 
             string licontext = "";
-            foreach (KeyValuePair<int, string> keyValue in travel.destrictions)
+            foreach (KeyValuePair<int, TRAVEL.LSTEXT> keyValue in travel.destrictions)
             {
                 string templ = liItem;
                 int iday = keyValue.Key;
@@ -88,18 +88,36 @@ namespace live.Stages
 
 
             string dicontext = "";
-            foreach (KeyValuePair<int, string> keyValue in travel.destrictions)
+            foreach (KeyValuePair<int, TRAVEL.LSTEXT> keyValue in travel.destrictions)
             {
-                string text = keyValue.Value;
-                text = text.Replace("\n", "<br>");
+                TRAVEL.LSTEXT val = keyValue.Value;
+                string lena = val.l;
+                lena = lena.Replace("\n", "<br>");
+
                 string templ = diItem;
                 int iday = keyValue.Key;
                 templ = templ.Replace("$Id", iday.ToString());
                 string rr = iday == 1 ? "active" : "";
                 templ = templ.Replace("$active", rr);
-                templ = templ.Replace("$text", text);
+                string s1 = "<div class='first_div_capital'><p class='first_p_capital'>" + lena + "</p></div>";
+
+                string sergey = val.s;
+                sergey = sergey.Replace("\n", "<br>");
+
+                string s2 = "<div class='first_div_capital'><p class='first_p_capital'>" + sergey + "</p></div>"; ;
+                templ = templ.Replace("$text", s1 + s2);
 
                 dicontext = dicontext + templ;
+                //string text = keyValue.Value;
+                //text = text.Replace("\n", "<br>");
+                //string templ = diItem;
+                //int iday = keyValue.Key;
+                //templ = templ.Replace("$Id", iday.ToString());
+                //string rr = iday == 1 ? "active" : "";
+                //templ = templ.Replace("$active", rr);
+                //templ = templ.Replace("$text", text);
+
+                //dicontext = dicontext + templ;
             }
 
             result = result.Replace("$diitems", dicontext);

@@ -17,7 +17,7 @@ namespace live.Entity.Base
         public string lcount; //5000
         public List<string> mainIng = new List<string>();
         public List<string> imgs = new List<string>();
-        public Dictionary<int, string> destrictions = new Dictionary<int, string>();
+        public Dictionary<int, LSTEXT> destrictions = new Dictionary<int, LSTEXT>();
         public string description;
 
         public string praceS;
@@ -26,5 +26,11 @@ namespace live.Entity.Base
 
 
         public string dataFolderPath;
+
+        public class LSTEXT
+        {
+            public string l;
+            public string s;
+        }
     }
 }
