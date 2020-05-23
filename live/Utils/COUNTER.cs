@@ -22,6 +22,12 @@ namespace live.Utils
                 youCount = youCount + content.youtubs.Count;
                 contentCount = contentCount + 1;
             }
+
+            foreach (var content in DATA._TRAVELS)
+            {
+                imgCount = imgCount + content.imgs.Count;
+                contentCount = contentCount + 1;
+            }
             Console.WriteLine("=====                                                        =====");
             Console.WriteLine("{3}CONTENT: {0} IMAGES: {1} YOUTUBS: {2}", contentCount, imgCount, youCount, CONST._INS);
             Console.WriteLine("=====                                                        =====");
