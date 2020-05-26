@@ -33,7 +33,7 @@ namespace live
 
         public static void Main(string[] args)
         {
-            
+
             string procName = Process.GetCurrentProcess().ProcessName;
             if (Process.GetProcessesByName(procName).Length != 1)
             {
@@ -50,7 +50,7 @@ namespace live
             var stage1 = new Stage1("ПРОВЕРКА");
 
             var stage2 = new Stage2("ДОБАВЛЯЕМ");
-            
+
             var stage3 = new Stage3("ОБРАБОКА ФОТОГРАФИЙ");
 
             var stage4 = new Stage4("СОЗДАНИЕ МОДЕЛЕЙ");
@@ -59,6 +59,7 @@ namespace live
 
             var stage10 = new Stagef10("TRAVEL CREATING...");
 
+            var stage11 = new Stage11("CONTACT CREATING...");
 
             Console.WriteLine("");
             Console.WriteLine(DateTime.Now.ToString());
@@ -73,31 +74,22 @@ namespace live
             CONST.INIT();
             PATH.checking();
             FILEWORK.SIZE();
-            //FILEWORK.CopyDir(PATH.data, PATH.test);
-            //return;
-            //try
-            //{
-                stage1.EXECUTE();
 
-                stage2.EXECUTE();
+            stage1.EXECUTE();
 
-                stage3.EXECUTE();
+            stage2.EXECUTE();
 
-                stage4.EXECUTE();
+            stage3.EXECUTE();
 
-                //stage5.EXECUTE();
+            stage4.EXECUTE();
 
-                stage10.EXECUTE();
+            //stage5.EXECUTE();
+
+            //stage10.EXECUTE();
+
+            stage11.EXECUTE();
 
 
-            //  }
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine(String.Format("{0} {1}", CONST._INSERR, ex.Message));
-            //    Console.WriteLine("Press any key to continue...");
-            //    Console.ReadKey();
-            //    return;
-            //}
             COUNTER.count();
             // Stop timing.
             stopwatch.Stop();
