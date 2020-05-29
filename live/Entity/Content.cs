@@ -86,6 +86,11 @@ namespace live.Entity
 
             }
 
+            if (String.IsNullOrEmpty(mainImg) && imgs.Count == 1)
+            {
+                mainImg = imgs.First();
+            }
+
             //теперь разрешаем title/соntent
             if (txtContents.Count == 1)
             {
