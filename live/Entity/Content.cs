@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,12 +31,17 @@ namespace live.Entity
         public string dataFolderPath;
         public string infoPath;
         public List<string> txtContents = new List<string>();
-   
-
-        //для парсинга
 
 
 
+
+        
+    
+        
+         //для парсинга
+
+
+        
 
 
 
@@ -42,6 +49,7 @@ namespace live.Entity
 
         public void parse()
         {
+
             List<string> imgs = new List<string>();
             this.imgs = FILEWORK.GetAllFiles(dataFolderPath, imgs, ".jpg");
             this.hasImgs = this.imgs.Count > 0;

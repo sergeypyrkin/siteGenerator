@@ -65,11 +65,13 @@
     <Compile Include="Stages\Stage1.cs" />
     <Compile Include="Stages\Stage10.cs" />
     <Compile Include="Stages\Stage11.cs" />
+    <Compile Include="Stages\Stage12.cs" />
     <Compile Include="Stages\Stage2.cs" />
     <Compile Include="Stages\Stage3.cs" />
     <Compile Include="Stages\Stage4.cs" />
     <Compile Include="Stages\Stage5.cs" />
     <Compile Include="Utils\COUNTER.cs" />
+    <Compile Include="Utils\Logger.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

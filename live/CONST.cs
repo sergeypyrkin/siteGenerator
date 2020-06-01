@@ -9,18 +9,13 @@ namespace live
     public static class CONST
     {
         public static string _INS = "              ";
-        
         public static string _INSERR = "!!!!!!!!!!!!!";
-
         public static string _INS2 =  new String(' ', 20);
-
 
         public static string header1;
         public static string footer1;
-
         public static string header2;
         public static string footer2;
-
         public static string youtube1;
         public static string youtube2;
         public static string VeE;

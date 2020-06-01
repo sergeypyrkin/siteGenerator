@@ -61,6 +61,9 @@ namespace live
 
             var stage11 = new Stage11("CONTACT CREATING...");
 
+            var stage12 = new Stage12("INDEX CREATING...");
+
+
             Console.WriteLine("");
             Console.WriteLine(DateTime.Now.ToString());
             Console.WriteLine("");
@@ -87,9 +90,10 @@ namespace live
 
             //stage10.EXECUTE();
 
-            stage11.EXECUTE();
+            //stage11.EXECUTE();
 
-
+            stage12.EXECUTE();
+     
             COUNTER.count();
             // Stop timing.
             stopwatch.Stop();
