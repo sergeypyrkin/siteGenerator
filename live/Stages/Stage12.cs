@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using live.Entity;
+using live.Entity.Base;
 
 namespace live.Stages
 {
@@ -20,6 +22,8 @@ namespace live.Stages
         public static string templateList;
         public static string templateListItem;
         public static string itemtemplate;              //для отдельной страницы
+
+        public string last10templ;
 
 
 
@@ -41,6 +45,8 @@ namespace live.Stages
             templateList = PATH.templ + "\\index.html";
             opath = outfolder + "\\" + listname;
 
+            last10templ = FILEWORK.ReadFileContent(PATH.templ + "\\index\\last10item.txt");
+
             //1. Очищение out
             File.Delete(fpath);
         }
@@ -52,10 +58,73 @@ namespace live.Stages
             template = template.Replace("$header1", CONST.header1);
             template = template.Replace("$footer1", CONST.footer1);
             string result = template;
+            result = createLast10(result);
+
 
             FILEWORK.WriteFileContent(fpath, result);
             Console.WriteLine("+ " + fpath);
 
+        }
+
+
+        //последние 10 новостей
+        public string createLast10(string res)
+        {
+            string result = res;
+
+            List<CONTENT> contents = DATA.get10Last();
+
+            string itemsCont = "";
+            foreach (CONTENT item in contents)
+            {
+                string ii = last10templ;
+                ii = ii.Replace("$text", item.date.ToString("yyyy-MM-dd"));
+                string i1 = item.mainImg;
+
+                string _type = "";
+                if (item is FOOD)
+                {
+                    _type = "food";
+                }
+
+                if (item is WORKOUT)
+                {
+                    _type = "workout";
+                }
+
+                if (item is SPORT)
+                {
+                    _type = "sport";
+                }
+
+
+                if (item is DOGANDCAT)
+                {
+                    _type = "dogandcat";
+                }
+
+
+                if (item is FRIENDS)
+                {
+                    _type = "friends";
+                }
+
+
+
+                string imglistprefix = "data\\" + _type;
+
+                string imgPath = imglistprefix + "\\" + item.Id + "\\" + i1;
+                ii = ii.Replace("$img", imgPath);
+
+                itemsCont = itemsCont + ii;
+            }
+
+            result = result.Replace("$last10", itemsCont);
+
+
+
+
+            return result;
         }
     }
 }

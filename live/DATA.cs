@@ -26,6 +26,60 @@ namespace live
 
 
 
+        public static List<CONTENT> get10Last()
+        {
+            List<CONTENT> result = new List<CONTENT>();
+            var list = DATA._CONTENT.Where(o=>o is WORKOUT).OrderByDescending(o => o.date).ToList();
+            int i = 0;
+            foreach (var cont in list)
+            {
+                if (i > 9)
+                {
+                    break;
+                }
+                result.Add(cont);
+                i++;
+
+            }
+            return result;
+        }
+
+
+        //берем определенный контент
+        public static CONTENT getContent(String _type, int id)
+        {
+            CONTENT cont = null;
+
+            switch (_type)
+            {
+                case "DOGANDCAT":
+                    return _DOGANDCAT.FirstOrDefault(o => o.Id == id);
+
+                    break;
+                case "FRIENDS":
+                    return _FRIENDS.FirstOrDefault(o => o.Id == id);
+
+                    break;
+                case "SPORT":
+                    return _SPORT.FirstOrDefault(o => o.Id == id);
+
+                    break;
+                case "WORKOUT":
+                    return _WORKOUT.FirstOrDefault(o => o.Id == id);
+
+                    break;
+                case "FOOD":
+                    return _FOOD.FirstOrDefault(o => o.Id == id);
+                    break;
+
+                default:
+                    break;
+            }
+            return cont;
+        }
+
+
+
 
 
 
@@ -40,6 +94,6 @@ namespace live
             }
             return imageDict[path];
         }
-       
+
     }
 }

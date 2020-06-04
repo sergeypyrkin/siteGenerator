@@ -96,7 +96,8 @@ namespace live.Entity
 
             if (String.IsNullOrEmpty(mainImg) && imgs.Count == 1)
             {
-                mainImg = imgs.First();
+                string firstImg = imgs.First();
+                mainImg = DATA.RevImageDict[firstImg];
             }
 
             //теперь разрешаем title/соntent
