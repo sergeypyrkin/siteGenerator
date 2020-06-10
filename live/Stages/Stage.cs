@@ -10,7 +10,7 @@ namespace live.Stages
 
     //БАЗОВЫЙ КЛАСС ДЛЯ ЭТАПОВ
 
-    public  class Stage
+    public class Stage
     {
         public string NAME = "";
         public Stopwatch stopwatch;
@@ -23,14 +23,14 @@ namespace live.Stages
 
         public virtual void EXECUTE()
         {
-            
+
             stopwatch = new Stopwatch();
             stopwatch.Start();
             Console.WriteLine("");
             Console.WriteLine(NAME);
             //try
             //{
-                WORK();
+            WORK();
             //}
             //catch (Exception ex)
             //{
@@ -44,7 +44,7 @@ namespace live.Stages
 
         public virtual void report()
         {
-           // Console.WriteLine(NAME + " | " + stopwatch.Elapsed);
+            // Console.WriteLine(NAME + " | " + stopwatch.Elapsed);
             Console.WriteLine("");
             Console.WriteLine("");
             Console.WriteLine("");
@@ -52,7 +52,7 @@ namespace live.Stages
 
         public virtual void WORK()
         {
-            
+
         }
 
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using live.Entity;
@@ -59,11 +60,17 @@ namespace live.Stages
             template = template.Replace("$footer1", CONST.footer1);
             string result = template;
             result = createLast10(result);
-
+            result = createBiGWork(result);
 
             FILEWORK.WriteFileContent(fpath, result);
             Console.WriteLine("+ " + fpath);
 
+        }
+
+        private string createBiGWork(string result)
+        {
+            WORKOUT workout = DATA.getContent("WORKOUT", 6) as WORKOUT;
+            return result;
         }
 
 
@@ -116,6 +123,9 @@ namespace live.Stages
                 string imgPath = imglistprefix + "\\" + item.Id + "\\" + i1;
                 ii = ii.Replace("$img", imgPath);
 
+                ii = ii.Replace("$link", imglistprefix + "\\" + item.Id + ".html");
+
+
                 itemsCont = itemsCont + ii;
             }
 
@@ -126,5 +136,7 @@ namespace live.Stages
 
             return result;
         }
+
+
     }
 }

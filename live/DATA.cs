@@ -33,7 +33,7 @@ namespace live
             int i = 0;
             foreach (var cont in list)
             {
-                if (i > 9)
+                if (i > CONST.MAX_INDEX_NEWS_LENGTH)
                 {
                     break;
                 }
@@ -76,6 +76,13 @@ namespace live
                     break;
             }
             return cont;
+        }
+
+        //берем определенное путешествие
+        public static TRAVEL getTravel(int id)
+        {
+            TRAVEL travel = null;
+            return _TRAVELS.FirstOrDefault(o => o.Id == id);
         }
 
 

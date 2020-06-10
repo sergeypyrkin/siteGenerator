@@ -19,6 +19,10 @@ namespace live
         public static string youtube1;
         public static string youtube2;
         public static string VeE;
+
+
+        //количество новостей в ленте
+        public static int MAX_INDEX_NEWS_LENGTH = 9;
         
 
         public static void INIT()
