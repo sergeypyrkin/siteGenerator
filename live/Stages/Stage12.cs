@@ -69,7 +69,15 @@ namespace live.Stages
 
         private string createBiGWork(string result)
         {
-            WORKOUT workout = DATA.getContent("WORKOUT", 6) as WORKOUT;
+            WORKOUT workout = DATA.getContent("WORKOUT", 5) as WORKOUT;
+            string youCont = CONST.youtube3;
+            youCont = youCont.Replace("$srcitem", workout.youtubs.First());
+
+            result = result.Replace("$workDigYoutube", youCont);
+            string texts = string.Join("<br> <br>", workout.txtContents.ToArray());
+
+            result = result.Replace("$workDigText", texts);
+
             return result;
         }
 
