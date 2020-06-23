@@ -8,7 +8,7 @@ namespace live.Entity.Base
 {
     public class FRIENDS: CONTENT
     {
-        public string _type = "FRIENDS";
+        public static string _type = "FRIENDS";
         
 
     }

@@ -57,6 +57,9 @@ namespace live
 
             var stage5 = new Stage5("WORKOUT CREATING...");
 
+            var stage6 = new Stage6("FRIENDS CREATING...");
+
+
             var stage10 = new Stagef10("TRAVEL CREATING...");
 
             var stage11 = new Stage11("CONTACT CREATING...");
@@ -86,14 +89,17 @@ namespace live
 
             stage4.EXECUTE();
 
-            //stage5.EXECUTE();
+            stage5.EXECUTE();
+
+           // stage6.EXECUTE();
+
 
             //stage10.EXECUTE();
 
             //stage11.EXECUTE();
 
-            stage12.EXECUTE();
-     
+            //stage12.EXECUTE();
+
             COUNTER.count();
             // Stop timing.
             stopwatch.Stop();
