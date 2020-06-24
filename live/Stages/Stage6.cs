@@ -26,24 +26,79 @@ namespace live.Stages
         public Stage6(string name) : base(name)
         {
 
+
+        }
+
+
+        public override void WORK()
+        {
             prefixWork();
-            //createList();
+            createList();
             //createItems();
-            //saffixWork();
+            saffixWork();
+        }
+
+
+        public string imgName(List<string> used, WORKOUT item)
+        {
+            string img = item.imgs.FirstOrDefault(o => !used.Contains(o));
+            if (img != null)
+            {
+                used.Add(img);
+                string name = DATA.RevImageDict[img];
+                return name;
+
+            }
+            return "";
+        }
+
+
+        public void createList()
+        {
+            string template = FILEWORK.ReadFileContent(templateList);
+            string itemtemplate = FILEWORK.ReadFileContent(templateListItem);
+            template = template.Replace("$header1", CONST.header1);
+            template = template.Replace("$footer1", "");
+
+            string itemFull = "";
+            //List<> travels = DATA._TRAVELS.OrderByDescending(o => o.Id).ToList();
+            //foreach (TRAVEL item in travels)
+            //{
+            //    string itemres = itemtemplate;
+
+            //    int index = 1;
+            //    foreach (string img in item.mainIng)
+            //    {
+            //        string sname = DATA.imageDict[img];
+            //        string rr = "$image" + index;
+            //        itemres = itemres.Replace(rr, imglistprefix + "\\" + item.Id + "\\" + img);
+            //        index++;
+            //    }
+
+            //    itemres = itemres.Replace("$city", item.name);
+            //    itemres = itemres.Replace("$date", item.ldate);
+            //    itemres = itemres.Replace("$price", item.lcount);
+            //    itemres = itemres.Replace("$link", imglistprefix + "\\" + item.Id + ".html");
+            //    itemFull = itemFull + itemres;
+            //}
+            string result = template.Replace("param_models", itemFull);
+            FILEWORK.WriteFileContent(opath, result);
+            Console.WriteLine("+ " + fpath);
+
         }
 
 
         public void prefixWork()
         {
             //0 инит
-            picturesf = PATH.dataw;
+            picturesf = PATH.dataf;
             listname = FRIENDS._type.ToLower() + ".html";
             outfolder = PATH.outf + "\\" + FRIENDS._type.ToLower();
             fpath = PATH.site + "\\" + listname;
             htmlfolder = PATH.site + "\\data\\" + FRIENDS._type.ToLower();
             opath = outfolder + "\\" + listname;
-            templateList = PATH.templ + "\\" + FRIENDS._type.ToLower() + "\\" + FRIENDS._type.ToLower() + "list.html";
-            templateListItem = PATH.templ + "\\" + FRIENDS._type.ToLower() + "\\" + FRIENDS._type.ToLower() + "listitem.txt";
+            templateList = PATH.templ + "\\" + FRIENDS._type.ToLower() + "\\catalog.html";
+            templateListItem = PATH.templ + "\\" + FRIENDS._type.ToLower() + "\\listitem.txt";
             imglistprefix = "data\\" + FRIENDS._type.ToLower();
             itemtemplate = PATH.templ + "\\" + FRIENDS._type.ToLower() + "\\itemworkout.html";
             //1. Очищение out
@@ -53,6 +108,15 @@ namespace live.Stages
 
             //2. Очищаем html
             FILEWORK.clearDir(htmlfolder);
+        }
+
+        public void saffixWork()
+        {
+            //4. Копирование файлов
+            File.Copy(opath, fpath);
+
+            //5. Копирование из Pictures
+            FILEWORK.CopyDir(picturesf, htmlfolder);
         }
 
     }
