@@ -61,26 +61,31 @@ namespace live.Stages
             template = template.Replace("$footer1", "");
 
             string itemFull = "";
-            //List<> travels = DATA._TRAVELS.OrderByDescending(o => o.Id).ToList();
-            //foreach (TRAVEL item in travels)
-            //{
-            //    string itemres = itemtemplate;
+            List<FRIENDS> friends = DATA._FRIENDS.OrderByDescending(o => o.Id).ToList();
+            foreach (FRIENDS item in friends)
+            {
+                string itemres = itemtemplate;
 
-            //    int index = 1;
-            //    foreach (string img in item.mainIng)
-            //    {
-            //        string sname = DATA.imageDict[img];
-            //        string rr = "$image" + index;
-            //        itemres = itemres.Replace(rr, imglistprefix + "\\" + item.Id + "\\" + img);
-            //        index++;
-            //    }
+                int index = 1;
+                //foreach (string img in item.mainIng)
+                //{
+                //    string sname = DATA.imageDict[img];
+                //    string rr = "$image" + index;
+                //    itemres = itemres.Replace(rr, imglistprefix + "\\" + item.Id + "\\" + img);
+                //    index++;
+                //}
 
-            //    itemres = itemres.Replace("$city", item.name);
-            //    itemres = itemres.Replace("$date", item.ldate);
-            //    itemres = itemres.Replace("$price", item.lcount);
-            //    itemres = itemres.Replace("$link", imglistprefix + "\\" + item.Id + ".html");
-            //    itemFull = itemFull + itemres;
-            //}
+                 string rr = "$image" + index;
+                 itemres = itemres.Replace(rr, imglistprefix + "\\" + item.Id + "\\" + item.mainImg);
+                //itemres = itemres.Replace("$city", item.name);
+                itemres = itemres.Replace("$date", item.date.ToString("yyyy-MM-dd"));
+                //itemres = itemres.Replace("$price", item.lcount);
+                itemres = itemres.Replace("$link", imglistprefix + "\\" + item.Id + ".html");
+
+                string texts = string.Join("<br>", item.txtContents.ToArray());
+                itemres = itemres.Replace("$text","<p>" +texts+"</p>");
+                itemFull = itemFull + itemres;
+            }
             string result = template.Replace("param_models", itemFull);
             FILEWORK.WriteFileContent(opath, result);
             Console.WriteLine("+ " + fpath);
