@@ -34,8 +34,63 @@ namespace live.Stages
         {
             prefixWork();
             createList();
-            //createItems();
+            createItems();
             saffixWork();
+        }
+
+
+        private void createItems()
+        {
+            string template = FILEWORK.ReadFileContent(itemtemplate);
+            template = template.Replace("$header2", CONST.header2);
+            template = template.Replace("$footer2", CONST.footer2);
+            string itemtemplateitem = FILEWORK.ReadFileContent(PATH.templ + "\\" + FRIENDS._type.ToUpper() + "\\itemfriendsitem.txt");
+
+            foreach (var item in DATA._FRIENDS)
+            {
+                string result = template;
+                result = result.Replace("$Id", item.Id.ToString());
+                result = result.Replace("$date", item.date.ToString("yyyy-MM-dd"));
+                result = result.Replace("$mainImg", item.Id + "/" + item.mainImg);
+
+                string texts = string.Join("<br> <br>", item.txtContents.ToArray());
+                result = result.Replace("$text", "<p>" + texts + "</p>");
+
+                string imgres = "";
+                List<string> imgs = item.imgs.Where(o => o != DATA.imageDict[item.mainImg]).ToList();
+                foreach (string img in imgs)
+                {
+                    string itimgs = itemtemplateitem;
+                    string ig = DATA.RevImageDict[img];
+                    itimgs = itimgs.Replace("$image", item.Id + "/" + ig);
+                    string bi = "build" + item.Id;
+                    itimgs = itimgs.Replace("$fancygroupfull", bi);
+
+                    imgres = imgres + itimgs;
+
+                }
+                string youcont = "";
+                foreach (string you in item.youtubs)
+                {
+                    bool isOne = item.youtubs.Count == 1 || (item.youtubs.Last() == you && item.youtubs.Count % 2 != 0);
+                    string itimgs = !isOne ? CONST.youtube1 : CONST.youtube2;
+                    itimgs = itimgs.Replace("$srcitem", you);
+                    youcont = youcont + itimgs;
+
+                }
+                result = result.Replace("$youtubs", youcont);
+
+                result = result.Replace("$images", imgres);
+
+
+                string path = PATH.site + "\\data\\friends\\" + item.Id + ".html";
+
+                FILEWORK.WriteFileContent(path, result);
+                Console.WriteLine("+ " + path);
+
+
+            }
+
         }
 
 
@@ -105,7 +160,7 @@ namespace live.Stages
             templateList = PATH.templ + "\\" + FRIENDS._type.ToLower() + "\\catalog.html";
             templateListItem = PATH.templ + "\\" + FRIENDS._type.ToLower() + "\\listitem.txt";
             imglistprefix = "data\\" + FRIENDS._type.ToLower();
-            itemtemplate = PATH.templ + "\\" + FRIENDS._type.ToLower() + "\\itemworkout.html";
+            itemtemplate = PATH.templ + "\\" + FRIENDS._type.ToLower() + "\\itemfriends.html";
             //1. Очищение out
             File.Delete(fpath);
 
