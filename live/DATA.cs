@@ -29,7 +29,7 @@ namespace live
         public static List<CONTENT> get10Last()
         {
             List<CONTENT> result = new List<CONTENT>();
-            var list = DATA._CONTENT.Where(o=>o is WORKOUT).OrderByDescending(o => o.date).ToList();
+            var list = DATA._CONTENT.Where(o=>o is WORKOUT || o is FRIENDS).OrderByDescending(o => o.date).ToList();
             int i = 0;
             foreach (var cont in list)
             {
