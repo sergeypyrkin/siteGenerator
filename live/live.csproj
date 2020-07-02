@@ -71,6 +71,7 @@
     <Compile Include="Stages\Stage4.cs" />
     <Compile Include="Stages\Stage5.cs" />
     <Compile Include="Stages\Stage6.cs" />
+    <Compile Include="Stages\Stage7.cs" />
     <Compile Include="Utils\COUNTER.cs" />
     <Compile Include="Utils\Logger.cs" />
   </ItemGroup>

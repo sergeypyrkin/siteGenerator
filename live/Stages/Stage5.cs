@@ -8,6 +8,8 @@ using live.Entity.Base;
 
 namespace live.Stages
 {
+
+    //friends
     public class Stage5 : Stage
     {
 
