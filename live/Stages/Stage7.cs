@@ -121,6 +121,11 @@ namespace live.Stages
             List<DOGANDCAT> friends = DATA._DOGANDCAT.OrderByDescending(o => o.Id).ToList();
             foreach (DOGANDCAT item in friends)
             {
+
+                if (item.Id == 8)
+                {
+                    
+                }
                 string itemres = itemtemplate;
 
                 int index = 1;
