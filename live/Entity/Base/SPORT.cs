@@ -8,7 +8,7 @@ namespace live.Entity.Base
 {
     public class SPORT: CONTENT
     {
-        public string _type = "SPORT";
+        public static string _type = "SPORT";
 
     }
 }
