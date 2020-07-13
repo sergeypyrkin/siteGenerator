@@ -9,8 +9,8 @@ using live.Entity.Base;
 namespace live.Stages
 {
 
-    //спорт
-    public class Stage8 : Stage
+    //вкусняшки
+    public class Stage9 : Stage
     {
 
         public static string outfolder;
@@ -23,9 +23,9 @@ namespace live.Stages
         public static string templateListItem;
         public static string itemtemplate;              //для отдельной страницы
 
-        public string imglistprefix = "data\\sport\\";
+        public string imglistprefix = "data\\food\\";
 
-        public Stage8(string name) : base(name)
+        public Stage9(string name) : base(name)
         {
 
 
@@ -36,7 +36,7 @@ namespace live.Stages
         {
             prefixWork();
             createList();
-            createItems();
+            //createItems();
             saffixWork();
         }
 
@@ -46,9 +46,9 @@ namespace live.Stages
             string template = FILEWORK.ReadFileContent(itemtemplate);
             template = template.Replace("$header2", CONST.header2);
             template = template.Replace("$footer2", CONST.footer2);
-            string itemtemplateitem = FILEWORK.ReadFileContent(PATH.templ + "\\" + SPORT._type.ToUpper() + "\\itemsportitem.txt");
+            string itemtemplateitem = FILEWORK.ReadFileContent(PATH.templ + "\\" + FOOD._type.ToUpper() + "\\itemfooditem.txt");
 
-            foreach (var item in DATA._SPORT)
+            foreach (var item in DATA._FOOD)
             {
                 string result = template;
                 result = result.Replace("$Id", item.Id.ToString());
@@ -85,7 +85,7 @@ namespace live.Stages
                 result = result.Replace("$images", imgres);
 
 
-                string path = PATH.site + "\\data\\sport\\" + item.Id + ".html";
+                string path = PATH.site + "\\data\\food\\" + item.Id + ".html";
 
                 FILEWORK.WriteFileContent(path, result);
                 Console.WriteLine("+ " + path);
@@ -117,8 +117,8 @@ namespace live.Stages
             template = template.Replace("$header1", CONST.header1);
             template = template.Replace("$footer1", "");
             string itemFull = "";
-            List<SPORT> friends = DATA._SPORT.OrderByDescending(o => o.Id).ToList();
-            foreach (SPORT item in friends)
+            List<FOOD> friends = DATA._FOOD.OrderByDescending(o => o.Id).ToList();
+            foreach (FOOD item in friends)
             {
 
                 if (item.Id == 8)
@@ -157,16 +157,16 @@ namespace live.Stages
         public void prefixWork()
         {
             //0 инит
-            picturesf = PATH.datas;
-            listname = SPORT._type.ToLower() + ".html";
-            outfolder = PATH.outf + "\\" + SPORT._type.ToLower();
+            picturesf = PATH.datafood;
+            listname = FOOD._type.ToLower() + ".html";
+            outfolder = PATH.outf + "\\" + FOOD._type.ToLower();
             fpath = PATH.site + "\\" + listname;
-            htmlfolder = PATH.site + "\\data\\" + SPORT._type.ToLower();
+            htmlfolder = PATH.site + "\\data\\" + FOOD._type.ToLower();
             opath = outfolder + "\\" + listname;
-            templateList = PATH.templ + "\\" + SPORT._type.ToLower() + "\\catalog.html";
-            templateListItem = PATH.templ + "\\" + SPORT._type.ToLower() + "\\listitem.txt";
-            imglistprefix = "data\\" + SPORT._type.ToLower();
-            itemtemplate = PATH.templ + "\\" + SPORT._type.ToLower() + "\\itemsport.html";
+            templateList = PATH.templ + "\\" + FOOD._type.ToLower() + "\\catalog.html";
+            templateListItem = PATH.templ + "\\" + FOOD._type.ToLower() + "\\listitem.txt";
+            imglistprefix = "data\\" + FOOD._type.ToLower();
+            itemtemplate = PATH.templ + "\\" + FOOD._type.ToLower() + "\\itemfood.html";
             //1. Очищение out
             File.Delete(fpath);
 
