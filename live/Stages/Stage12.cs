@@ -61,6 +61,8 @@ namespace live.Stages
             string result = template;
             result = createLast10(result);
             result = createBiGWork(result);
+            result = createBiGFriends(result);
+
 
             FILEWORK.WriteFileContent(fpath, result);
             Console.WriteLine("+ " + fpath);
@@ -78,6 +80,22 @@ namespace live.Stages
 
             result = result.Replace("$workDigText", texts);
 
+            return result;
+        }
+
+        private string createBiGFriends(string result)
+        {
+            FRIENDS item = DATA._FRIENDS.Last();
+            string i1 = item.mainImg;
+            string sname = DATA.imageDict[i1];
+            string imglistprefix = "data\\friends";
+            result = result.Replace("$friendimagelink", imglistprefix + "\\" + item.Id + ".html");
+
+            result = result.Replace("$friendimagesrc", imglistprefix + "\\" + item.Id + "\\" + i1);
+
+            string texts = string.Join("<br> <br>", item.txtContents.ToArray());
+
+            result = result.Replace("$frindDigText", texts);
             return result;
         }
 

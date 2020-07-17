@@ -107,7 +107,7 @@ namespace live
 
             //    stage11.EXECUTE();
 
-            //    stage12.EXECUTE();
+            stage12.EXECUTE();
 
             COUNTER.count();
             // Stop timing.
