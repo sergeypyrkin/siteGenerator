@@ -71,15 +71,18 @@ namespace live.Stages
 
         private string createBiGWork(string result)
         {
-            WORKOUT workout = DATA.getContent("WORKOUT", 5) as WORKOUT;
-            string youCont = CONST.youtube3;
-            youCont = youCont.Replace("$srcitem", workout.youtubs.First());
+            WORKOUT item = DATA._WORKOUT.Last();
+            string i1 = item.mainImg;
+            string sname = DATA.imageDict[i1];
+            string imglistprefix = "data\\workout";
+            result = result.Replace("$workoutimagelink", imglistprefix + "\\" + item.Id + ".html");
+            result = result.Replace("$workoutdate", item.date.ToString("yyyy-MM-dd"));
 
-            result = result.Replace("$workDigYoutube", youCont);
-            string texts = string.Join("<br> <br>", workout.txtContents.ToArray());
+            result = result.Replace("$workoutimagesrc", imglistprefix + "\\" + item.Id + "\\" + i1);
 
-            result = result.Replace("$workDigText", texts);
+            string texts = string.Join("<br> <br>", item.txtContents.ToArray());
 
+            result = result.Replace("$workoutDigText", texts);
             return result;
         }
 
@@ -90,6 +93,7 @@ namespace live.Stages
             string sname = DATA.imageDict[i1];
             string imglistprefix = "data\\friends";
             result = result.Replace("$friendimagelink", imglistprefix + "\\" + item.Id + ".html");
+            result = result.Replace("$frienddate", item.date.ToString("yyyy-MM-dd"));
 
             result = result.Replace("$friendimagesrc", imglistprefix + "\\" + item.Id + "\\" + i1);
 
