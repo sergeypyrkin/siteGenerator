@@ -62,11 +62,30 @@ namespace live.Stages
             result = createLast10(result);
             result = createBiGWork(result);
             result = createBiGFriends(result);
+            result = createBiGDog(result);
 
 
             FILEWORK.WriteFileContent(fpath, result);
             Console.WriteLine("+ " + fpath);
 
+        }
+
+
+        private string createBiGDog(string result)
+        {
+            DOGANDCAT item = DATA._DOGANDCAT.Last();
+            string i1 = item.mainImg;
+            string sname = DATA.imageDict[i1];
+            string imglistprefix = "data\\dogandcat";
+            result = result.Replace("$dogandcatimagelink", imglistprefix + "\\" + item.Id + ".html");
+            result = result.Replace("$dogandcatdate", item.date.ToString("yyyy-MM-dd"));
+
+            result = result.Replace("$dogandcatimagesrc", imglistprefix + "\\" + item.Id + "\\" + i1);
+
+            string texts = string.Join("<br> <br>", item.txtContents.ToArray());
+
+            result = result.Replace("$dogandcatDigText", texts);
+            return result;
         }
 
         private string createBiGWork(string result)
