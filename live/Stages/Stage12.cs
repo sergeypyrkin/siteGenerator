@@ -63,11 +63,42 @@ namespace live.Stages
             result = createBiGWork(result);
             result = createBiGFriends(result);
             result = createBiGDog(result);
+            result = createBiGSport(result);
+            result = createBiGFood(result);
 
 
             FILEWORK.WriteFileContent(fpath, result);
             Console.WriteLine("+ " + fpath);
 
+        }
+
+        private string createBiGFood(string result)
+        {
+            FOOD item = DATA._FOOD.Last();
+            string i1 = item.mainImg;
+            string sname = DATA.imageDict[i1];
+            string imglistprefix = "data\\food";
+            result = result.Replace("$fooddate", item.date.ToString("yyyy-MM-dd"));
+            result = result.Replace("$foodimagesrc", imglistprefix + "\\" + item.Id + "\\" + i1);
+            return result;
+        }
+
+
+        private string createBiGSport(string result)
+        {
+            SPORT item = DATA._SPORT.Last();
+            string i1 = item.mainImg;
+            string sname = DATA.imageDict[i1];
+            string imglistprefix = "data\\sport";
+            result = result.Replace("$sportimagelink", imglistprefix + "\\" + item.Id + ".html");
+            result = result.Replace("$sportdate", item.date.ToString("yyyy-MM-dd"));
+
+            result = result.Replace("$sportimagesrc", imglistprefix + "\\" + item.Id + "\\" + i1);
+
+            string texts = string.Join("<br> <br>", item.txtContents.ToArray());
+
+            result = result.Replace("$sportDigText", texts);
+            return result;
         }
 
 

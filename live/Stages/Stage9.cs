@@ -116,6 +116,9 @@ namespace live.Stages
             string itemtemplate = FILEWORK.ReadFileContent(templateListItem);
             template = template.Replace("$header1", CONST.header1);
             template = template.Replace("$footer1", "");
+            template = template.Replace("$numcats", DATA._FOOD.Count.ToString());
+
+               
             string itemFull = "";
             List<FOOD> friends = DATA._FOOD.OrderByDescending(o => o.Id).ToList();
             foreach (FOOD item in friends)
