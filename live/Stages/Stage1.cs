@@ -29,7 +29,7 @@ namespace live.Stages
             checkDir(PATH._newf);
             checkDir(PATH._newd);
             checkDir(PATH._news);
-            checkDir(PATH._newfood);
+            //checkDir(PATH._newfood);
 
 
         }

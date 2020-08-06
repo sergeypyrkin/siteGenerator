@@ -61,7 +61,7 @@ namespace live
 
             var stage7 = new Stage7("DOGANDCAT CREATING...");
 
-           // var stage8 = new Stage8("SPORT CREATING...");
+            var stage8 = new Stage8("SPORT CREATING...");
 
             var stage9 = new Stage9("FOOD CREATING...");
 
@@ -94,18 +94,19 @@ namespace live
 
             stage4.EXECUTE();
 
-            //    stage5.EXECUTE();
+            //stage5.EXECUTE();
 
-            //    stage6.EXECUTE();
+            //stage6.EXECUTE();
 
-            //   stage7.EXECUTE();
+            //stage7.EXECUTE();
 
-            //  stage8.EXECUTE();
+            //stage8.EXECUTE();
+
             stage9.EXECUTE();
 
-            //    stage10.EXECUTE();
+            stage10.EXECUTE();
 
-            //    stage11.EXECUTE();
+            stage11.EXECUTE();
 
             stage12.EXECUTE();
 
