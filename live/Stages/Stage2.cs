@@ -33,26 +33,8 @@ namespace live.Stages
                 if (_ref._type == "FOOD")
                 {
                     //для котов
-                    int stIndex2 = getStartIndex(_ref.destinationPass);
-                    FileInfo[] fi = di.GetFiles();
-                    foreach (var content in fi)
-                    {
-
-                        string ins = new String(' ', 20 - "CHANGE".Length);
-
-                        //переписываем данные файла info.txt
-                        Console.WriteLine(String.Format("{0}{1}{3}| {2}", CONST._INS, "CHANGE", content.Name, ins));
-                        //1. создаем папкочку
-                        string pass = _ref.destinationPass + "//" + stIndex2.ToString();
-                        Directory.CreateDirectory(pass);
-                        //2. копируем картинку
-                        string fname = content.FullName;
-                        string destname = _ref.destinationPass + "//" + stIndex2.ToString() + "//" + content.Name;
-                        File.Move(fname, destname);
-                        stIndex2++;
-
-                        // changeInfoContent(content);
-                    }
+                    catParseWork(_ref, di);
+                    
                     continue;
                 }
 
@@ -92,6 +74,41 @@ namespace live.Stages
                 }
             }
 
+        }
+
+        private void catParseWork(refItem _ref, DirectoryInfo di)
+        {
+            int stIndex2 = getStartIndex(_ref.destinationPass);
+            FileInfo[] fi = di.GetFiles();
+            foreach (var content in fi)
+            {
+
+                string ins = new String(' ', 20 - "CHANGE".Length);
+
+                //переписываем данные файла info.txt
+                Console.WriteLine(String.Format("{0}{1}{3}| {2}", CONST._INS, "CHANGE", content.Name, ins));
+                //1. создаем папкочку
+                string pass = _ref.destinationPass + "//" + stIndex2.ToString();
+                Directory.CreateDirectory(pass);
+                //2. копируем картинку
+                string fname = content.FullName;
+                string relPath = _ref.destinationPass + "//" + stIndex2.ToString() + "//";
+                string destname = relPath + content.Name;
+                File.Move(fname, destname);
+                //3. создание txt
+                string newName = relPath + "info.txt";
+                //File.Create(newName);
+                //4. запись даты
+                FileInfo f = new FileInfo(destname);
+                var d = File.GetLastWriteTime(destname);
+                string tdade = d.ToString("yyyy-MM-dd HH:mm:ss");
+
+                string newContent = tdade + "\n\n";
+                FILEWORK.WriteFileContent(newName, newContent);
+                stIndex2++;
+
+                // changeInfoContent(content);
+            }
         }
 
 
