@@ -94,13 +94,13 @@ namespace live
 
             stage4.EXECUTE();
 
-            //stage5.EXECUTE();
+            stage5.EXECUTE();
 
-            //stage6.EXECUTE();
+            stage6.EXECUTE();
 
-            //stage7.EXECUTE();
+            stage7.EXECUTE();
 
-            //stage8.EXECUTE();
+            stage8.EXECUTE();
 
             stage9.EXECUTE();
 

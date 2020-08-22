@@ -17,7 +17,8 @@ namespace live.Entity.Base
         public string lcount; //5000
         public List<string> mainIng = new List<string>();
         public List<string> imgs = new List<string>();
-        public Dictionary<int, LSTEXT> destrictions = new Dictionary<int, LSTEXT>();
+        public Dictionary<string, LSTEXT> destrictions = new Dictionary<string, LSTEXT>();
+        public List<string> order = new List<string>();
         public string description;
 
         public string praceS;
@@ -31,6 +32,7 @@ namespace live.Entity.Base
         {
             public string l;
             public string s;
+            public string day;
         }
     }
 }

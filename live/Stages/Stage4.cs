@@ -57,6 +57,12 @@ namespace live.Stages
             String[] lines = content.Split(new string[] { "\n" }, StringSplitOptions.None);
 
 
+            #region parse order.txt
+            string order = FILEWORK.ReadFileContent(f.FullName + "//order.txt");
+            String[] order_lines = order.Split(new string[] { "\n" }, StringSplitOptions.None);
+            travel.order = order_lines.ToList();
+            #endregion
+
 
             travel.description = FILEWORK.ReadFileContent(f.FullName + "//description.txt");
 
@@ -123,12 +129,11 @@ namespace live.Stages
                 string fname = ff.Name;
                 String[] ll = fname.Split(new string[] { ".txt" }, StringSplitOptions.None);
                 string shortName = ll[0];
-                int number;
-                bool success = Int32.TryParse(shortName, out number);
+                bool success = travel.order.Contains(shortName);
                 if (success)
                 {
 
-                    addLSText(number, travel, ff.FullName);
+                    addLSText(shortName, travel, ff.FullName);
 
 
                 }
@@ -137,7 +142,7 @@ namespace live.Stages
             DATA._TRAVELS.Add(travel);
         }
 
-        private void addLSText(int number, TRAVEL travel, string ffFullName)
+        private void addLSText(string number, TRAVEL travel, string ffFullName)
         {
             string l;
             string s;
@@ -180,6 +185,7 @@ namespace live.Stages
             TRAVEL.LSTEXT tt = new TRAVEL.LSTEXT();
             tt.l = l;
             tt.s = s;
+            tt.day = number;
 
 
             travel.destrictions.Add(number, tt);
