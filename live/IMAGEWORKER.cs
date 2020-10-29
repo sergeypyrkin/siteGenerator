@@ -70,7 +70,7 @@ namespace live
         public static void reportTransformImage(string path, double size1, double size2)
         {
             String p = String.Format("{0} -> {1}", size1, size2);
-            string ins = new String(' ', 12 - p.Length);
+            string ins = new String(' ', 15 - p.Length);
             String message = String.Format(CONST._INS + "NEW IMAGE  | {1} -> {2} {3} |  {0} ", path, size1,size2,ins);
             Console.WriteLine(message);
         }
