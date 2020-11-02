@@ -41,9 +41,9 @@ namespace live.Stages
         public void prefixWork()
         {
             //0 инит
-            string listname = "index.html";
+            string listname = "report.html";
             fpath = PATH.site + "\\" + listname;
-            templateList = PATH.templ + "\\index.html";
+            templateList = PATH.templ + "\\report.html";
             opath = outfolder + "\\" + listname;
 
 
@@ -58,11 +58,110 @@ namespace live.Stages
             template = template.Replace("$header1", CONST.header1);
             template = template.Replace("$footer1", CONST.footer1);
             string result = template;
+            result = executeType("travel", 1, result);
+            result = executeType("work", 2, result);
+            result = executeType("friends", 3, result);
+            result = executeType("sport", 4, result);
+            result = executeType("dog", 5, result);
+            result = executeType("food", 6, result);
+
 
             FILEWORK.WriteFileContent(fpath, result);
             Console.WriteLine("+ " + fpath);
 
         }
+
+        private string executeType(string name, int i, string result)
+        {
+            int count = 0;
+            int img = 0;
+            int youtube = 0;
+            if (name == "travel")
+            {
+                var items = DATA._TRAVELS;
+                foreach (var item in items)
+                {
+                    count = count+1;
+                    img = img + item.imgs.Count;
+                    youtube = youtube + 0;
+                }
+            }
+
+            if (name == "work")
+            {
+                var items = DATA._WORKOUT;
+                foreach (var item in items)
+                {
+                    count = count + 1;
+                    img = img + item.imgs.Count;
+                    youtube = youtube + item.youtubs.Count;
+                }
+            }
+
+            if (name == "friends")
+            {
+                var items = DATA._FRIENDS;
+                foreach (var item in items)
+                {
+                    count = count + 1;
+                    img = img + item.imgs.Count;
+                    youtube = youtube + item.youtubs.Count;
+                }
+            }
+
+            if (name == "sport")
+            {
+                var items = DATA._SPORT;
+                foreach (var item in items)
+                {
+                    count = count + 1;
+                    img = img + item.imgs.Count;
+                    youtube = youtube + item.youtubs.Count;
+                }
+            }
+
+            if (name == "dog")
+            {
+                var items = DATA._DOGANDCAT;
+                foreach (var item in items)
+                {
+                    count = count + 1;
+                    img = img + item.imgs.Count;
+                    youtube = youtube + item.youtubs.Count;
+                }
+            }
+
+            if (name == "food")
+            {
+                var items = DATA._FOOD;
+                foreach (var item in items)
+                {
+                    count = count + 1;
+                    img = img + item.imgs.Count;
+                    youtube = youtube + item.youtubs.Count;
+                }
+            }
+
+
+
+            result = result.Replace("$col"+i.ToString(), count.ToString());
+            result = result.Replace("$img" + i.ToString(), img.ToString());
+            result = result.Replace("$youtube" + i.ToString(), youtube.ToString());
+
+
+            return result;
+        }
+
+
+        public class TypeCounter
+        {
+            public string name;
+            public int count;
+            public int img;
+            public int youtube;
+        }
+
+
 
 
 
