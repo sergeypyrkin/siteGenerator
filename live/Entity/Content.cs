@@ -33,19 +33,27 @@ namespace live.Entity
         public List<string> txtContents = new List<string>();
 
 
-
-
-        
-    
-        
-         //для парсинга
-
-
-        
+        //вторая переделка
+        public bool youtubeMode = false;
+        public List<string> img1 = new List<string>();
+        public List<string> img2 = new List<string>();
+        public List<string> you1 = new List<string>();
+        public List<string> you2 = new List<string>();
 
 
 
-    
+
+
+
+
+        //для парсинга
+
+
+
+
+
+
+
 
         public void parse()
         {
@@ -115,6 +123,33 @@ namespace live.Entity
                 this.mainText = txtContents[1];
             }
 
+
+            string mainIngFullRef = DATA.getImgFullPath(mainImg);
+            List<string> otherImg = imgs.Where(o => o != mainIngFullRef).ToList();
+            int MAXIMG1 = 9;
+            int i = 0;
+            foreach (string s in otherImg)
+            {
+                if (i >= MAXIMG1)
+                {
+                    img2.Add(s);
+                    continue;
+                }
+                img1.Add(s);
+                i++;
+                
+            }
+            youtubeMode = hasYoutube;
+            if (hasYoutube)
+            {
+                you1.Add(youtubs.First());
+            }
+
+            you2 = youtubs.Where(o => !you1.Contains(o)).ToList();
+            if (you2.Count > 0)
+            {
+                
+            }
 
         }
 

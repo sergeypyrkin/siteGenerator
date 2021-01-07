@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,13 @@ namespace live.Stages
         public static string templateList;
         public static string templateListItem;
         public static string itemtemplate;              //для отдельной страницы
+
+
+
+        public int items;
+        public int imgs;
+        public int youtubs;
+        public string sizes;
 
         public string last10templ;
 
@@ -64,7 +72,13 @@ namespace live.Stages
             result = executeType("sport", 4, result);
             result = executeType("dog", 5, result);
             result = executeType("food", 6, result);
-
+            double catalogSize = 0;
+            catalogSize = FILEWORK.sizeOfFolder(PATH.data, ref catalogSize); //Вызываем наш рекурсивный метод
+            sizes = String.Format("{0} ГБ", catalogSize);
+            result = result.Replace("$1", items.ToString());
+            result = result.Replace("$2", imgs.ToString());
+            result = result.Replace("$3", youtubs.ToString());
+            result = result.Replace("$4", sizes);
 
             FILEWORK.WriteFileContent(fpath, result);
             Console.WriteLine("+ " + fpath);
@@ -141,7 +155,9 @@ namespace live.Stages
                     youtube = youtube + item.youtubs.Count;
                 }
             }
-
+            items = items + count;
+            imgs = imgs + img;
+            youtubs = youtubs + count;
 
 
             result = result.Replace("$col"+i.ToString(), count.ToString());
