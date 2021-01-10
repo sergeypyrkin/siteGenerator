@@ -57,20 +57,32 @@ namespace live.Stages
 
                 string texts = string.Join("<br> <br>", item.txtContents.ToArray());
                 result = result.Replace("$text", "<p>"+texts+"</p>");
-
-                string imgres = "";
-                List<string> imgs = item.imgs.Where(o => o != DATA.imageDict[item.mainImg]).ToList();
-                foreach (string img in imgs)
+                string bi = "build" + item.Id;
+                //боковые КОНТЕНТ //либо ютуб первый либо картинки
+                if (item.hasYoutube)
                 {
-                    string itimgs = itemtemplateitem;
-                    string ig = DATA.RevImageDict[img];
-                    itimgs = itimgs.Replace("$image", item.Id + "/" + ig);
-                    string bi = "build" + item.Id;
-                    itimgs = itimgs.Replace("$fancygroupfull", bi);
-
-                    imgres = imgres + itimgs;
-
+                    //правый ютуб
+                    string you = item.you1[0];
+                    string ycont = CONST.youtubeRight;
+                    ycont = ycont.Replace("$srcitem", you);
+                    result = result.Replace("$leftcontent", ycont);
                 }
+                else
+                {
+                    //правые картинки
+                    string imgres = "";
+                    List<string> imgs = item.img1;
+                    foreach (string img in imgs)
+                    {
+                        string itimgs = itemtemplateitem;
+                        string ig = DATA.RevImageDict[img];
+                        itimgs = itimgs.Replace("$image", item.Id + "/" + ig);
+                        imgres = imgres + itimgs;
+                    }
+                    result = result.Replace("$leftcontent", imgres);
+                }
+                result = result.Replace("$fancygroupfull", bi);
+
                 string youcont = "";
                 foreach (string you in item.youtubs)
                 {
@@ -82,7 +94,6 @@ namespace live.Stages
                 }
                 result = result.Replace("$youtubs", youcont);
 
-                result = result.Replace("$images", imgres);
 
 
                 string path = PATH.site + "\\data\\workout\\"+item.Id + ".html";

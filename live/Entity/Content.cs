@@ -128,18 +128,23 @@ namespace live.Entity
             List<string> otherImg = imgs.Where(o => o != mainIngFullRef).ToList();
             int MAXIMG1 = 9;
             int i = 0;
-            foreach (string s in otherImg)
-            {
-                if (i >= MAXIMG1)
-                {
-                    img2.Add(s);
-                    continue;
-                }
-                img1.Add(s);
-                i++;
-                
-            }
             youtubeMode = hasYoutube;
+            if (!hasYoutube)
+            {
+                foreach (string s in otherImg)
+                {
+                    if (i >= MAXIMG1)
+                    {
+                        break;
+                    }
+                    img1.Add(s);
+                    i++;
+
+                }
+            }
+
+            img2 = otherImg.Where(o => !img1.Contains(o)).ToList();
+
             if (hasYoutube)
             {
                 you1.Add(youtubs.First());
