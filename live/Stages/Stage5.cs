@@ -81,18 +81,30 @@ namespace live.Stages
                     }
                     result = result.Replace("$leftcontent", imgres);
                 }
-                result = result.Replace("$fancygroupfull", bi);
+
+                //отстаточные картинки
+                string imgsco = "";
+                List<string> imgs2 = item.img2;
+                foreach (string img in imgs2)
+                {
+                    string itimgs = itemtemplateitem;
+                    string ig = DATA.RevImageDict[img];
+                    itimgs = itimgs.Replace("$image", item.Id + "/" + ig);
+                    imgsco = imgsco + itimgs;
+                }
+                result = result.Replace("$images", imgsco);
 
                 string youcont = "";
-                foreach (string you in item.youtubs)
+                foreach (string you in item.you2)
                 {
-                    bool isOne = item.youtubs.Count == 1 || (item.youtubs.Last() == you && item.youtubs.Count % 2 != 0);
+                    bool isOne = item.you2.Count == 1 || (item.you2.Last() == you && item.you2.Count % 2 != 0);
                     string itimgs = !isOne ? CONST.youtube1: CONST.youtube2;
                     itimgs = itimgs.Replace("$srcitem", you);
                     youcont = youcont + itimgs;
 
                 }
                 result = result.Replace("$youtubs", youcont);
+                result = result.Replace("$fancygroupfull", bi);
 
 
 
