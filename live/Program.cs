@@ -98,9 +98,9 @@ namespace live
 
             //stage5.EXECUTE();
 
-            stage6.EXECUTE();
+           // stage6.EXECUTE();
 
-            //stage7.EXECUTE();
+            stage7.EXECUTE();
 
             //stage8.EXECUTE();
 
