@@ -57,32 +57,55 @@ namespace live.Stages
 
                 string texts = string.Join("<br> <br>", item.txtContents.ToArray());
                 result = result.Replace("$text", "<p>" + texts + "</p>");
+                string bi = "build" + item.Id;
+                //боковые КОНТЕНТ //либо ютуб первый либо картинки
+                if (item.hasYoutube)
+                {
+                    //правый ютуб
+                    string you = item.you1[0];
+                    string ycont = CONST.youtubeRight;
+                    ycont = ycont.Replace("$srcitem", you);
+                    result = result.Replace("$leftcontent", ycont);
+                }
+                else
+                {
+                    //правые картинки
+                    string imgres = "";
+                    List<string> imgs = item.img1;
+                    foreach (string img in imgs)
+                    {
+                        string itimgs = itemtemplateitem;
+                        string ig = DATA.RevImageDict[img];
+                        itimgs = itimgs.Replace("$image", item.Id + "/" + ig);
+                        imgres = imgres + itimgs;
+                    }
+                    result = result.Replace("$leftcontent", imgres);
+                }
 
-                string imgres = "";
-                List<string> imgs = item.imgs.Where(o => o != DATA.imageDict[item.mainImg]).ToList();
-                foreach (string img in imgs)
+                //отстаточные картинки
+                string imgsco = "";
+                List<string> imgs2 = item.img2;
+                foreach (string img in imgs2)
                 {
                     string itimgs = itemtemplateitem;
                     string ig = DATA.RevImageDict[img];
                     itimgs = itimgs.Replace("$image", item.Id + "/" + ig);
-                    string bi = "build" + item.Id;
-                    itimgs = itimgs.Replace("$fancygroupfull", bi);
-
-                    imgres = imgres + itimgs;
-
+                    imgsco = imgsco + itimgs;
                 }
+                result = result.Replace("$images", imgsco);
+
                 string youcont = "";
-                foreach (string you in item.youtubs)
+                foreach (string you in item.you2)
                 {
-                    bool isOne = item.youtubs.Count == 1 || (item.youtubs.Last() == you && item.youtubs.Count % 2 != 0);
+                    bool isOne = item.you2.Count == 1 || (item.you2.Last() == you && item.you2.Count % 2 != 0);
                     string itimgs = !isOne ? CONST.youtube1 : CONST.youtube2;
                     itimgs = itimgs.Replace("$srcitem", you);
                     youcont = youcont + itimgs;
 
                 }
                 result = result.Replace("$youtubs", youcont);
+                result = result.Replace("$fancygroupfull", bi);
 
-                result = result.Replace("$images", imgres);
 
 
                 string path = PATH.site + "\\data\\sport\\" + item.Id + ".html";
@@ -94,7 +117,6 @@ namespace live.Stages
             }
 
         }
-
 
         public string imgName(List<string> used, WORKOUT item)
         {
