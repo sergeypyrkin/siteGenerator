@@ -73,6 +73,8 @@ namespace live
 
             var stage13 = new Stage13("REPORT CREATING...");
 
+            var stage14 = new Stage14("RANDOMOPENER CREATE...");
+
 
             Console.WriteLine("");
             Console.WriteLine(DateTime.Now.ToString());
@@ -96,23 +98,25 @@ namespace live
 
             stage4.EXECUTE();
 
-            //stage5.EXECUTE();
+            stage5.EXECUTE();
 
-           // stage6.EXECUTE();
+            stage6.EXECUTE();
 
-            //stage7.EXECUTE();
+            stage7.EXECUTE();
 
             stage8.EXECUTE();
 
-            //stage9.EXECUTE();
+            stage9.EXECUTE();
 
-            //stage10.EXECUTE();
+            stage10.EXECUTE();
 
-            //stage11.EXECUTE();
+            stage11.EXECUTE();
 
-            //stage12.EXECUTE();
+            stage12.EXECUTE();
 
-            //stage13.EXECUTE();
+            stage14.EXECUTE();
+
+            stage13.EXECUTE();
 
             COUNTER.count();
             // Stop timing.
