@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -56,10 +57,17 @@ namespace live.Stages
 
         public void createList()
         {
-            //string template = FILEWORK.ReadFileContent(templateList);
-            //string result = template;
-            //FILEWORK.WriteFileContent(fpath, result);
-            //Console.WriteLine("+ " + fpath);
+            string template = FILEWORK.ReadFileContent(templateList);
+            string result = template;
+
+
+            List<string> urls = new List<string>();
+            foreach (var content in DATA._CONTENT)
+            {
+                urls.Add(content.link);
+            }
+            FILEWORK.WriteFileContent(fpath, result);
+            Console.WriteLine("+ " + fpath);
 
         }
     }

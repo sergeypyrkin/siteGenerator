@@ -98,6 +98,8 @@ namespace live
 
             stage4.EXECUTE();
 
+            stage14.EXECUTE();
+
             stage5.EXECUTE();
 
             stage6.EXECUTE();
@@ -114,7 +116,6 @@ namespace live
 
             stage12.EXECUTE();
 
-            stage14.EXECUTE();
 
             stage13.EXECUTE();
 
