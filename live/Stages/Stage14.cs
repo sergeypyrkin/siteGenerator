@@ -64,8 +64,10 @@ namespace live.Stages
             List<string> urls = new List<string>();
             foreach (var content in DATA._CONTENT)
             {
-                urls.Add(content.link);
+                urls.Add("'"+content.link+ "'");
             }
+            var lr = String.Join(", \n         ", urls.ToArray());
+            result = result.Replace("$urls", lr);
             FILEWORK.WriteFileContent(fpath, result);
             Console.WriteLine("+ " + fpath);
 

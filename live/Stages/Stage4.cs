@@ -207,34 +207,34 @@ namespace live.Stages
                 switch (_type)
                 {
                     case "DOGANDCAT":
-                        content.link = "http://kapybara.ru/dogandcat/" + content.Id.ToString() + "/.html";
+                        content.link = "http://kapybara.ru/data/dogandcat/" + content.Id.ToString() + ".html";
                         DATA._DOGANDCAT.Add(content as DOGANDCAT);
                         DATA._CONTENT.Add(content);
 
                         break;
                     case "FRIENDS":
-                        content.link = "http://kapybara.ru/friends/" + content.Id.ToString() + "/.html";
+                        content.link = "http://kapybara.ru/data/friends/" + content.Id.ToString() + ".html";
 
                         DATA._FRIENDS.Add(content as FRIENDS);
                         DATA._CONTENT.Add(content);
 
                         break;
                     case "SPORT":
-                        content.link = "http://kapybara.ru/sport/" + content.Id.ToString() + "/.html";
+                        content.link = "http://kapybara.ru/data/sport/" + content.Id.ToString() + ".html";
 
                         DATA._SPORT.Add(content as SPORT);
                         DATA._CONTENT.Add(content);
 
                         break;
                     case "WORKOUT":
-                        content.link = "http://kapybara.ru/workout/" + content.Id.ToString() + "/.html";
+                        content.link = "http://kapybara.ru/data/workout/" + content.Id.ToString() + ".html";
 
                         DATA._WORKOUT.Add(content as WORKOUT);
                         DATA._CONTENT.Add(content);
 
                         break;
                     case "FOOD":
-                        content.link = "http://kapybara.ru/food/" + content.Id.ToString() + "/.html";
+                        content.link = "http://kapybara.ru/data/food/" + content.Id.ToString() + ".html";
 
                         DATA._FOOD.Add(content as FOOD);
                         DATA._CONTENT.Add(content);
