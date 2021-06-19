@@ -63,6 +63,14 @@ namespace live.Stages
 
 
             List<string> urls = new List<string>();
+
+            foreach (var travel in DATA._TRAVELS)
+            {
+                string link = "http://kapybara.ru/data/travel/" + travel.Id.ToString() + ".html";
+                urls.Add("'" + link + "'");
+
+            }
+
             foreach (var content in DATA._CONTENT)
             {
                 if (content is FOOD)
