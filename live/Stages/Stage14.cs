@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
+using live.Entity.Base;
 
 namespace live.Stages
 {
@@ -64,6 +65,10 @@ namespace live.Stages
             List<string> urls = new List<string>();
             foreach (var content in DATA._CONTENT)
             {
+                if (content is FOOD)
+                {
+                    continue;
+                }
                 urls.Add("'"+content.link+ "'");
             }
             var lr = String.Join(", \n         ", urls.ToArray());
