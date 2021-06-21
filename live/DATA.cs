@@ -23,6 +23,7 @@ namespace live
         public static List<WORKOUT> _WORKOUT = new List<WORKOUT>();
         public static List<FOOD> _FOOD = new List<FOOD>();
         public static List<TRAVEL> _TRAVELS = new List<TRAVEL>();
+        public static Dictionary<string, int> _newContent = new Dictionary<string, int>();
 
 
 
