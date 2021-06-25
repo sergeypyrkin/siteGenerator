@@ -63,8 +63,8 @@ namespace live.Stages
 
                 foreach (var content in diAAfter2)
                 {
+                    addNewContent(content);
                     string ins = new String(' ', 20 - "COPY".Length);
-
                     //переписываем данные файла info.txt
                     Console.WriteLine(String.Format("{0}{1}{3}| {2}", CONST._INS, "COPY", content.Name, ins));
                     string oldName = content.FullName;
@@ -73,6 +73,15 @@ namespace live.Stages
                     // changeInfoContent(content);
                 }
             }
+
+        }
+
+        private void addNewContent(DirectoryInfo content)
+        {
+            int index = Convert.ToInt32(content.Name);
+            string _type = content.Parent.Name;
+            string spref = _type + "_" + index;
+            DATA._newContent.Add(spref, _type);
 
         }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 using live.Entity;
 using live.Entity.Base;
 using live.Stages;
@@ -12,6 +13,7 @@ namespace live
     public static class DATA
     {
         public static bool _newExist;
+        public static bool forceUpdate = false; // если true то будет перезаписывать все файлы
         public static Dictionary<string, string> imageDict = new Dictionary<string, string>();
         public static Dictionary<string, string> RevImageDict = new Dictionary<string, string>();
         public static Dictionary<string, bool> longImgDict = new Dictionary<string, bool>(); //определяем широкоформатность
@@ -23,9 +25,48 @@ namespace live
         public static List<WORKOUT> _WORKOUT = new List<WORKOUT>();
         public static List<FOOD> _FOOD = new List<FOOD>();
         public static List<TRAVEL> _TRAVELS = new List<TRAVEL>();
-        public static Dictionary<string, int> _newContent = new Dictionary<string, int>();
+        public static Dictionary<string, string> _newContent = new Dictionary<string, string>();
 
+        public static bool isAddItem(CONTENT content)
+        {
+            if (forceUpdate)
+            {
+                return true;
+            }
 
+            string _type = "";
+            if (content is WORKOUT)
+            {
+                _type = "WORKOUT";
+            }
+
+            if (content is FRIENDS)
+            {
+                _type = "FRIENDS";
+            }
+
+            if (content is FOOD)
+            {
+                _type = "FOOD";
+            }
+
+            if (content is SPORT)
+            {
+                _type = "SPORT";
+            }
+
+            if (content is DOGANDCAT)
+            {
+                _type = "DOGANDCAT";
+            }
+            int _id = content.Id;
+            string spref = _type + "_" + _id;
+            if (_newContent.ContainsKey(spref))
+            {
+                return true;
+            }
+            return false;
+        }
 
         public static List<CONTENT> get10Last()
         {

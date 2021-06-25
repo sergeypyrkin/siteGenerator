@@ -50,6 +50,11 @@ namespace live.Stages
 
             foreach (var item in DATA._WORKOUT)
             {
+                //пока Deprecated. слишком дохуя и не надежно.
+                //if (!DATA.isAddItem(item))
+                //{
+                //    continue;
+                //}
                 string result = template;
                 result = result.Replace("$Id", item.Id.ToString());
                 result = result.Replace("$date", item.date.ToString("yyyy-MM-dd"));
