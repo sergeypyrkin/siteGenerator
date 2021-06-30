@@ -19,6 +19,8 @@ namespace live.Entity.Base
         public List<string> imgs = new List<string>();
         public Dictionary<string, LSTEXT> destrictions = new Dictionary<string, LSTEXT>();
         public List<string> order = new List<string>();
+        public List<string> youtubs = new List<string>();
+
         public string description;
 
         public string praceS;

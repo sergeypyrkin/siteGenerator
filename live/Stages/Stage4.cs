@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using live.Entity;
@@ -62,6 +63,17 @@ namespace live.Stages
             String[] order_lines = order.Split(new string[] { "\n" }, StringSplitOptions.None);
             travel.order = order_lines.ToList();
             #endregion
+
+            #region youtubs.txt
+
+            if (File.Exists(f.FullName + "//youtubs.txt"))
+            {
+                string ycontent = FILEWORK.ReadFileContent(f.FullName + "//youtubs.txt");
+                String[] ycontent_lines = ycontent.Split(new string[] { "\n" }, StringSplitOptions.None);
+                travel.youtubs = ycontent_lines.ToList();
+            }
+            #endregion
+
 
 
             travel.description = FILEWORK.ReadFileContent(f.FullName + "//description.txt");
