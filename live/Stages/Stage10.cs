@@ -60,6 +60,8 @@ namespace live.Stages
                 result = reseatTextInfo(item, result);
 
 
+                result = reseatCreateYoutube(item, result);
+
                 string path = PATH.site + "\\data\\travel\\" + item.Id + ".html";
 
                 FILEWORK.WriteFileContent(path, result);
@@ -159,6 +161,33 @@ namespace live.Stages
 
             return result;
         }
+
+
+        private string reseatCreateYoutube(TRAVEL travel, string result)
+        {
+
+            if (travel.youtubs.Count == 0)
+            {
+                result = result.Replace("$youtubs", "");
+                return result;
+            }
+
+            string tyoutube = CONST.youtubeTravel;
+            string youcont = "";
+            foreach (string you in travel.youtubs)
+            {
+                bool isOne = true;
+                string itimgs = !isOne ? CONST.youtube1 : CONST.youtube2;
+                itimgs = itimgs.Replace("$srcitem", you);
+                youcont = youcont + itimgs;
+
+            }
+
+            tyoutube = tyoutube.Replace("$youitems", youcont);
+            result = result.Replace("$youtubs", tyoutube);
+            return result;
+        }
+
 
         private string reseatMainInfo(TRAVEL travel, string result)
         {

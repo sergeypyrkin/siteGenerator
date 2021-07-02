@@ -70,7 +70,11 @@ namespace live.Stages
             {
                 string ycontent = FILEWORK.ReadFileContent(f.FullName + "//youtubs.txt");
                 String[] ycontent_lines = ycontent.Split(new string[] { "\n" }, StringSplitOptions.None);
-                travel.youtubs = ycontent_lines.ToList();
+                foreach (var you in ycontent_lines)
+                {
+                    string syou = parseYoutubs(you);
+                    travel.youtubs.Add(syou);
+                }
             }
             #endregion
 
@@ -152,6 +156,15 @@ namespace live.Stages
             }
 
             DATA._TRAVELS.Add(travel);
+        }
+
+        private string parseYoutubs(string line)
+        {
+            string result = "";
+            String[] ll = line.Split(new string[] { "/" }, StringSplitOptions.None);
+            string last = ll.Last();
+            result = "https://www.youtube.com/embed/" + last;
+            return result;
         }
 
         private void addLSText(string number, TRAVEL travel, string ffFullName)

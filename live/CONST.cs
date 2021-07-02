@@ -19,6 +19,7 @@ namespace live
         public static string youtube1;
         public static string youtube2;
         public static string youtube3;
+        public static string youtubeTravel;
         public static string youtubeRight;
 
         public static string VeE;
@@ -39,6 +40,7 @@ namespace live
             youtube1 = FILEWORK.ReadFileContent(PATH.templ + "\\youtube1.txt");
             youtube2 = FILEWORK.ReadFileContent(PATH.templ + "\\youtube2.txt");
             youtube3 = FILEWORK.ReadFileContent(PATH.templ + "\\youtube3.txt");
+            youtubeTravel = FILEWORK.ReadFileContent(PATH.templ + "\\youtubeTravel.txt");
             youtubeRight = FILEWORK.ReadFileContent(PATH.templ + "\\youtubeRight.txt");
 
         }
