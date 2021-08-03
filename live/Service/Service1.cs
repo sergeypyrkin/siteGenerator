@@ -12,11 +12,21 @@ namespace live.Service
     public class Service1
     {
 
+        public class DataYoutube
+        {
+            public string Name;
+            public string rowUrl;
+            public string embededUrl;
+            public string ModelString;
+        }
+
         public List<FileInfo> youtubs = new List<FileInfo>();
         public FileInfo html;
         public List<string> ynames = new List<string>();
+        public List<DataYoutube> data = new List<DataYoutube>();
+        public string content;
 
-        public void EXECUTE()
+        public void parseFiles()
         {
             DirectoryInfo di = new DirectoryInfo(PATH.videofolder);
             FileInfo[] diA = di.GetFiles();
@@ -37,36 +47,85 @@ namespace live.Service
                         break;
                 }
             }
-            string content = FILEWORK.ReadFileContent(html.FullName);
 
             foreach (var y in youtubs)
             {
                 string name = y.Name.Replace(".mp4", "");
                 ynames.Add(name);
             }
+        }
 
+        public void parseHtml()
+        {
             //тут собственно и парсинг
             foreach (var yns in ynames)
             {
-                 Console.WriteLine("===========");
-                 Console.WriteLine(yns);
-                 string reg = $">{yns}</a>";
-                 String[] row = content.Split(new string[] {reg}, StringSplitOptions.None);
-                 if (row.Length == 1)
-                 {
-                     Console.WriteLine("Error: неправильный парскинг, скорее всего есть виедо которго нету на канале (обычно такое происходит когда задвоится)" );
-                     Console.ReadKey();
-                     break;
-                 }
-                 String[] row2 = row[0].Split(new string[] {"href=" }, StringSplitOptions.None);
-                 string prelast = row2.Last();
-                 string last = prelast.Replace("\"", "");
-                 Console.WriteLine(last);
+
+                string reg = $">{yns}</a>";
+                String[] row = content.Split(new string[] { reg }, StringSplitOptions.None);
+                if (row.Length == 1)
+                {
+                    Console.WriteLine("Error: неправильный парскинг, скорее всего есть виедо которго нету на канале (обычно такое происходит когда задвоится)");
+                    Console.ReadKey();
+                    break;
+                }
+                String[] row2 = row[0].Split(new string[] { "href=" }, StringSplitOptions.None);
+                string prelast = row2.Last();
+                string last = prelast.Replace("\"", "");
+                DataYoutube dy = new DataYoutube();
+                dy.Name = yns;
+                dy.rowUrl = last;
+                data.Add(dy);
+                string pass = new String(' ', 50 - yns.Length);
+                Console.WriteLine(yns + pass + ": " + last);
+            }
+        }
+
+
+        public void EXECUTE()
+        {
+
+
+
+            Console.WriteLine("PARSE FILES");
+            Console.WriteLine("");
+            Console.WriteLine("");
+
+            parseFiles();
+
+            content = FILEWORK.ReadFileContent(html.FullName);
+            Console.WriteLine("START PARSING HTML");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            
+            parseHtml();
+
+
+
+
+
+
+
+            //тут собираем id моделей
+
+            foreach (var dataContent in DATA._CONTENT)
+            {
+                if (!dataContent.hasYoutube)
+                {
+                    continue;
+                }
+
+                foreach (var ystring in dataContent.youtubs)
+                {
+                    
+                }
             }
 
 
 
-            List<String> lines = content.Split(new char[] { '\t' }).ToList();
+
+
+
         }
     }
 }
