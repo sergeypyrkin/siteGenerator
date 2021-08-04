@@ -41,6 +41,8 @@ namespace live.Stages
             createList();
         }
 
+
+
         public void prefixWork()
         {
             //0 инит

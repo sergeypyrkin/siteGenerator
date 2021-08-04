@@ -55,6 +55,17 @@ namespace live.Service
             }
         }
 
+
+        private string parseYoutubs(string line)
+        {
+            string result = "";
+            String[] ll = line.Split(new string[] { "/" }, StringSplitOptions.None);
+            string last = ll.Last();
+            result = "https://www.youtube.com/embed/" + last;
+            result = result.Replace("watch?v=", "");
+            return result;
+        }
+
         public void parseHtml()
         {
             //тут собственно и парсинг
@@ -75,6 +86,8 @@ namespace live.Service
                 DataYoutube dy = new DataYoutube();
                 dy.Name = yns;
                 dy.rowUrl = last;
+                string embedd = parseYoutubs(last);
+                dy.embededUrl = embedd;
                 data.Add(dy);
                 string pass = new String(' ', 50 - yns.Length);
                 Console.WriteLine(yns + pass + ": " + last);
@@ -117,7 +130,7 @@ namespace live.Service
 
                 foreach (var ystring in dataContent.youtubs)
                 {
-                    
+                    var found = data.FirstOrDefault(o => o.embededUrl == ystring);
                 }
             }
 
