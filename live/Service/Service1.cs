@@ -130,7 +130,22 @@ namespace live.Service
 
                 foreach (var ystring in dataContent.youtubs)
                 {
-                    var found = data.FirstOrDefault(o => o.embededUrl == ystring);
+                    var data_youtube = data.FirstOrDefault(o => o.embededUrl == ystring);
+                    if (data_youtube != null)
+                    {
+                        string modelString = dataContent._type + "_" + dataContent.Id;
+                        data_youtube.ModelString = modelString;
+                        break;
+                    }
+                }
+            }
+
+
+            foreach (var d in data)
+            {
+                if (String.IsNullOrEmpty(d.ModelString))
+                {
+                    Console.WriteLine("!!!!! no found for: "+  d.embededUrl);
                 }
             }
 

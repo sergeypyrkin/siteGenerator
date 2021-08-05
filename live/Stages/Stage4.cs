@@ -233,26 +233,28 @@ namespace live.Stages
                 {
                     case "DOGANDCAT":
                         content.link = "http://kapybara.ru/data/dogandcat/" + content.Id.ToString() + ".html";
+                        content._type = "DOGANDCAT";
                         DATA._DOGANDCAT.Add(content as DOGANDCAT);
                         DATA._CONTENT.Add(content);
 
                         break;
                     case "FRIENDS":
                         content.link = "http://kapybara.ru/data/friends/" + content.Id.ToString() + ".html";
-
+                        content._type = "FRIENDS";
                         DATA._FRIENDS.Add(content as FRIENDS);
                         DATA._CONTENT.Add(content);
 
                         break;
                     case "SPORT":
                         content.link = "http://kapybara.ru/data/sport/" + content.Id.ToString() + ".html";
-
+                        content._type = "SPORT";
                         DATA._SPORT.Add(content as SPORT);
                         DATA._CONTENT.Add(content);
 
                         break;
                     case "WORKOUT":
                         content.link = "http://kapybara.ru/data/workout/" + content.Id.ToString() + ".html";
+                        content._type = "WORKOUT";
 
                         DATA._WORKOUT.Add(content as WORKOUT);
                         DATA._CONTENT.Add(content);
@@ -260,6 +262,7 @@ namespace live.Stages
                         break;
                     case "FOOD":
                         content.link = "http://kapybara.ru/data/food/" + content.Id.ToString() + ".html";
+                        content._type = "FOOD";
 
                         DATA._FOOD.Add(content as FOOD);
                         DATA._CONTENT.Add(content);
