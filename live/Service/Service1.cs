@@ -26,6 +26,12 @@ namespace live.Service
         public List<DataYoutube> data = new List<DataYoutube>();
         public string content;
 
+        //те которых не будет
+        public List<string> isckl = new List<string>()
+        {
+            "https://www.youtube.com/embed/HJre-NmIjwg"
+        };
+
         public void parseFiles()
         {
             DirectoryInfo di = new DirectoryInfo(PATH.videofolder);
@@ -92,6 +98,9 @@ namespace live.Service
                 string pass = new String(' ', 50 - yns.Length);
                 Console.WriteLine(yns + pass + ": " + last);
             }
+
+            data = data.Where(o => !isckl.Contains(o.embededUrl)).ToList();
+
         }
 
 
@@ -110,16 +119,33 @@ namespace live.Service
             Console.WriteLine("START PARSING HTML");
             Console.WriteLine("");
             Console.WriteLine("");
-            
             parseHtml();
 
 
+            Console.WriteLine("START FFOUND  ITEMS");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            foundItems();
 
 
 
 
 
-            //тут собираем id моделей
+
+            foreach (var d in data)
+            {
+                if (String.IsNullOrEmpty(d.ModelString))
+                {
+                    Console.WriteLine("!!!!! no found for: "+  d.embededUrl);
+                }
+            }
+
+        }
+
+        public void foundItems()
+        {
+
+            //тут собираем id моделей 
 
             foreach (var dataContent in DATA._CONTENT)
             {
@@ -135,25 +161,27 @@ namespace live.Service
                     {
                         string modelString = dataContent._type + "_" + dataContent.Id;
                         data_youtube.ModelString = modelString;
-                        break;
                     }
                 }
             }
 
-
-            foreach (var d in data)
+            // и по тревелу
+            foreach (var dataContent in DATA._TRAVELS)
             {
-                if (String.IsNullOrEmpty(d.ModelString))
+
+
+                foreach (var ystring in dataContent.youtubs)
                 {
-                    Console.WriteLine("!!!!! no found for: "+  d.embededUrl);
+
+
+                    var data_youtube = data.FirstOrDefault(o => o.embededUrl == ystring);
+                    if (data_youtube != null)
+                    {
+                        string modelString = "TRAVEL" + "_" + dataContent.Id;
+                        data_youtube.ModelString = modelString;
+                    }
                 }
             }
-
-
-
-
-
-
         }
     }
 }

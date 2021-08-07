@@ -161,6 +161,15 @@ namespace live.Entity
         private string parseYoutubs(string line)
         {
             string result = "";
+            //hot fix для тупых ссылок
+            if (line.Contains("watch?v="))
+            {
+                String[] llf = line.Split(new string[] { "watch?v=" }, StringSplitOptions.None);
+                string lastf = llf.Last();
+                result = "https://www.youtube.com/embed/" + lastf;
+                return result;
+            }
+
             String[] ll = line.Split(new string[] { "/" }, StringSplitOptions.None);
             string last = ll.Last();
             result = "https://www.youtube.com/embed/" + last;
