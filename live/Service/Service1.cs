@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace live.Service
 {
@@ -103,6 +104,19 @@ namespace live.Service
 
         }
 
+        public String niceString(String s1, String s2, String s3, int x1, int x2)
+        {
+            string res = "";
+            string pass1 = new String(' ', x1 - s1.Length);
+            string pre1 = s1 + pass1;
+
+
+            string pass2 = new String(' ', x2 - s2.Length);
+            string pre2 = pre1 + s2 + pass2;
+            res = pre2 + s3;
+            return res;
+        }
+
 
         public void EXECUTE()
         {
@@ -122,14 +136,20 @@ namespace live.Service
             parseHtml();
 
 
-            Console.WriteLine("START FFOUND  ITEMS");
+            Console.WriteLine("START FOUND  ITEMS");
             Console.WriteLine("");
             Console.WriteLine("");
             foundItems();
 
 
+            saveInfo();
 
 
+            foreach (var d in data)
+            {
+                String r = niceString(d.ModelString, d.Name, d.embededUrl, 50, 50);
+                Console.WriteLine(r);
+            }
 
 
             foreach (var d in data)
@@ -140,6 +160,21 @@ namespace live.Service
                 }
             }
 
+
+
+        }
+
+        public void saveInfo()
+        {
+            string res = "";
+
+            foreach (var d in data)
+            {
+                String r = niceString(d.ModelString, d.Name, d.embededUrl, 50, 50);
+                res = res + r + '\n';
+            }
+
+            FILEWORK.WriteFileContent(PATH.videofolderSave, res);
         }
 
         public void foundItems()

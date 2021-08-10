@@ -43,6 +43,7 @@ namespace live
         public static string datafood = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\PICTURES\\FOOD";
 
         public static string videofolder = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\VIDEO";
+        public static string videofolderSave = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\VIDEO\\info.txt";
 
 
 

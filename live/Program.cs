@@ -24,14 +24,30 @@ namespace live
         private static IntPtr ThisConsole = GetConsoleWindow();
 
 
+        public static  String niceString(String s1, String s2, String s3, int x1, int x2)
+        {
+            string res = "";
+            string pass1 = new String(' ', x1 - s1.Length);
+            string pre1 = s1 + pass1;
 
+
+            string pass2 = new String(' ', x2 - s2.Length);
+            string pre2 = pre1 + s2 + pass2;
+            res = pre2 + s3;
+            return res;
+        }
 
 
 
         public static void Main(string[] args)
         {
-            bool serv = true;
-
+            bool serv = false;
+            //string s1 = niceString("123123", "sdfsdf", "sdfsdf", 50, 50);
+            //Console.WriteLine(s1);
+            //string s2 = niceString("1231sdfsdfsdf23", "sdfsaaaadf", "sdfsdf", 50, 50);
+            //Console.WriteLine(s2);
+            //Console.ReadKey();
+            //return;
             string procName = Process.GetCurrentProcess().ProcessName;
             if (Process.GetProcessesByName(procName).Length != 1)
             {
