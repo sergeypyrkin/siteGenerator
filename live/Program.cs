@@ -5,6 +5,7 @@ using System.Threading;
 using live.Entity;
 using live.Service;
 using live.Stages;
+using live.Test;
 using live.Utils;
 
 namespace live
@@ -41,6 +42,9 @@ namespace live
 
         public static void Main(string[] args)
         {
+
+            var test = new Test1();
+            Console.ReadKey();
             bool serv = false;
             //string s1 = niceString("123123", "sdfsdf", "sdfsdf", 50, 50);
             //Console.WriteLine(s1);
