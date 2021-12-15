@@ -16,38 +16,40 @@ namespace live
         public static List<refItem> refs = new List<refItem>();
 
         public static string site = "Z:\\home\\ss.ru\\www";
-
+        public static string DESKTOP = "C:\\Users\\Programmist";
 
         //исходная папка
-        public static string root = "C:\\Users\\Programmist\\Desktop\\MYLIVE";
-        public static string data = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA";
-        public static string test = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\TEST";
-        public static string _new = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW";
-        public static string outf = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\OUT";
-        public static string templ = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\TEMPLATES";
+        public static string root = $"{DESKTOP}\\MYLIVE";
+        public static string data = $"{DESKTOP}\\MYLIVE\\DATA";
+        public static string test = $"{DESKTOP}\\MYLIVE\\TEST";
+        public static string _new = $"{DESKTOP}\\MYLIVE\\_NEW";
+        public static string outf = $"{DESKTOP}\\MYLIVE\\OUT";
+        public static string templ = $"{DESKTOP}\\MYLIVE\\TEMPLATES";
 
 
-        public static string _newf = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\FRIENDS";
-        public static string _neww = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\WORKOUT";
-        public static string _newd = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\DOGANDCAT";
-        public static string _newb = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\BADSTAGE";
-        public static string _news = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\SPORT";
-        public static string _newfood = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\_NEW\\FOOD";
+        public static string _newf = $"{DESKTOP}\\MYLIVE\\_NEW\\FRIENDS";
+        public static string _neww = $"{DESKTOP}\\MYLIVE\\_NEW\\WORKOUT";
+        public static string _newd = $"{DESKTOP}\\MYLIVE\\_NEW\\DOGANDCAT";
+        public static string _newb = $"{DESKTOP}\\MYLIVE\\_NEW\\BOOK";
+        public static string _news = $"{DESKTOP}\\MYLIVE\\_NEW\\SPORT";
+        public static string _newfood = $"{DESKTOP}\\MYLIVE\\_NEW\\FOOD";
 
-        public static string datat = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\PICTURES\\TRAVEL";
+        public static string datat = $"{DESKTOP}\\MYLIVE\\DATA\\PICTURES\\TRAVEL";
 
-        public static string dataf = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\PICTURES\\FRIENDS";
-        public static string dataw = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\PICTURES\\WORKOUT";
-        public static string datad = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\PICTURES\\DOGANDCAT";
-        public static string datas = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\PICTURES\\SPORT";
-        public static string datafood = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\PICTURES\\FOOD";
+        public static string dataf = $"{DESKTOP}\\MYLIVE\\DATA\\PICTURES\\FRIENDS";
+        public static string dataw = $"{DESKTOP}\\MYLIVE\\DATA\\PICTURES\\WORKOUT";
+        public static string datad = $"{DESKTOP}\\MYLIVE\\DATA\\PICTURES\\DOGANDCAT";
+        public static string datab = $"{DESKTOP}\\MYLIVE\\DATA\\PICTURES\\BOOK";
 
-        public static string videofolder = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\VIDEO";
-        public static string videofolderSave = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\VIDEO\\info.txt";
+        public static string datas = $"{DESKTOP}\\MYLIVE\\DATA\\PICTURES\\SPORT";
+        public static string datafood = $"{DESKTOP}\\MYLIVE\\DATA\\PICTURES\\FOOD";
+
+        public static string videofolder = $"{DESKTOP}\\MYLIVE\\DATA\\VIDEO";
+        public static string videofolderSave = $"{DESKTOP}\\MYLIVE\\DATA\\VIDEO\\info.txt";
 
 
 
-        public static string imgProcessedFile = "C:\\Users\\Programmist\\Desktop\\MYLIVE\\DATA\\parsed.txt";
+        public static string imgProcessedFile = $"{DESKTOP}\\MYLIVE\\DATA\\parsed.txt";
 
 
         public static void INIT()
@@ -64,13 +66,14 @@ namespace live
             _newd = _new + "\\DOGANDCAT";
             _newf = _new + "\\FRIENDS";
             _neww = _new + "\\WORKOUT";
-            _newb = _new + "\\BADSTAGE";
+            _newb = _new + "\\BOOK";
             _news = _new + "\\SPORT";
             _newfood = _new + "\\FOOD";
 
 
 
             datad = data + "\\PICTURES\\DOGANDCAT";
+            datab = data + "\\PICTURES\\BOOK";
             dataf = data + "\\PICTURES\\FRIENDS";
             dataw = data + "\\PICTURES\\WORKOUT";
             datas = data + "\\PICTURES\\SPORT";
@@ -89,6 +92,7 @@ namespace live
             refs.Add(new refItem() { _type = "WORKOUT", newPass = PATH._neww, destinationPass = PATH.dataw, htmlPath = "" });
             refs.Add(new refItem() { _type = "SPORT", newPass = PATH._news, destinationPass = PATH.datas, htmlPath = "" });
             refs.Add(new refItem() { _type = "FOOD", newPass = PATH._newfood, destinationPass = PATH.datafood, htmlPath = "" });
+            refs.Add(new refItem() { _type = "BOOK", newPass = PATH._newb, destinationPass = PATH.datab, htmlPath = "" });
 
 
         }
