@@ -24,6 +24,8 @@ namespace live
         public static List<SPORT> _SPORT = new List<SPORT>();
         public static List<WORKOUT> _WORKOUT = new List<WORKOUT>();
         public static List<FOOD> _FOOD = new List<FOOD>();
+        public static List<BOOK> _BOOK = new List<BOOK>();
+
         public static List<TRAVEL> _TRAVELS = new List<TRAVEL>();
         public static Dictionary<string, string> _newContent = new Dictionary<string, string>();
 
@@ -112,6 +114,9 @@ namespace live
                     break;
                 case "FOOD":
                     return _FOOD.FirstOrDefault(o => o.Id == id);
+                    break;
+                case "BOOK":
+                    return _BOOK.FirstOrDefault(o => o.Id == id);
                     break;
 
                 default:
