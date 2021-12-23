@@ -71,6 +71,7 @@
     <Compile Include="Stages\Stage12.cs" />
     <Compile Include="Stages\Stage13.cs" />
     <Compile Include="Stages\Stage14.cs" />
+    <Compile Include="Stages\Stage15.cs" />
     <Compile Include="Stages\Stage2.cs" />
     <Compile Include="Stages\Stage3.cs" />
     <Compile Include="Stages\Stage4.cs" />

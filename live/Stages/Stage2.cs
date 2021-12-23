@@ -34,7 +34,7 @@ namespace live.Stages
                 {
                     //для котов
                     catParseWork(_ref, di);
-                    
+                   
                     continue;
                 }
 

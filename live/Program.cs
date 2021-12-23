@@ -93,6 +93,8 @@ namespace live
 
             var stage14 = new Stage14("RANDOMOPENER CREATE...");
 
+            var stage15 = new Stage15("BOOK CREATE...");
+
 
             Console.WriteLine("");
             Console.WriteLine(DateTime.Now.ToString());
@@ -137,6 +139,8 @@ namespace live
             stage8.EXECUTE();
 
             stage9.EXECUTE();
+
+            stage15.EXECUTE();
 
             stage10.EXECUTE();
 
