@@ -269,6 +269,16 @@ namespace live.Stages
 
                         break;
 
+
+                    case "BOOK":
+                        content.link = "http://kapybara.ru/data/book/" + content.Id.ToString() + ".html";
+                        content._type = "BOOK";
+
+                        DATA._BOOK.Add(content as BOOK);
+                        DATA._CONTENT.Add(content);
+
+                        break;
+
                     default:
                         Console.WriteLine("WRONG TYPE!!!");
                         break;
@@ -311,6 +321,9 @@ namespace live.Stages
                     break;
                 case "FOOD":
                     content = new FOOD();
+                    break;
+                case "BOOK":
+                    content = new BOOK();
                     break;
                 default:
                     Console.WriteLine("WRONG TYPE!!!");

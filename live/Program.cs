@@ -127,6 +127,9 @@ namespace live
                 Console.ReadKey();
                 return;
             }
+            stage15.EXECUTE();
+            Console.ReadKey();
+            return;
 
             stage14.EXECUTE();
 

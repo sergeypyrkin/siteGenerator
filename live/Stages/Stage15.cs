@@ -34,10 +34,10 @@ namespace live.Stages
 
         public override void WORK()
         {
-            //prefixWork();
-            //createList();
+            prefixWork();
+            createList();
             ////createItems();
-            //saffixWork();
+            saffixWork();
         }
 
 
@@ -116,18 +116,14 @@ namespace live.Stages
             string itemtemplate = FILEWORK.ReadFileContent(templateListItem);
             template = template.Replace("$header1", CONST.header1);
             template = template.Replace("$footer1", "");
-            template = template.Replace("$numcats", DATA._FOOD.Count.ToString());
+            template = template.Replace("$numcats", DATA._BOOK.Count.ToString());
 
 
             string itemFull = "";
-            List<FOOD> friends = DATA._FOOD.OrderByDescending(o => o.Id).ToList();
-            foreach (FOOD item in friends)
+            List<BOOK> friends = DATA._BOOK.OrderByDescending(o => o.Id).ToList();
+            foreach (BOOK item in friends)
             {
 
-                if (item.Id == 8)
-                {
-
-                }
                 string itemres = itemtemplate;
 
                 int index = 1;
@@ -160,16 +156,16 @@ namespace live.Stages
         public void prefixWork()
         {
             //0 инит
-            picturesf = PATH.datafood;
-            listname = FOOD._type.ToLower() + ".html";
-            outfolder = PATH.outf + "\\" + FOOD._type.ToLower();
+            picturesf = PATH.datab;
+            listname = BOOK._type.ToLower() + ".html";
+            outfolder = PATH.outf + "\\" + BOOK._type.ToLower();
             fpath = PATH.site + "\\" + listname;
-            htmlfolder = PATH.site + "\\data\\" + FOOD._type.ToLower();
+            htmlfolder = PATH.site + "\\data\\" + BOOK._type.ToLower();
             opath = outfolder + "\\" + listname;
-            templateList = PATH.templ + "\\" + FOOD._type.ToLower() + "\\catalog.html";
-            templateListItem = PATH.templ + "\\" + FOOD._type.ToLower() + "\\listitem.txt";
-            imglistprefix = "data\\" + FOOD._type.ToLower();
-            itemtemplate = PATH.templ + "\\" + FOOD._type.ToLower() + "\\itemfood.html";
+            templateList = PATH.templ + "\\" + BOOK._type.ToLower() + "\\catalog.html";
+            templateListItem = PATH.templ + "\\" + BOOK._type.ToLower() + "\\listitem.txt";
+            imglistprefix = "data\\" + BOOK._type.ToLower();
+            itemtemplate = PATH.templ + "\\" + BOOK._type.ToLower() + "\\itembook.html";
             //1. Очищение out
             File.Delete(fpath);
 
