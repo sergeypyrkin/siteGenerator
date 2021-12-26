@@ -273,10 +273,8 @@ namespace live.Stages
                     case "BOOK":
                         content.link = "http://kapybara.ru/data/book/" + content.Id.ToString() + ".html";
                         content._type = "BOOK";
-
                         DATA._BOOK.Add(content as BOOK);
                         DATA._CONTENT.Add(content);
-
                         break;
 
                     default:

@@ -138,12 +138,13 @@ namespace live.Stages
                 string rr = "$image" + index;
                 itemres = itemres.Replace(rr, imglistprefix + "\\" + item.Id + "\\" + item.mainImg);
                 //itemres = itemres.Replace("$city", item.name);
-                itemres = itemres.Replace("$date", item.date.ToString("yyyy-MM-dd"));
                 //itemres = itemres.Replace("$price", item.lcount);
                 itemres = itemres.Replace("$link", imglistprefix + "\\" + item.Id + ".html");
+                string text1 = item.txtContents.ToArray()[1];
+                string title = item.txtContents.ToArray()[0];
+                itemres = itemres.Replace("$text1", "<p>" + text1 + "</p>");
+                itemres = itemres.Replace("$text2",  title );
 
-                string texts = string.Join("<br>", item.txtContents.ToArray());
-                itemres = itemres.Replace("$text", "<p>" + texts + "</p>");
                 itemFull = itemFull + itemres;
             }
             string result = template.Replace("param_models", itemFull);
