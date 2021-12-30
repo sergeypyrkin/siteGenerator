@@ -72,6 +72,8 @@ namespace live.Stages
             result = executeType("sport", 4, result);
             result = executeType("dog", 5, result);
             result = executeType("food", 6, result);
+            result = executeType("book", 7, result);
+
             double catalogSize = 0;
             catalogSize = FILEWORK.sizeOfFolder(PATH.data, ref catalogSize); //Вызываем наш рекурсивный метод
             sizes = String.Format("{0} ГБ", catalogSize);
@@ -148,6 +150,17 @@ namespace live.Stages
             if (name == "food")
             {
                 var items = DATA._FOOD;
+                foreach (var item in items)
+                {
+                    count = count + 1;
+                    img = img + item.imgs.Count;
+                    youtube = youtube + item.youtubs.Count;
+                }
+            }
+
+            if (name == "book")
+            {
+                var items = DATA._BOOK;
                 foreach (var item in items)
                 {
                     count = count + 1;
