@@ -79,6 +79,11 @@ namespace live.Stages
                 {
                     continue;
                 }
+
+                if (content is BOOK)
+                {
+                    continue;
+                }
                 urls.Add("'"+content.link+ "'");
             }
             var lr = String.Join(", \n         ", urls.ToArray());
