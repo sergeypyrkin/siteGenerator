@@ -45,7 +45,9 @@ namespace live
 
             //var test = new Test1();
             //Console.ReadKey();
-            bool serv = false;
+            bool sv1 = false;
+            bool sv2 = true;
+
             //string s1 = niceString("123123", "sdfsdf", "sdfsdf", 50, 50);
             //Console.WriteLine(s1);
             //string s2 = niceString("1231sdfsdfsdf23", "sdfsaaaadf", "sdfsdf", 50, 50);
@@ -68,6 +70,15 @@ namespace live
             var stage1 = new Stage1("ПРОВЕРКА");
 
             var stage2 = new Stage2("ДОБАВЛЯЕМ");
+
+            if (sv2)
+            {
+                var serv1 = new Service2();
+                serv1.EXECUTE();
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                return;
+            }
 
             var stage3 = new Stage3("ОБРАБОКА ФОТОГРАФИЙ");
 
@@ -119,7 +130,7 @@ namespace live
             stage4.EXECUTE();
 
 
-            if (serv)
+            if (sv1)
             {
                 var serv1 = new Service1();
                 serv1.EXECUTE();

@@ -125,8 +125,6 @@ namespace live
             check(outf);
             check(templ);
 
-
-
         }
 
         public static void check(string path)

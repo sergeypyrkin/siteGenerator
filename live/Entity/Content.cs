@@ -123,8 +123,14 @@ namespace live.Entity
                 this.mainText = txtContents[1];
             }
 
+            string mainIngFullRef = "";
+            try
+            {
+                mainIngFullRef = DATA.getImgFullPath(mainImg);
+            }catch(Exception ex)
+            {
 
-            string mainIngFullRef = DATA.getImgFullPath(mainImg);
+            }
             List<string> otherImg = imgs.Where(o => o != mainIngFullRef).ToList();
             int MAXIMG1 = 9;
             int i = 0;
