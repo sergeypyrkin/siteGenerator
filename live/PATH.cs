@@ -6,54 +6,71 @@ using System.Text;
 using System.Threading.Tasks;
 using live.Entity;
 using live.Stages;
+using static live.Test.Test1;
 
 namespace live
 {
     public static class PATH
     {
 
-
+        public static string DNS = System.Net.Dns.GetHostName();
         public static List<refItem> refs = new List<refItem>();
 
         public static string site = "Z:\\home\\ss.ru\\www";
-        public static string DESKTOP = "C:\\Users\\Programmist";
+        public static string PARENT_ROOT_PATH
+        {
+            get
+            {
+
+                if (DNS == "DESKTOP-4F898V6")
+                {
+                    return "C:\\PROG\\";
+                }
+                else
+                {
+                    return "C:\\Users\\Programmist";
+                }
+            }
+        }
 
         //исходная папка
-        public static string root = $"{DESKTOP}\\MYLIVE";
-        public static string data = $"{DESKTOP}\\MYLIVE\\DATA";
-        public static string test = $"{DESKTOP}\\MYLIVE\\TEST";
-        public static string _new = $"{DESKTOP}\\MYLIVE\\_NEW";
-        public static string outf = $"{DESKTOP}\\MYLIVE\\OUT";
-        public static string templ = $"{DESKTOP}\\MYLIVE\\TEMPLATES";
+        public static string root = $"{PARENT_ROOT_PATH}\\MYLIVE";
+        public static string data = $"{PARENT_ROOT_PATH}\\MYLIVE\\DATA";
+        public static string test = $"{PARENT_ROOT_PATH}\\MYLIVE\\TEST";
+        public static string _new = $"{PARENT_ROOT_PATH}\\MYLIVE\\_NEW";
+        public static string outf = $"{PARENT_ROOT_PATH}\\MYLIVE\\OUT";
+        public static string templ = $"{PARENT_ROOT_PATH}\\MYLIVE\\TEMPLATES";
 
 
-        public static string _newf = $"{DESKTOP}\\MYLIVE\\_NEW\\FRIENDS";
-        public static string _neww = $"{DESKTOP}\\MYLIVE\\_NEW\\WORKOUT";
-        public static string _newd = $"{DESKTOP}\\MYLIVE\\_NEW\\DOGANDCAT";
-        public static string _newb = $"{DESKTOP}\\MYLIVE\\_NEW\\BOOK";
-        public static string _news = $"{DESKTOP}\\MYLIVE\\_NEW\\SPORT";
-        public static string _newfood = $"{DESKTOP}\\MYLIVE\\_NEW\\FOOD";
+        public static string _newf = $"{PARENT_ROOT_PATH}\\MYLIVE\\_NEW\\FRIENDS";
+        public static string _neww = $"{PARENT_ROOT_PATH}\\MYLIVE\\_NEW\\WORKOUT";
+        public static string _newd = $"{PARENT_ROOT_PATH}\\MYLIVE\\_NEW\\DOGANDCAT";
+        public static string _newb = $"{PARENT_ROOT_PATH}\\MYLIVE\\_NEW\\BOOK";
+        public static string _news = $"{PARENT_ROOT_PATH}\\MYLIVE\\_NEW\\SPORT";
+        public static string _newfood = $"{PARENT_ROOT_PATH}\\MYLIVE\\_NEW\\FOOD";
 
-        public static string datat = $"{DESKTOP}\\MYLIVE\\DATA\\PICTURES\\TRAVEL";
+        public static string datat = $"{PARENT_ROOT_PATH}\\MYLIVE\\DATA\\PICTURES\\TRAVEL";
 
-        public static string dataf = $"{DESKTOP}\\MYLIVE\\DATA\\PICTURES\\FRIENDS";
-        public static string dataw = $"{DESKTOP}\\MYLIVE\\DATA\\PICTURES\\WORKOUT";
-        public static string datad = $"{DESKTOP}\\MYLIVE\\DATA\\PICTURES\\DOGANDCAT";
-        public static string datab = $"{DESKTOP}\\MYLIVE\\DATA\\PICTURES\\BOOK";
+        public static string dataf = $"{PARENT_ROOT_PATH}\\MYLIVE\\DATA\\PICTURES\\FRIENDS";
+        public static string dataw = $"{PARENT_ROOT_PATH}\\MYLIVE\\DATA\\PICTURES\\WORKOUT";
+        public static string datad = $"{PARENT_ROOT_PATH}\\MYLIVE\\DATA\\PICTURES\\DOGANDCAT";
+        public static string datab = $"{PARENT_ROOT_PATH}\\MYLIVE\\DATA\\PICTURES\\BOOK";
 
-        public static string datas = $"{DESKTOP}\\MYLIVE\\DATA\\PICTURES\\SPORT";
-        public static string datafood = $"{DESKTOP}\\MYLIVE\\DATA\\PICTURES\\FOOD";
+        public static string datas = $"{PARENT_ROOT_PATH}\\MYLIVE\\DATA\\PICTURES\\SPORT";
+        public static string datafood = $"{PARENT_ROOT_PATH}\\MYLIVE\\DATA\\PICTURES\\FOOD";
 
-        public static string videofolder = $"{DESKTOP}\\MYLIVE\\DATA\\VIDEO";
-        public static string videofolderSave = $"{DESKTOP}\\MYLIVE\\DATA\\VIDEO\\info.txt";
+        public static string videofolder = $"{PARENT_ROOT_PATH}\\MYLIVE\\DATA\\VIDEO";
+        public static string videofolderSave = $"{PARENT_ROOT_PATH}\\MYLIVE\\DATA\\VIDEO\\info.txt";
 
 
 
-        public static string imgProcessedFile = $"{DESKTOP}\\MYLIVE\\DATA\\parsed.txt";
+        public static string imgProcessedFile = $"{PARENT_ROOT_PATH}\\MYLIVE\\DATA\\parsed.txt";
 
 
         public static void INIT()
         {
+
+
             string path = new System.IO.FileInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).DirectoryName;
             int i = path.IndexOf("MYLIVE");
             path = path.Substring(0, i) + "MYLIVE\\";
