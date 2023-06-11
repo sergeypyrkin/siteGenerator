@@ -18,7 +18,7 @@ namespace live.Service
 
         public Dictionary<string, string> parsedDict = new Dictionary<string, string>();
         public bool hasError = false;
-
+        public Dictionary<string,string> uploadDict = new Dictionary<string, string>();
 
 
         public void EXECUTE()
@@ -60,10 +60,50 @@ namespace live.Service
                 string f1 = folder1_dict[key];
                 string f2 = folder2_dict[key];
 
+                List<string> fles1 = Directory.GetFiles(f1).ToList();
+                List<string> fles2 = Directory.GetFiles(f2).ToList();
+                var dict1 = getFileName(fles1);
+                var dict2 = getFileName(fles2);
 
+                foreach (KeyValuePair<string, string> keyValue in dict1)
+                {
+                    string shortName = keyValue.Key;
+                    string fullname = keyValue.Value;
+                    if (!dict2.ContainsKey(shortName))
+                    {
+                        Console.WriteLine(fullname);
+                        uploadDict.Add(fullname, f2);
+                    }
+                }
+
+
+                foreach (KeyValuePair<string, string> keyValue in dict2)
+                {
+                    string shortName = keyValue.Key;
+                    string fullname = keyValue.Value;
+                    if (!dict1.ContainsKey(shortName))
+                    {
+                        Console.WriteLine(fullname);
+                        uploadDict.Add(fullname, f1);
+                    }
+                }
 
             }
 
+        }
+
+
+        //получаем dict шорт найм длинное найт
+        public Dictionary<string, string> getFileName(List<string> filename)
+        {
+            Dictionary<string, string> result = new Dictionary<string, string>();
+            foreach (var item in filename)
+            {
+                String[] lines = item.Split(new string[] { "\\" }, StringSplitOptions.None);
+                string shortName = lines.Last();
+                result.Add(shortName, item);    
+            }
+            return result;
         }
 
         private void compareFoldersItself(string folder1, string folder2, Dictionary<string, string> folder1_dict, Dictionary<string, string> folder2_dict)
