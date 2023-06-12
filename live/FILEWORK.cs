@@ -49,6 +49,12 @@ namespace live
         }
 
 
+        public static void moveFile(string path, string destination)
+        {
+            File.Copy(path, destination);
+        }
+
+
         #endregion
 
 

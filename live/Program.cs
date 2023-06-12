@@ -46,7 +46,7 @@ namespace live
             //var test = new Test1();
             //Console.ReadKey();
             bool sv1 = false;
-            bool sv2 = true;
+            bool sv2 = false;
 
             //string s1 = niceString("123123", "sdfsdf", "sdfsdf", 50, 50);
             //Console.WriteLine(s1);

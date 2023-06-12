@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Net.WebRequestMethods;
 
@@ -89,6 +90,26 @@ namespace live.Service
                 }
 
             }
+
+            foreach (KeyValuePair<string, string> keyValue in uploadDict)
+            {
+                string filename = keyValue.Key;
+                string destination = keyValue.Value;
+
+                try
+                {
+                    FileInfo f = new FileInfo(filename);
+                    string shortname = f.Name;
+                    destination = destination + "\\" + shortname;
+                    FILEWORK.moveFile(filename, destination);
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
+
+            }
+
 
         }
 
